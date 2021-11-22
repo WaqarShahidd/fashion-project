@@ -1,11 +1,11 @@
-export const bgs = ["#897b6c", "#ad7253", "#b1938b"];
+export const bgs = ["#9e7f65", "#ad7253", "#b1938b"];
 export const DATA = [
   {
     key: "1",
     title: "Exceptional Modern Clothing",
     description: "Shop for exceptional modern clothings for your everyday life",
     image:
-      "https://www.charleskeith.com/on/demandware.static/-/Library-Sites-CharlesKeith/default/dw4fb1eac9/images/Muse/Spring20/game-changer/charles-keith-spring-20-game-changer-blog-mobile-01.jpg",
+      "https://i.pinimg.com/564x/dc/46/da/dc46da8e464c2877a6e7fe709af28d81.jpg",
   },
   {
     key: "2",

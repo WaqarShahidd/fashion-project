@@ -8,7 +8,9 @@ import {
   Dimensions,
   Text,
    Button,
+   Pressable,
 } from "react-native";
+import { Directions } from "react-native-gesture-handler";
 import { DATA } from "./dataa";
 import { bgs } from "./dataa";
 // import Button  from "../../../components/Button";
@@ -19,7 +21,7 @@ import { Routes, StackNavigationProps } from "./navigation";
 // import { TouchableOpacity } from "react-native-gesture-handler";
 // import { navigation } from "react-native-navigation";
 
-const { width } = Dimensions.get("screen");
+const { width, height } = Dimensions.get("screen");
 
 const Indicator = ({ scrollX }) => {
   return (
@@ -85,7 +87,7 @@ export default function Onboarding( {navigation}: StackNavigationProps<Routes, "
         horizontal
         scrollEventThrottle={16}
         pagingEnabled
-        // bounces= {false}
+        bounces= {false}
         onScroll={Animated.event(
           [{ nativeEvent: { contentOffset: { x: scrollX } } }],
           { useNativeDriver: false }
@@ -93,13 +95,14 @@ export default function Onboarding( {navigation}: StackNavigationProps<Routes, "
         showsHorizontalScrollIndicator={false}
         contentContainerStyle={{ paddingBottom: 150 }}
         data={DATA}
-        keyExtractor={(item) => item.key}
+        keyExtractor={( item) => item.key}
         renderItem={({ item }) => {
           return (
             <View style={styles.listRender}>
               <View style={styles.imgContainer}>
                 <Image source={{ uri: item.image }} style={styles.img} />
               </View>
+              
               <View style={styles.bottomContainer}>
                 <Text style={styles.title}>{item.title}</Text>
                 <Text style={styles.description}>{item.description}</Text>
@@ -108,8 +111,18 @@ export default function Onboarding( {navigation}: StackNavigationProps<Routes, "
           );
         }}
       />
+      <Pressable
+        style={
+          styles.button}
+        
+        onPress={() => {
+          navigation.navigate("Welcome");
+        }}
+      >
+        <Text style={styles.buttonText}>Let's get started</Text>
+      </Pressable>
       <Indicator scrollX={scrollX} />
-      <View style={styles.button}>
+      {/* <View style={styles.button}>
         <Button
           color="#c6ced1"
           title="Let's get started"
@@ -117,7 +130,7 @@ export default function Onboarding( {navigation}: StackNavigationProps<Routes, "
             navigation.navigate("Welcome");
           }}
         />
-      </View>
+      </View> */}
     </View>
   );
 }
@@ -137,21 +150,22 @@ const styles = StyleSheet.create({
   imgContainer: { flex: 0.7, paddingBottom: 70 },
   img: {
     width: width,
-    height: "150%",
+    height: height / 1.75,
     resizeMode: "cover",
   },
   bottomContainer: {
-    flex: 0.3,
+    flex: 0.5,
     justifyContent: "flex-start",
     alignItems: "center",
   },
   title: {
     fontWeight: "800",
     fontSize: 24,
-    paddingTop: 80,
+    paddingTop: 100,
+
     marginBottom: -5,
     padding: 15,
-    bottom: -10,
+    bottom: -20,
     color: "#fff",
     // textAlign: "left",
     alignItems: "center",
@@ -162,6 +176,7 @@ const styles = StyleSheet.create({
     color: "#fff",
     alignItems: "center",
     margin: 10,
+    bottom: -10,
   },
   indic: {
     position: "absolute",
@@ -171,7 +186,7 @@ const styles = StyleSheet.create({
   button: {
     height: 50,
     width: 240,
-    backgroundColor: "#2c393f",
+    backgroundColor: "#fff",
     justifyContent: "center",
     alignItems: "center",
     bottom: 60,
@@ -184,5 +199,12 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.25,
     shadowRadius: 8.84,
     elevation: 7,
+  },
+  buttonText: {
+    fontSize: 16,
+    lineHeight: 21,
+    fontWeight: "bold",
+    letterSpacing: 0.25,
+    color: "#c39476",
   },
 });
