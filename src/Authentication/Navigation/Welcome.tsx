@@ -35,7 +35,7 @@ export default function Welcome({
           <View style={styles.logo}>
             <Image
               style={{ width: 35, height: 35, borderRadius: 10 }}
-              source={require("../../../assets/m.png")}
+              source={{ uri: "https://i.ibb.co/mvtjqvq/m.png" }}
             />
             <Text
               style={{
@@ -60,7 +60,7 @@ export default function Welcome({
             />
           </View>
         </View>
-      </View>      
+      </View>
       <View style={styles.bottomView}>
         <Text style={styles.title}>Start Shopping</Text>
         <Pressable

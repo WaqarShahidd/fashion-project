@@ -1,5 +1,12 @@
-import * as React from 'react';
-import { Text, View, StyleSheet, TextInput, Pressable } from 'react-native';
+import * as React from "react";
+import {
+  Text,
+  View,
+  StyleSheet,
+  TextInput,
+  Pressable,
+  Alert,
+} from "react-native";
 import { Feather as Icon } from "@expo/vector-icons";
 import { Routes, StackNavigationProps } from "./navigation";
 
@@ -8,41 +15,44 @@ const ResetPassword = ({
 }: StackNavigationProps<Routes, "ResetPassword">) => {
   return (
     <View style={styles.container}>
-      <View style={styles.screen}>
-        <Icon
-          name="arrow-left"
-          size={30}
-          color="#000"
-          onPress={() => {
-            navigation.navigate("Welcome");
-          }}
-        />
-        <Text style={styles.heading}>Forgot Password?</Text>
-      </View>
-      <View style={styles.form}>
-        <TextInput placeholder="Your email" autoCompleteType="email" />
-      </View>
-      <View
-        style={{
-          width: "100%",
-          height: 50,
-          justifyContent: "flex-start",
-          alignItems: "flex-start",
-        }}
-      >
-        <Pressable
-          style={({ pressed }) => [
-            {
-              backgroundColor: pressed ? "red" : "blue",
-            },
-            styles.button,
-          ]}
-          onPress={() => {
-            navigation.navigate("Login");
+      <View style={{ margin: 20 }}>
+        <View style={styles.screen}>
+          <Icon
+            name="arrow-left"
+            size={30}
+            color="#000"
+            onPress={() => {
+              navigation.navigate("Welcome");
+            }}
+          />
+          <Text style={styles.heading}>Forgot Password?</Text>
+          <Text style={{ paddingTop: 15, fontWeight: "100" }}>
+            Enter your email to recieve the instructions to reset your password
+          </Text>
+        </View>
+        <View style={styles.form}>
+          <TextInput placeholder="Your email" autoCompleteType="email" />
+        </View>
+        <View
+          style={{
+            width: "100%",
+            height: 50,
+            justifyContent: "flex-start",
+            alignItems: "flex-start",
           }}
         >
-          <Text style={styles.buttonText}>Send Code</Text>
-        </Pressable>
+          <Pressable
+            style={({ pressed }) => [
+              {
+                backgroundColor: pressed ? "red" : "blue",
+              },
+              styles.button,
+            ]}
+            onPress={() => Alert.alert("", "Code Sent")}
+          >
+            <Text style={styles.buttonText}>Send Code</Text>
+          </Pressable>
+        </View>
       </View>
     </View>
   );
@@ -53,22 +63,19 @@ export default ResetPassword;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    // justifyContent: "flex-start",
-    margin: 20,
+    backgroundColor: "#efece7",
+    ...StyleSheet.absoluteFillObject,
   },
   screen: {
-    // margin: 20,
     marginTop: 25,
   },
   heading: {
-    fontSize: 36,
+    fontSize: 30,
     color: "#000",
     paddingTop: 25,
     fontWeight: "bold",
-    // padding: 20,
   },
   form: {
-    // margin: 20,
     marginTop: 20,
     overflow: "hidden",
     marginBottom: 35,
@@ -87,7 +94,6 @@ const styles = StyleSheet.create({
     backgroundColor: "#2c393f",
     justifyContent: "center",
     alignItems: "center",
-    // bottom: 60,
     borderRadius: 5,
     shadowColor: "#000",
     shadowOffset: {

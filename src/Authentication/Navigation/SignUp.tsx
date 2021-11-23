@@ -2,8 +2,6 @@ import * as React from "react";
 import { Text, View, StyleSheet, Pressable,TextInput } from "react-native";
 import { Routes, StackNavigationProps } from "./navigation";
 import { Feather as Icon } from "@expo/vector-icons";
-import Checkbox from "./Checkbox";
-import { TouchableOpacity } from "react-native-gesture-handler";
 
 const SignUp = ({ navigation }: StackNavigationProps<Routes, "SignUp">) => {
   return (
