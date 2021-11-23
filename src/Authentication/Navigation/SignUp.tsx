@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Text, View, StyleSheet, Pressable } from 'react-native';
 import { Routes, StackNavigationProps } from './navigation';
 
-interface SignUpProps {}
+
 
 const SignUp = ({ navigation }: StackNavigationProps<Routes, "SignUp">) => {
   return (

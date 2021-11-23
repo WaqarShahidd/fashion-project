@@ -7,10 +7,8 @@ import {
   Image,
   Dimensions,
   Text,
-   Button,
    Pressable,
 } from "react-native";
-import { Directions } from "react-native-gesture-handler";
 import { DATA } from "./dataa";
 import { bgs } from "./dataa";
 // import Button  from "../../../components/Button";
@@ -81,7 +79,7 @@ export default function Onboarding( {navigation}: StackNavigationProps<Routes, "
   const scrollX = React.useRef(new Animated.Value(0)).current;
   return (
     <View style={styles.container}>
-      <StatusBar hidden />
+      <StatusBar  />
       <BackDrop scrollX={scrollX} />
       <Animated.FlatList
         horizontal
@@ -112,8 +110,11 @@ export default function Onboarding( {navigation}: StackNavigationProps<Routes, "
         }}
       />
       <Pressable
-        style={
-          styles.button}
+        style={({pressed}) => [
+          {
+            backgroundColor: pressed ? 'red' : 'blue',
+          },
+          styles.button]}
         
         onPress={() => {
           navigation.navigate("Welcome");
