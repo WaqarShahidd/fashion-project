@@ -1152,19 +1152,7 @@
     base64-js "^1.2.3"
     xmlbuilder "^14.0.0"
 
-"@expo/vector-icons@^12.0.4":
-  version "12.0.5"
-  resolved "https://registry.npmjs.org/@expo/vector-icons/-/vector-icons-12.0.5.tgz"
-  integrity sha512-zWvHBmkpbi1KrPma6Y+r/bsGI6MjbM1MBSe6W9A4uYMLhNI5NR4JtTnqxhf7g1XdpaDtBdv5aOWKEx4d5rxnhg==
-  dependencies:
-    lodash.frompairs "^4.0.1"
-    lodash.isequal "^4.5.0"
-    lodash.isstring "^4.0.1"
-    lodash.omit "^4.5.0"
-    lodash.pick "^4.4.0"
-    lodash.template "^4.5.0"
-
-"@expo/vector-icons@^12.0.5":
+"@expo/vector-icons@^12.0.4", "@expo/vector-icons@^12.0.5":
   version "12.0.5"
   resolved "https://registry.yarnpkg.com/@expo/vector-icons/-/vector-icons-12.0.5.tgz#bc508ad05fb7e9a3e008704977cfec6c18aa7728"
   integrity sha512-zWvHBmkpbi1KrPma6Y+r/bsGI6MjbM1MBSe6W9A4uYMLhNI5NR4JtTnqxhf7g1XdpaDtBdv5aOWKEx4d5rxnhg==
@@ -5263,6 +5251,11 @@ react-native-codegen@^0.0.6:
     flow-parser "^0.121.0"
     jscodeshift "^0.11.0"
     nullthrows "^1.1.1"
+
+react-native-dropdown-picker@^5.2.3:
+  version "5.2.3"
+  resolved "https://registry.yarnpkg.com/react-native-dropdown-picker/-/react-native-dropdown-picker-5.2.3.tgz#2ab6819f258ba58328cdc69c9593fb3769f20347"
+  integrity sha512-nT2p/3pzydi6CAUPbC7WR1Yo2/FDX6napouAQ1ueuCGD48afYiWERh2J+mAUes/v4MKl68oriEz9C7GM6aAILg==
 
 react-native-feather@^1.1.2:
   version "1.1.2"

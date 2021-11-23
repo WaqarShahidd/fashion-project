@@ -6,6 +6,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import { Routes } from "./src/Authentication/Navigation/navigation";
 import Login from "./src/Authentication/Navigation/Login";
 import SignUp from "./src/Authentication/Navigation/SignUp";
+import ResetPassword from "./src/Authentication/Navigation/ResetPassword";
 
 const Stack= createStackNavigator<Routes>();
 const Navigator = () => {
@@ -15,6 +16,7 @@ const Navigator = () => {
      <Stack.Screen name="Welcome" component={Welcome} />
      <Stack.Screen name="SignUp" component={SignUp} />
      <Stack.Screen name="Login" component={Login} />
+     <Stack.Screen name="ResetPassword" component={ResetPassword} />
    </Stack.Navigator>
  ); 
 }

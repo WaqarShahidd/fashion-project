@@ -12,5 +12,6 @@ export type Routes ={
     Onboarding: undefined,
     Welcome: undefined,
     SignUp: undefined,
-    Login: undefined
+    Login: undefined,
+    ResetPassword: undefined,
 }

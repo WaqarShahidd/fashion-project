@@ -6,7 +6,7 @@ import { Feather as Icon } from "@expo/vector-icons";
 interface TextInputProps extends RNTextInputProps{
   placeholder: string;
   icon;
-  validator: (input: string) => boolean;
+  validator: (input) => boolean;
 }
 
 const SIZE = 20;

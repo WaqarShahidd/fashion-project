@@ -34,12 +34,14 @@ const Login = ({ navigation }: StackNavigationProps<Routes, "Login">) => {
             icon="mail"
             placeholder="Enter your email"
             validator={emailValidator}
+            autoCompleteType="email"
           />
 
           <TextInput
             icon="lock"
             placeholder="Enter your password"
             validator={passwordValidator}
+            autoCompleteType="password"
             secureTextEntry={true}
           />
         </View>
@@ -58,7 +60,21 @@ const Login = ({ navigation }: StackNavigationProps<Routes, "Login">) => {
               onPress={() => true}
             ></TouchableOpacity>
           </View>
-          <Text style={{ color: "#6b6a68" }}>Forgot Password?</Text>
+          <TouchableOpacity
+            onPress={() => {
+              navigation.navigate("ResetPassword");
+            }}
+          >
+            <Text
+              style={{
+                color: "#6b6a68",
+                textDecorationLine: "underline",
+                fontWeight: "400",
+              }}
+            >
+              Forgot Password?
+            </Text>
+          </TouchableOpacity>
         </View>
         <View
           style={{
@@ -66,7 +82,7 @@ const Login = ({ navigation }: StackNavigationProps<Routes, "Login">) => {
             height: 50,
             justifyContent: "center",
             alignItems: "center",
-            position: "absolute", 
+            position: "absolute",
             bottom: 0,
           }}
         >
