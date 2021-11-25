@@ -87,17 +87,16 @@ const Login = ({ navigation }: StackNavigationProps<Routes, "Login">) => {
           }}
         >
           <Pressable
-            style={({ pressed }) => [
-              {
-                backgroundColor: pressed ? "red" : "blue",
-              },
-              styles.button,
-            ]}
+            style={styles.button}
             onPress={() => {
               navigation.navigate("Welcome");
             }}
           >
-            <Text style={styles.buttonText}>Login</Text>
+            <Text
+              style={styles.buttonText}
+            >
+              Login
+            </Text>
           </Pressable>
         </View>
       </View>
@@ -143,6 +142,8 @@ const styles = StyleSheet.create({
     alignItems: "center",
     // bottom: 60,
     borderRadius: 5,
+    borderWidth: 1.5,
+    borderColor: "#2c393f",
     shadowColor: "#000",
     shadowOffset: {
       width: 3,
@@ -157,6 +158,6 @@ const styles = StyleSheet.create({
     lineHeight: 21,
     fontWeight: "bold",
     letterSpacing: 0.25,
-    color: "#b5bfc0",
+     color: "#b5bfc0",
   },
 });

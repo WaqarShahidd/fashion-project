@@ -38,7 +38,7 @@ const TextInput = ({ icon,validator,  ...props }: TextInputProps) => {
           height: 58,
           alignItems: "center",
           borderWidth: 1,
-          borderBottomWidth: 2,
+          borderBottomWidth: 3,
           borderColor: "#efece7",
         },
         { borderBottomColor: color },
