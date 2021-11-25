@@ -96,7 +96,8 @@ const Login = ({ navigation }: StackNavigationProps<Routes, "Login">) => {
               styles.button,
             ]}
             onPress={() => {
-              navigation.navigate("Welcome");
+              alert("Login successful")
+              navigation.navigate("Home");
             }}
           >
             <Text style={styles.buttonText}>Login</Text>

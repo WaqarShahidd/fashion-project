@@ -96,7 +96,8 @@ const SignUp = ({ navigation }: StackNavigationProps<Routes, "SignUp">) => {
                 styles.button,
               ]}
               onPress={() => {
-                navigation.navigate("Welcome");
+                alert("Account created");
+                navigation.navigate("Home");
               }}
             >
               <Text style={styles.buttonText}>Create Account</Text>

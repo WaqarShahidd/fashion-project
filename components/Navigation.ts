@@ -15,4 +15,5 @@ export type Routes ={
     Login: undefined,
     ResetPassword: undefined,
     Home: undefined
+    Tabs: undefined
 }

@@ -10,7 +10,7 @@ import {
 } from "react-native";
 // import { SafeAreaView } from 'react-native-safe-area-context';
 // import Button from '../../../components/Button';
-import { Routes, StackNavigationProps } from "../../../components/navigation";
+import { Routes, StackNavigationProps } from "../../../components/navigation"
 import { Feather as Icon } from "@expo/vector-icons";
 import { TouchableOpacity } from "react-native-gesture-handler";
 const { width, height } = Dimensions.get("screen");
