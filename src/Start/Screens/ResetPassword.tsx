@@ -8,7 +8,7 @@ import {
   Alert,
 } from "react-native";
 import { Feather as Icon } from "@expo/vector-icons";
-import { Routes, StackNavigationProps } from "./navigation";
+import { Routes, StackNavigationProps } from "../../../components/navigation";
 
 const ResetPassword = ({
   navigation,

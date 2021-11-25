@@ -1,10 +1,11 @@
 import * as React from "react";
-import { Text, View, StyleSheet, Pressable } from "react-native";
-import { Routes, StackNavigationProps } from "./navigation";
-import TextInput from "./TextInput";
+import { Text, View, StyleSheet, Pressable, Linking } from "react-native";
+import { Routes, StackNavigationProps } from "../../../components/navigation";
+import TextInput from "../Components/TextInput";
 import { Feather as Icon } from "@expo/vector-icons";
-import Checkbox from "./Checkbox";
+import Checkbox from "../Components/Checkbox";
 import { TouchableOpacity } from "react-native-gesture-handler";
+import { SocialIcon } from "react-native-elements";
 
 const emailValidator = (email: string) =>
   /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(
@@ -15,6 +16,7 @@ const passwordValidator = (password: string) =>
 
 // const Separator = () =>  <View style = {styles.separator} />
 const Login = ({ navigation }: StackNavigationProps<Routes, "Login">) => {
+  
   return (
     <View style={{ flex: 1, backgroundColor: "#efece7" }}>
       <View style={styles.container}>
@@ -82,22 +84,52 @@ const Login = ({ navigation }: StackNavigationProps<Routes, "Login">) => {
             height: 50,
             justifyContent: "center",
             alignItems: "center",
-            position: "absolute",
-            bottom: 0,
+            alignContent: "center",
+            marginTop: 35,
           }}
         >
           <Pressable
-            style={styles.button}
+            style={({ pressed }) => [
+              {
+                backgroundColor: pressed ? "#44585F" : "#2c393f",
+              },
+              styles.button,
+            ]}
             onPress={() => {
               navigation.navigate("Welcome");
             }}
           >
-            <Text
-              style={styles.buttonText}
-            >
-              Login
-            </Text>
+            <Text style={styles.buttonText}>Login</Text>
           </Pressable>
+        </View>
+        <View
+          style={{
+            marginTop: 20,
+            flexDirection: "row",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          <SocialIcon
+            type="twitter"
+            underlayColor="#DDDDDD"
+            onPress={() => Linking.openURL("https://twitter.com")}
+          />
+          <SocialIcon
+            type="facebook"
+            underlayColor="#DDDDDD"
+            onPress={() => Linking.openURL("https://www.facebook.com")}
+          />
+          <SocialIcon
+            type="google"
+            underlayColor="#DDDDDD"
+            onPress={() => Linking.openURL("https://myaccount.google.com/")}
+          />
+          <SocialIcon
+            light
+            type="apple"
+            onPress={() => Linking.openURL("https://www.icloud.com")}
+          />
         </View>
       </View>
     </View>
@@ -118,8 +150,9 @@ const styles = StyleSheet.create({
   },
   heading: {
     fontSize: 24,
-    color: "#727272",
+    color: "#000",
     paddingTop: 25,
+    fontWeight: 'bold'
     // padding: 20,
   },
   form: {
@@ -137,7 +170,7 @@ const styles = StyleSheet.create({
   button: {
     height: 50,
     width: "100%",
-    backgroundColor: "#2c393f",
+    // backgroundColor: "#2c393f",
     justifyContent: "center",
     alignItems: "center",
     // bottom: 60,
@@ -158,6 +191,6 @@ const styles = StyleSheet.create({
     lineHeight: 21,
     fontWeight: "bold",
     letterSpacing: 0.25,
-     color: "#b5bfc0",
+     color: "#fff",
   },
 });

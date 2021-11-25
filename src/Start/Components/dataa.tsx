@@ -1,4 +1,5 @@
-export const bgs = ["#9e7f65", "#ad7253", "#b1938b"];
+export const bgs = ["#9e7f65", "#ad7253", "#9D766C"];
+//#b1938b
 export const DATA = [
   {
     key: "1",

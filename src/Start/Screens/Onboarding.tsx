@@ -8,16 +8,12 @@ import {
   Dimensions,
   Text,
    Pressable,
+   Platform,
+   TouchableOpacity,
 } from "react-native";
-import { DATA } from "./dataa";
-import { bgs } from "./dataa";
-// import Button  from "../../../components/Button";
-// import { StackNavigationProp } from "@react-navigation/stack";
-import { Routes, StackNavigationProps } from "./navigation";
-// import { useNavigation } from "@react-navigation/core";
-// import Welcome from "./Welcome";
-// import { TouchableOpacity } from "react-native-gesture-handler";
-// import { navigation } from "react-native-navigation";
+import { DATA } from '../Components/dataa';
+import { bgs } from "../Components/dataa";
+import { Routes, StackNavigationProps } from "../../../components/navigation";
 
 const { width, height } = Dimensions.get("screen");
 
@@ -34,7 +30,7 @@ const Indicator = ({ scrollX }) => {
         const opacity = scrollX.interpolate({
           inputRange,
           outputRange: [0.4, 1, 0.4],
-        //    extrapolate: "clamp",
+          extrapolate: "clamp",
         });
         return (
           <Animated.View
@@ -75,17 +71,17 @@ const BackDrop = ({ scrollX }) => {
   );
 };
 export default function Onboarding( {navigation}: StackNavigationProps<Routes, "Onboarding"> ) {
-  // const navigation = useNavigation();
+  
   const scrollX = React.useRef(new Animated.Value(0)).current;
   return (
     <View style={styles.container}>
-      <StatusBar  />
+      <StatusBar />
       <BackDrop scrollX={scrollX} />
       <Animated.FlatList
         horizontal
         scrollEventThrottle={16}
         pagingEnabled
-        bounces= {false}
+        bounces={false}
         onScroll={Animated.event(
           [{ nativeEvent: { contentOffset: { x: scrollX } } }],
           { useNativeDriver: false }
@@ -93,14 +89,13 @@ export default function Onboarding( {navigation}: StackNavigationProps<Routes, "
         showsHorizontalScrollIndicator={false}
         contentContainerStyle={{ paddingBottom: 150 }}
         data={DATA}
-        keyExtractor={( item) => item.key}
+        keyExtractor={(item) => item.key}
         renderItem={({ item }) => {
           return (
             <View style={styles.listRender}>
               <View style={styles.imgContainer}>
                 <Image source={{ uri: item.image }} style={styles.img} />
               </View>
-              
               <View style={styles.bottomContainer}>
                 <Text style={styles.title}>{item.title}</Text>
                 <Text style={styles.description}>{item.description}</Text>
@@ -110,28 +105,22 @@ export default function Onboarding( {navigation}: StackNavigationProps<Routes, "
         }}
       />
       <Pressable
-        style={({pressed}) => [
+        style={({ pressed }) => [
           {
-            backgroundColor: pressed ? 'red' : 'blue',
+            backgroundColor: pressed ? "#F3E9E2" : "#fff",
           },
-          styles.button]}
-        
+          styles.button,
+        ]}
         onPress={() => {
           navigation.navigate("Welcome");
         }}
       >
+        <TouchableOpacity activeOpacity={0.7}>
+          
         <Text style={styles.buttonText}>Let's get started</Text>
+        </TouchableOpacity>
       </Pressable>
-      <Indicator scrollX={scrollX} />
-      {/* <View style={styles.button}>
-        <Button
-          color="#c6ced1"
-          title="Let's get started"
-          onPress={() => {
-            navigation.navigate("Welcome");
-          }}
-        />
-      </View> */}
+      <Indicator scrollX={scrollX} />      
     </View>
   );
 }
@@ -144,40 +133,39 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   listRender: {
-    width,
-    // alignItems: "center",
-    flex: 1,
+    width,    
   },
   imgContainer: { flex: 0.7, paddingBottom: 70 },
   img: {
-    width: width,
+    width,
     height: height / 1.75,
     resizeMode: "cover",
   },
   bottomContainer: {
-    flex: 0.5,
+    flex: 0.4,
     justifyContent: "flex-start",
     alignItems: "center",
+    paddingTop: Platform.OS === "android" ? 275 : 0,
   },
   title: {
-    fontWeight: "800",
-    fontSize: 24,
-    paddingTop: 100,
-
+    fontWeight: "bold",
+    fontSize: Platform.OS === "android" ? 26 : 24,
+    paddingTop: Platform.OS === "android" ? 0 : 75,
     marginBottom: -5,
-    padding: 15,
     bottom: -20,
     color: "#fff",
-    // textAlign: "left",
     alignItems: "center",
+    fontFamily: Platform.OS === "android" ? "Roboto" : "Helvetica",
   },
   description: {
-    fontWeight: "600",
-    padding: 10,
+    fontWeight: Platform.OS === "android" ? "900" : "600",
+    marginTop: Platform.OS === "android" ? 25 : 15,
+    padding: Platform.OS === "android" ? 10 : 15,
     color: "#fff",
     alignItems: "center",
-    margin: 10,
-    bottom: -10,
+    margin: Platform.OS === "android" ? 15 : 10,
+    bottom: Platform.OS === "android" ? -10 : -20,
+    fontSize: Platform.OS === "android" ? 16 : 14,
   },
   indic: {
     position: "absolute",
@@ -187,7 +175,6 @@ const styles = StyleSheet.create({
   button: {
     height: 50,
     width: 240,
-    backgroundColor: "#fff",
     justifyContent: "center",
     alignItems: "center",
     bottom: 60,
