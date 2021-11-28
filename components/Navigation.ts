@@ -8,12 +8,12 @@ export interface StackNavigationProps< ParamList extends ParamListBase, RouteNam
     route: RouteProp<ParamList, RouteName>
 }
 
-export type Routes ={
+export type Routes = {
     Onboarding: undefined,
     Welcome: undefined,
     SignUp: undefined,
     Login: undefined,
     ResetPassword: undefined,
-    Home: undefined
+    Home: undefined,
     Tabs: undefined
 }

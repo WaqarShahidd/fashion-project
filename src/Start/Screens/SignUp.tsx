@@ -1,12 +1,14 @@
 import * as React from "react";
-import { Text, View, StyleSheet, Pressable,TextInput } from "react-native";
+import { Text, View, StyleSheet, Pressable, TextInput, PickerIOSItem } from "react-native";
 import { Routes, StackNavigationProps } from "../../../components/navigation";
 import { Feather as Icon } from "@expo/vector-icons";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
+import { Picker, PickerIOS } from "@react-native-picker/picker";
+import { list } from "../Components/CountryList";
 
 
 const SignUp = ({ navigation }: StackNavigationProps<Routes, "SignUp">) => {
-
+const [selectedValue, setValue] = React.useState(0);
   return (
     <View style={styles.container}>
       <View style={{ margin: 20, flex: 1 }}>
@@ -54,7 +56,7 @@ const SignUp = ({ navigation }: StackNavigationProps<Routes, "SignUp">) => {
                 flex: 1,
                 justifyContent: "space-evenly",
                 flexDirection: "row",
-                marginBottom: 15,
+                marginBottom: 25,
               }}
             >
               <TextInput
@@ -78,6 +80,29 @@ const SignUp = ({ navigation }: StackNavigationProps<Routes, "SignUp">) => {
               placeholder="Country"
               autoCompleteType="email"
             />
+            {/* <KeyboardAwareScrollView>
+
+            <Picker
+              style={{
+                marginBottom: -25,
+                 flexDirection: "column",
+                 height: 220,
+                 width: "100%",
+                //alignItems: "center",
+              }}
+              mode="dropdown"
+              selectedValue={selectedValue}
+              onValueChange={(itemValue) => setValue(itemValue)}
+            >
+              {list
+                .filter((value, index) =>
+                  selectedValue === 0 ? value : index === 0 ? value : value
+                )
+                .map((value, index) => (
+                  <Picker.Item label={value} value={value} key={index} />
+                ))}
+            </Picker>
+            </KeyboardAwareScrollView> */}
           </View>
           <View
             style={{

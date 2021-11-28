@@ -7,20 +7,23 @@ import Search from "./Search";
 import Profile from "./Profile";
 import Wishlist from "./Wishlist";
 import { Feather as Icon } from "@expo/vector-icons";
+import { SafeAreaProvider } from "react-native-safe-area-context";
 
 const Tab = createBottomTabNavigator();
 
 const Tabs = () => {
   return (
+    <SafeAreaProvider>
     <Tab.Navigator
       screenOptions={{
+        headerShown: false,
         tabBarShowLabel: false,
         tabBarStyle: {
           position: "absolute",
           justifyContent: "center",
           alignContent: "center",
           alignItems: "center",
-          bottom: Platform.OS === "android" ? -800 : -650,
+          bottom: Platform.OS === "android" ? -800 : 15,
           left: 20,
           right: 20,
           borderRadius: 15,
@@ -89,6 +92,7 @@ const Tabs = () => {
         }}
       />
     </Tab.Navigator>
+    </SafeAreaProvider>
   );
 };
 

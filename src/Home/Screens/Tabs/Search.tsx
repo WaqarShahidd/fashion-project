@@ -14,5 +14,10 @@ const Search = (props: SearchProps) => {
 export default Search;
 
 const styles = StyleSheet.create({
-  container: {}
+  container: {
+    flex: 1,
+    justifyContent: "center",
+    alignContent: "center",
+    alignItems: "center",
+  },
 });

@@ -14,5 +14,10 @@ const Profile = (props: ProfileProps) => {
 export default Profile;
 
 const styles = StyleSheet.create({
-  container: {}
+  container: {
+    flex: 1,
+    justifyContent: "center",
+    alignContent: "center",
+    alignItems: "center",
+  },
 });

@@ -6,6 +6,7 @@ import { Feather as Icon } from "@expo/vector-icons";
 import Checkbox from "../Components/Checkbox";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import { SocialIcon } from "react-native-elements";
+import { Picker } from "@react-native-picker/picker";
 
 const emailValidator = (email: string) =>
   /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(
@@ -16,7 +17,8 @@ const passwordValidator = (password: string) =>
 
 // const Separator = () =>  <View style = {styles.separator} />
 const Login = ({ navigation }: StackNavigationProps<Routes, "Login">) => {
-  
+  const [pickerFocused, setPickerFocused] = React.useState(false);
+
   return (
     <View style={{ flex: 1, backgroundColor: "#efece7" }}>
       <View style={styles.container}>
@@ -77,6 +79,7 @@ const Login = ({ navigation }: StackNavigationProps<Routes, "Login">) => {
               Forgot Password?
             </Text>
           </TouchableOpacity>
+          
         </View>
         <View
           style={{
@@ -96,7 +99,7 @@ const Login = ({ navigation }: StackNavigationProps<Routes, "Login">) => {
               styles.button,
             ]}
             onPress={() => {
-              alert("Login successful")
+              alert("Login successful");
               navigation.navigate("Home");
             }}
           >
@@ -131,6 +134,27 @@ const Login = ({ navigation }: StackNavigationProps<Routes, "Login">) => {
             type="apple"
             onPress={() => Linking.openURL("https://www.icloud.com")}
           />
+        </View>
+        <View
+          style={{
+            marginTop: 25,
+            justifyContent: "center",
+            alignContent: "center",
+            alignItems: "center",
+          }}
+        >
+          <Text style={{ fontWeight: "300" }}>
+            Don't have an account yet?
+            <Text> </Text>
+            <Text
+              style={{ textDecorationLine: "underline", fontWeight: "300" }}
+              onPress={() => {
+                navigation.navigate("SignUp");
+              }}
+            >
+              Sign Up
+            </Text>
+          </Text>
         </View>
       </View>
     </View>

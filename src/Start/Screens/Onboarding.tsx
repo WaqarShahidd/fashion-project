@@ -25,7 +25,7 @@ const Indicator = ({ scrollX }) => {
         const scale = scrollX.interpolate({
           inputRange,
           outputRange: [0.8, 1.4, 0.8],
-           extrapolate: "clamp",
+          extrapolate: "clamp",
         });
         const opacity = scrollX.interpolate({
           inputRange,
@@ -34,7 +34,7 @@ const Indicator = ({ scrollX }) => {
         });
         return (
           <Animated.View
-            key={`indicator-${i}`}
+            key={`indicator${i}`}
             style={{
               height: 6,
               width: 6,
@@ -71,7 +71,7 @@ const BackDrop = ({ scrollX }) => {
   );
 };
 export default function Onboarding( {navigation}: StackNavigationProps<Routes, "Onboarding"> ) {
-  
+ 
   const scrollX = React.useRef(new Animated.Value(0)).current;
   return (
     <View style={styles.container}>
