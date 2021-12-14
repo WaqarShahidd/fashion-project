@@ -7,12 +7,14 @@ import {
   Pressable,
   Dimensions,
   Platform,
+  StatusBar,
 } from "react-native";
 // import { SafeAreaView } from 'react-native-safe-area-context';
 // import Button from '../../../components/Button';
 import { Routes, StackNavigationProps } from "../../../components/navigation"
 import { Feather as Icon } from "@expo/vector-icons";
 import { TouchableOpacity } from "react-native-gesture-handler";
+import { SafeAreaProvider } from "react-native-safe-area-context";
 const { width, height } = Dimensions.get("screen");
 
 // https://i.pinimg.com/564x/21/32/54/21325490164e80f3e2732a36266a81b1.jpg
@@ -22,8 +24,8 @@ export default function Welcome({
   navigation,
 }: StackNavigationProps<Routes, "Welcome">) {
   return (
-    <View style={styles.container}>
-      {/* <StatusBar hidden /> */}
+    <SafeAreaProvider style={styles.container}>
+      <StatusBar hidden />
       <View>
         <Image
           style={styles.img}
@@ -100,16 +102,14 @@ export default function Welcome({
           </TouchableOpacity>
         </Pressable>
       </View>
-    </View>
+    </SafeAreaProvider>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-
     justifyContent: "center",
-    alignContent: "center",
     alignItems: "center",
   },
   img: {
