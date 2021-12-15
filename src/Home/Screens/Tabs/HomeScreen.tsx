@@ -46,6 +46,7 @@ const HomeScreen = (props: HomeScreenProps) => {
           <View style={{ marginTop: 20 }}>
             <Card />
             <View style={{ marginTop: 300 }}>
+              
               <GridItem />
             </View>
           </View>
