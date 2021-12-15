@@ -4,7 +4,6 @@ import Swiper from "react-native-deck-swiper";
 import { DATA } from "../../Start/Components/dataa";
 import { data } from "../Components/offers";
 
-
 // const { width: WindowWidth, height: WindowHeight } = Dimensions.get("window");
 // const width = WindowWidth * 0.7;
 // const height = WindowHeight * 0.47;
@@ -17,7 +16,7 @@ const Cards = ({ card }) => (
 
 const Card = () => {
   const [index, setIndex] = React.useState(0);
-  const onSwiped = () => {    
+  const onSwiped = () => {
     setIndex(index + 1);
     if (index >= 5) {
       setIndex(index[1]);
@@ -37,7 +36,8 @@ const Card = () => {
         disableTopSwipe
         infinite={true}
         useViewOverflow={false}
-        backgroundColor="transparent"        
+        backgroundColor="transparent"
+        verticalSwipe={false}
       />
     </View>
   );
@@ -65,7 +65,7 @@ const styles = StyleSheet.create({
     borderRadius: 12,
   },
   card: {
-    flex: 0.4,    
+    flex: 0.4,
     borderRadius: 12,
     shadowRadius: 25,
     shadowColor: "#000",

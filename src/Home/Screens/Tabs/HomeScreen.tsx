@@ -7,7 +7,8 @@ import { Feather as Icon } from "@expo/vector-icons";
 import Categories from "../Categories";
 import { ScrollView } from "react-native-gesture-handler";
 import { useBottomTabBarHeight } from "@react-navigation/bottom-tabs";
-import GridItem from '../GridItem';
+import GridItem from "../GridItem";
+import Offer from "../Offer";
 
 interface HomeScreenProps {}
 
@@ -29,12 +30,12 @@ const HomeScreen = (props: HomeScreenProps) => {
           color: "#fff",
         }}
         containerStyle={{
-          backgroundColor: "#000",
+          backgroundColor: "#727272",
           justifyContent: "space-around",
         }}
       />
 
-      <View style={{ paddingBottom: 115 }}>
+      <View style={{ paddingBottom: 130 }}>
         <ScrollView
           bounces={false}
           showsVerticalScrollIndicator={false}
@@ -46,7 +47,7 @@ const HomeScreen = (props: HomeScreenProps) => {
           <View style={{ marginTop: 20 }}>
             <Card />
             <View style={{ marginTop: 300 }}>
-              <GridItem />
+              <Offer />
             </View>
           </View>
           <View style={{ bottom: 50 }}></View>

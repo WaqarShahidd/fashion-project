@@ -64,3 +64,24 @@ export const categories = [
     color: "#A9DEF9",
   },
 ];
+
+export const offers = [
+  {
+    key: "1",
+    title: "TITLE 1",
+    image:
+      "https://roycollections.com/wp-content/uploads/2021/10/Khaadi-pre-winter-collection-wear-yourself.jpg",
+  },
+  {
+    key: "2",
+    title: "TITLE 2",
+    image:
+      "https://topdeals.pk/assets/front/media/postdetailimage/0_16186617525cc4ba13db0832ef60017e0b1f69aee5.jpg",
+  },
+  {
+    key: "3",
+    title: "TITLE 3",
+    image:
+      "https://roycollections.com/wp-content/uploads/2021/10/Wear-yourself-in-every-shades-of-winter-collection.jpg",
+  },
+];

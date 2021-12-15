@@ -1,7 +1,6 @@
 import * as React from "react";
-import { Text, View, StyleSheet } from "react-native";
+import { Text, View, StyleSheet, Platform } from "react-native";
 import { FlatList, TouchableOpacity } from "react-native-gesture-handler";
-
 
 interface GridItemProps {}
 
@@ -42,11 +41,8 @@ const GridItem = (props: GridItemProps) => {
         numColumns={2}
         renderItem={({ item }) => {
           return (
-            <TouchableOpacity
-              onPress={() => {}}
-              style={styles.btn}
-            >
-              <View style={{ flex: 1, padding: 5 }}>
+            <View style={styles.categoryBtn}>
+              <TouchableOpacity onPress={() => {}} style={styles.btn}>
                 <View
                   style={[
                     StyleSheet.absoluteFill,
@@ -54,8 +50,8 @@ const GridItem = (props: GridItemProps) => {
                   ]}
                 ></View>
                 <Text>{item.title}</Text>
-              </View>
-            </TouchableOpacity>
+              </TouchableOpacity>
+            </View>
           );
         }}
       />
@@ -68,26 +64,36 @@ export default GridItem;
 const styles = StyleSheet.create({
   container: {
     flexDirection: "row",
-    width: "90%",
+    width: "100%",
     alignSelf: "center",
-    marginTop: 25,
-    marginBottom: 10,
+    marginTop: Platform.OS === "android" ? 65 : 25,
+    justifyContent: "center",
+    marginLeft: 5,
+    //backgroundColor: "#fff",
   },
   categoryBtn: {
-    flex: 1,
-    width: "30%",
-    marginHorizontal: 0,
-    alignSelf: "center",
-    backgroundColor: "#000",
+    marginRight: Platform.OS === "android" ? -32 : -30,
+    marginLeft: 20,
+    marginTop: 30,
+    //flex: 1,
+    width: "50%",
+    height: "100%",
+    // marginHorizontal: 0,
+    //alignSelf: "center",
+    //backgroundColor: "#fff",
   },
   btn: {
-height: 175, width: 175, paddingRight:15, paddingBottom:15,
-      shadowOffset: {
-        width: 1,
-        height: 2,
-      },
-      shadowOpacity: 0.15,
-      shadowRadius: 4,
-      elevation: 0,    
+    height: 175,
+    width: "80%",
+    //
+    paddingRight: 15,
+    paddingBottom: 15,
+    shadowOffset: {
+      width: 1,
+      height: 2,
+    },
+    shadowOpacity: 0.15,
+    shadowRadius: 4,
+    elevation: 7,
   },
 });
