@@ -1,54 +1,34 @@
 import * as React from "react";
-import { Text, View, StyleSheet, Platform } from "react-native";
+import {
+  Text,
+  View,
+  StyleSheet,
+  Platform,
+  Image,
+  ImageBackground,
+} from "react-native";
 import { FlatList, TouchableOpacity } from "react-native-gesture-handler";
+import { offers } from "../Components/offers";
 
-interface GridItemProps {}
+interface OfferProps {}
 
-const categories = [
-  {
-    id: 11,
-    title: "Winter",
-    color: "#FFE8E9",
-  },
-  {
-    id: 12,
-    title: "What's New",
-    color: "#E4C1F9",
-  },
-  {
-    id: 13,
-    title: "Top Wear",
-    color: "#D3F8E2",
-  },
-  {
-    id: 14,
-    title: "Footwear",
-    color: "#EDE7B1",
-  },
-  {
-    id: 15,
-    title: "Active Wear",
-    color: "#A9DEF9",
-  },
-];
-
-const GridItem = (props: GridItemProps) => {
+const Offer = (props: OfferProps) => {
   return (
     <View style={styles.container}>
       <FlatList
-        data={categories}
+        data={offers}
         keyExtractor={(item) => item.key}
-        numColumns={2}
         renderItem={({ item }) => {
           return (
             <View style={styles.categoryBtn}>
               <TouchableOpacity onPress={() => {}} style={styles.btn}>
-                <View
-                  style={[
-                    StyleSheet.absoluteFill,
-                    { backgroundColor: item.color, borderRadius: 6 },
-                  ]}
-                ></View>
+                <View style={[StyleSheet.absoluteFill, { borderRadius: 6 }]}>
+                  <Image
+                    source={{ uri: item.image }}
+                    resizeMode="cover"
+                    style={styles.image}
+                  ></Image>
+                </View>
                 <Text>{item.title}</Text>
               </TouchableOpacity>
             </View>
@@ -59,32 +39,33 @@ const GridItem = (props: GridItemProps) => {
   );
 };
 
-export default GridItem;
+export default Offer;
 
 const styles = StyleSheet.create({
   container: {
-    flexDirection: "row",
+    flexDirection: "column",
     width: "100%",
+    height: "100%",
     alignSelf: "center",
     marginTop: Platform.OS === "android" ? 65 : 25,
+    marginBottom: Platform.OS === "android" ? 30 : 25,
     justifyContent: "center",
-    marginLeft: 5,
-    //backgroundColor: "#fff",
+    //backgroundColor: "blue",
   },
   categoryBtn: {
-    marginRight: Platform.OS === "android" ? -32 : -30,
-    marginLeft: 20,
+    marginLeft: "4%",
+    marginRight: "4%",
     marginTop: 30,
     //flex: 1,
-    width: "50%",
-    height: "100%",
+    // width: "90%",
+    // height: "30%",
     // marginHorizontal: 0,
     //alignSelf: "center",
     //backgroundColor: "#fff",
   },
   btn: {
     height: 175,
-    width: "80%",
+    width: "100%",
     //
     paddingRight: 15,
     paddingBottom: 15,
@@ -95,5 +76,8 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.15,
     shadowRadius: 4,
     elevation: 7,
+  },
+  image: {
+    flex: 1,
   },
 });
