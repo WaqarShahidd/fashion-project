@@ -10,6 +10,9 @@
     "eject": "expo eject"
   },
   "dependencies": {
+    "@expo-google-fonts/abril-fatface": "^0.2.0",
+    "@expo-google-fonts/inter": "^0.2.0",
+    "@expo-google-fonts/questrial": "^0.2.0",
     "@expo/vector-icons": "^12.0.5",
     "@invertase/react-native-apple-authentication": "^2.1.5",
     "@klarna/react-native-vector-drawable": "^0.3.0",
@@ -22,6 +25,8 @@
     "@react-navigation/stack": "^6.0.11",
     "@types/react-native-vector-icons": "^6.4.10",
     "expo": "~43.0.2",
+    "expo-app-loading": "^1.2.1",
+    "expo-font": "~10.0.3",
     "expo-status-bar": "~1.1.0",
     "expo-updates": "~0.10.15",
     "react": "17.0.1",
@@ -42,6 +47,8 @@
     "react-native-safe-area-context": "3.3.2",
     "react-native-screens": "~3.8.0",
     "react-native-svg": "12.1.1",
+    "react-native-swiper": "^1.6.0",
+    "react-native-swiper-flatlist": "^3.0.16",
     "react-native-vector-icons": "^9.0.0",
     "react-native-vector-image": "^0.3.3",
     "react-native-video": "^5.2.0",

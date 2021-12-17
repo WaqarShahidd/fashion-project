@@ -80,29 +80,7 @@ const [selectedValue, setValue] = React.useState(0);
               placeholder="Country"
               autoCompleteType="email"
             />
-            {/* <KeyboardAwareScrollView>
-
-            <Picker
-              style={{
-                marginBottom: -25,
-                 flexDirection: "column",
-                 height: 220,
-                 width: "100%",
-                //alignItems: "center",
-              }}
-              mode="dropdown"
-              selectedValue={selectedValue}
-              onValueChange={(itemValue) => setValue(itemValue)}
-            >
-              {list
-                .filter((value, index) =>
-                  selectedValue === 0 ? value : index === 0 ? value : value
-                )
-                .map((value, index) => (
-                  <Picker.Item label={value} value={value} key={index} />
-                ))}
-            </Picker>
-            </KeyboardAwareScrollView> */}
+            
           </View>
           <View
             style={{

@@ -105,9 +105,11 @@ export default function Onboarding( {navigation}: StackNavigationProps<Routes, "
         }}
       />
       <Pressable
+       
         style={({ pressed }) => [
           {
             backgroundColor: pressed ? "#F3E9E2" : "#fff",
+             activeOpacity:0.7
           },
           styles.button,
         ]}
@@ -115,12 +117,11 @@ export default function Onboarding( {navigation}: StackNavigationProps<Routes, "
           navigation.navigate("Welcome");
         }}
       >
-        <TouchableOpacity activeOpacity={0.7}>
-          
-        <Text style={styles.buttonText}>Let's get started</Text>
-        </TouchableOpacity>
+        
+          <Text style={styles.buttonText}>Let's get started</Text>
+        
       </Pressable>
-      <Indicator scrollX={scrollX} />      
+      <Indicator scrollX={scrollX} />
     </View>
   );
 }
