@@ -1,14 +1,20 @@
 import * as React from "react";
-import { Text, View, StyleSheet, Pressable, TextInput, PickerIOSItem } from "react-native";
+import {
+  Text,
+  View,
+  StyleSheet,
+  Pressable,
+  TextInput,
+  PickerIOSItem,
+} from "react-native";
 import { Routes, StackNavigationProps } from "../../../components/navigation";
 import { Feather as Icon } from "@expo/vector-icons";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
-import { Picker, PickerIOS } from "@react-native-picker/picker";
-import { list } from "../Components/CountryList";
 
+import WoodPickerr from "../Components/WoodPickerr";
 
 const SignUp = ({ navigation }: StackNavigationProps<Routes, "SignUp">) => {
-const [selectedValue, setValue] = React.useState(0);
+  const [selectedValue, setValue] = React.useState(0);
   return (
     <View style={styles.container}>
       <View style={{ margin: 20, flex: 1 }}>
@@ -70,39 +76,24 @@ const [selectedValue, setValue] = React.useState(0);
                 autoCompleteType="email"
               />
             </View>
-            <TextInput
-              style={[
-                styles.textInp,
-                {
-                  marginBottom: 25,
-                },
-              ]}
-              placeholder="Country"
-              autoCompleteType="email"
-            />
-            {/* <KeyboardAwareScrollView>
-
-            <Picker
+            <View
               style={{
-                marginBottom: -25,
-                 flexDirection: "column",
-                 height: 220,
-                 width: "100%",
-                //alignItems: "center",
+                width: "100%",
+                height: 50,
+                overflow: "hidden",
+                marginBottom: 15,
+                flexDirection: "column",
+
+                borderWidth: 1,
+                borderBottomWidth: 2,
+                borderBottomColor: "#000",
+                borderColor: "#efece7",
+
+                bottom: 0,
               }}
-              mode="dropdown"
-              selectedValue={selectedValue}
-              onValueChange={(itemValue) => setValue(itemValue)}
             >
-              {list
-                .filter((value, index) =>
-                  selectedValue === 0 ? value : index === 0 ? value : value
-                )
-                .map((value, index) => (
-                  <Picker.Item label={value} value={value} key={index} />
-                ))}
-            </Picker>
-            </KeyboardAwareScrollView> */}
+              <WoodPickerr />
+            </View>
           </View>
           <View
             style={{
