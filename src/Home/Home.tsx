@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Text, View, StyleSheet } from 'react-native';
-import  Tabs  from "./Tabs/tabs";
+import  Tabs  from "./Screens/Tabs/tabs";
 import { createStackNavigator } from "@react-navigation/stack";
 
 interface HomeProps {}

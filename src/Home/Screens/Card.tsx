@@ -1,12 +1,8 @@
 import * as React from "react";
-import { Text, View, StyleSheet, Dimensions, Image } from "react-native";
+import { Text, View, StyleSheet, Image } from "react-native";
 import Swiper from "react-native-deck-swiper";
-import { DATA } from "../../Start/Components/dataa";
-import { data } from "../Components/offers";
+import { data } from "../Components/cardData";
 
-// const { width: WindowWidth, height: WindowHeight } = Dimensions.get("window");
-// const width = WindowWidth * 0.7;
-// const height = WindowHeight * 0.47;
 
 const Cards = ({ card }) => (
   <View style={styles.card}>
@@ -29,9 +25,8 @@ const Card = () => {
         cardIndex={index}
         renderCard={(card) => <Cards card={card} />}
         onSwiped={onSwiped}
-        //showSecondCard={true}
-        stackSize={5}
-        stackScale={17}
+        stackSize={4}
+        stackScale={11}
         disableBottomSwipe
         disableTopSwipe
         infinite={true}
@@ -47,7 +42,6 @@ export default Card;
 
 const styles = StyleSheet.create({
   container: {
-    //backgroundColor: "red",
     justifyContent: "center",
     alignContent: "center",
     alignItems: "center",
@@ -56,16 +50,17 @@ const styles = StyleSheet.create({
     left: 0,
     top: 0,
     right: 0,
-    height: "44%",
+    height: "30%",
   },
   cardImage: {
     width: "100%",
     flex: 1,
-    resizeMode: "contain",
+    resizeMode: "cover",
     borderRadius: 12,
   },
   card: {
-    flex: 0.4,
+    height: "35%",
+    width: "100%",
     borderRadius: 12,
     shadowRadius: 25,
     shadowColor: "#000",

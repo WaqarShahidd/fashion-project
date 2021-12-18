@@ -7,7 +7,7 @@ import Welcome from "./src/Start/Screens/Welcome";
 import Login from "./src/Start/Screens/Login";
 import SignUp from "./src/Start/Screens/SignUp";
 import ResetPassword from "./src/Start/Screens/ResetPassword";
-import Home from "./src/Home/Screens/Home";
+import Home from "./src/Home/Home";
 
 
 const Stack = createStackNavigator<Routes>();
@@ -15,12 +15,12 @@ const Stack = createStackNavigator<Routes>();
 const Navigator = () => {
  return (
    <Stack.Navigator screenOptions={{ headerShown: false }}>
+     <Stack.Screen name="Home" component={Home} />
      <Stack.Screen name="Onboarding" component={Onboarding} />
      <Stack.Screen name="Welcome" component={Welcome} />
      <Stack.Screen name="SignUp" component={SignUp} />
      <Stack.Screen name="Login" component={Login} />
      <Stack.Screen name="ResetPassword" component={ResetPassword} />
-     <Stack.Screen name="Home" component={Home} />
    </Stack.Navigator>
  ); 
 }
