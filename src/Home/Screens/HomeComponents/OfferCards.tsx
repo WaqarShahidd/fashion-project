@@ -8,7 +8,7 @@ import {
   ImageBackground,
 } from "react-native";
 import { FlatList, TouchableOpacity } from "react-native-gesture-handler";
-import { offers } from "../Components/offersData";
+import { offers } from "../../Components/offersData";
 import { useFonts, Questrial_400Regular } from "@expo-google-fonts/questrial";
 import AppLoading from "expo-app-loading";
 
@@ -119,7 +119,7 @@ const styles = StyleSheet.create({
     shadowRadius: 4,
     elevation: 7,
     borderRadius: 8,
-    backgroundColor: "#dedee2",
+    backgroundColor: "#EBEBEB",
   },
   image: {
     flex: 1,
