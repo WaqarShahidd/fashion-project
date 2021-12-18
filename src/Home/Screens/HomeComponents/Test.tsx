@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { Text, View, StyleSheet, Image } from 'react-native';
 import Swiper from "react-native-swiper";
-import { data } from "../Components/cardData";
-import Testing from './../Components/Testing';
+import { data } from "../../Components/cardData";
+import Testing from './../../Components/Testing';
 
 interface TestProps {}
 

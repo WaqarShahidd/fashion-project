@@ -1,12 +1,12 @@
 import * as React from "react";
 import { Text, View, StyleSheet, Platform, StatusBar } from "react-native";
 import { Header } from "react-native-elements";
-import Card from "../Card";
-import Categories from "../CollectionCircle";
+import Card from "../HomeComponents/Card";
+import Categories from "../HomeComponents/CollectionCircle";
 import { ScrollView } from "react-native-gesture-handler";
 import { useBottomTabBarHeight } from "@react-navigation/bottom-tabs";
-import Offer from "../OfferCards";
-import Test from "../Test";
+import Offer from "../HomeComponents/OfferCards";
+import Test from "../HomeComponents/Test";
 import AppLoading from "expo-app-loading";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import {
@@ -83,11 +83,11 @@ const HomeScreen = (props: HomeScreenProps) => {
           justifyContent: "space-around",
         }}
       /> */}
-        <View style={{ marginBottom: 112 }}>
+        <View style={{ paddingBottom: 120 }}>
           <ScrollView
             bounces={false}
             showsVerticalScrollIndicator={false}
-            style={{ paddingBottom: 10 }}
+            style={{ paddingBottom: tabBarheight }}
           >
             <View style={{ marginTop: 20 }}>
               <Categories />

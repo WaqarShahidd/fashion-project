@@ -1032,6 +1032,14 @@
     "@babel/helper-validator-identifier" "^7.15.7"
     to-fast-properties "^2.0.0"
 
+"@callstack/react-theme-provider@^3.0.7":
+  version "3.0.7"
+  resolved "https://registry.yarnpkg.com/@callstack/react-theme-provider/-/react-theme-provider-3.0.7.tgz#b7ce1a53d63ad5e83574b831ae0af6b7c6cc40e7"
+  integrity sha512-Ab6rbD2w4u9W3yf7LQQ8evx9m8fZNsoWxt+MFm3AyZnyKQNCJf4K7ip9tHHZgSs+HTdoj38lEqPehvFOVQKvAg==
+  dependencies:
+    deepmerge "^3.2.0"
+    hoist-non-react-statics "^3.3.0"
+
 "@cnakazawa/watch@^1.0.3":
   version "1.0.4"
   resolved "https://registry.npmjs.org/@cnakazawa/watch/-/watch-1.0.4.tgz"
@@ -1057,10 +1065,20 @@
   resolved "https://registry.yarnpkg.com/@expo-google-fonts/inter/-/inter-0.2.0.tgz#2934c1e510d58b652e3a5150ca7f76f55b89e84a"
   integrity sha512-gIjkti/NxHABPc4xB/AlgSpbLJod/8Iill7DfW+rh2CHv3jjz7I7SLQY8u/3NoF8zZk0GNU8gTZkVwGQibuWcQ==
 
+"@expo-google-fonts/playfair-display@^0.2.0":
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/@expo-google-fonts/playfair-display/-/playfair-display-0.2.0.tgz#d7d1985679f193fd35ee967ae2f1886ffe8b9153"
+  integrity sha512-ZPOb88fqPmuz/LbvC4NNfNyyjMqXiwCmE8Xj2fMevCm53QSGCAbMsYZ9YUvYEUe9LIcbUkj2lJkRB8EbsLABiQ==
+
 "@expo-google-fonts/questrial@^0.2.0":
   version "0.2.0"
   resolved "https://registry.yarnpkg.com/@expo-google-fonts/questrial/-/questrial-0.2.0.tgz#876440a381496e73983b99849d82f4a298d0c295"
   integrity sha512-n24x9BKG9JKG8bpaoX2+UeD5Mu1sw63dZvZ4iz5z1tvV4C7jxgRhtKovm0LvKOAxZTxLHadDUPhUAhdQrj0i5g==
+
+"@expo-google-fonts/raleway@^0.2.0":
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/@expo-google-fonts/raleway/-/raleway-0.2.0.tgz#28d2664943e6019f27653f02e9ee86afb64d4b04"
+  integrity sha512-5b6MABfcPcKSxtVGBM7pQBIU6hbxVuuGMrZgV6V2HWUENmUjSYHJszrorbkRaC6qkV6K2DWtGFksh4iEskeXIw==
 
 "@expo/config-plugins@3.1.0":
   version "3.1.0"
@@ -5677,7 +5695,7 @@ react-native-gesture-handler@~1.10.2:
     invariant "^2.2.4"
     prop-types "^15.7.2"
 
-react-native-iphone-x-helper@^1.0.3:
+react-native-iphone-x-helper@^1.0.3, react-native-iphone-x-helper@^1.3.1:
   version "1.3.1"
   resolved "https://registry.yarnpkg.com/react-native-iphone-x-helper/-/react-native-iphone-x-helper-1.3.1.tgz#20c603e9a0e765fd6f97396638bdeb0e5a60b010"
   integrity sha512-HOf0jzRnq2/aFUcdCJ9w9JGzN3gdEg0zFE4FyYlp4jtidqU03D5X7ZegGKfT1EWteR0gPBGp9ye5T5FvSWi9Yg==
@@ -5701,6 +5719,15 @@ react-native-onboarding-swiper@^1.1.4:
   integrity sha512-dG2J6giQpt5kKlU+Xe68E9xy+OkmC9Yf5XD7S1mJQ5VvwySfCIXnPojai0PEQ9NmbbH06k9lqN5Ik1PGYnIdVA==
   dependencies:
     tinycolor2 "^1.4.1"
+
+react-native-paper@^4.11.1:
+  version "4.11.1"
+  resolved "https://registry.yarnpkg.com/react-native-paper/-/react-native-paper-4.11.1.tgz#da7c1b66950002d1511ac888e19fc82acec758a2"
+  integrity sha512-mAQ74KUrOIcMEg1crrIsA7eXDaPk/fjvKFDLcN7gBBeV/zhhQiqc+/y6t+8STKsZutRA2U5/eB+0MBisybokmQ==
+  dependencies:
+    "@callstack/react-theme-provider" "^3.0.7"
+    color "^3.1.2"
+    react-native-iphone-x-helper "^1.3.1"
 
 react-native-ratings@8.0.4:
   version "8.0.4"

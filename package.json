@@ -12,7 +12,9 @@
   "dependencies": {
     "@expo-google-fonts/abril-fatface": "^0.2.0",
     "@expo-google-fonts/inter": "^0.2.0",
+    "@expo-google-fonts/playfair-display": "^0.2.0",
     "@expo-google-fonts/questrial": "^0.2.0",
+    "@expo-google-fonts/raleway": "^0.2.0",
     "@expo/vector-icons": "^12.0.5",
     "@invertase/react-native-apple-authentication": "^2.1.5",
     "@klarna/react-native-vector-drawable": "^0.3.0",
@@ -44,6 +46,7 @@
     "react-native-keyboard-aware-scroll-view": "^0.9.5",
     "react-native-keyboard-aware-scrollview": "^2.1.0",
     "react-native-onboarding-swiper": "^1.1.4",
+    "react-native-paper": "^4.11.1",
     "react-native-reanimated": "~2.2.0",
     "react-native-redash": "14.2.4",
     "react-native-safe-area-context": "3.3.2",
