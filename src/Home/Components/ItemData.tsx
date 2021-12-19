@@ -9,14 +9,14 @@ export const item = [
   {
     id: "2",
     title: "New in",
-    price: "450$",
+    price: "550$",
     image:
       "https://i.ibb.co/VHsCWWh/t-shirt-cambric-denim-jacket-sitting-boy-ccd31a256f52df004d39724709657217.png",
   },
   {
     id: "3",
     title: "Sale",
-    price: "450$",
+    price: "1450$",
     image:
       "https://i.ibb.co/n7H1ccX/woman-girl-stock-photography-woman-9e2fdc631255588b45c0f1f96615947f.png",
   },

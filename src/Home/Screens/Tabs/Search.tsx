@@ -20,18 +20,18 @@ import {
   PlayfairDisplay_900Black_Italic,
 } from "@expo-google-fonts/playfair-display";
 
-interface SearchProps {}
+const winHeight = Dimensions.get("window").height;
 
 const Search = ({ navigation }: StackNavigationProps<Routes, "Search">) => {
   
-  let [fontsLoaded] = useFonts({
-    Questrial_400Regular,
-    PlayfairDisplay_700Bold,
-  });
+  // let [fontsLoaded] = useFonts({
+  //   Questrial_400Regular,
+  //   PlayfairDisplay_700Bold,
+  // });
 
-  if (!fontsLoaded) {
-    return <AppLoading />;
-  }else {
+  // if (!fontsLoaded) {
+  //   return <AppLoading />;
+  // }else {
   return (
     <View style={styles.container}>
       <Header
@@ -40,7 +40,6 @@ const Search = ({ navigation }: StackNavigationProps<Routes, "Search">) => {
           style: {
             color: "#000",
             fontSize: 18,
-            //paddingTop: 0,
             fontWeight: "bold",
             fontFamily: "PlayfairDisplay_700Bold",
           },
@@ -48,8 +47,7 @@ const Search = ({ navigation }: StackNavigationProps<Routes, "Search">) => {
         containerStyle={{
           backgroundColor: "#fff",
           justifyContent: "space-around",
-          height: 70,
-          // paddingBottom:50
+          height: winHeight* 0.1,
         }}
       />
 
@@ -65,9 +63,9 @@ const Search = ({ navigation }: StackNavigationProps<Routes, "Search">) => {
                 style={styles.listItem}
                 onPress={() => {
                   item.title === "Men"
-                    ? navigation.navigate("SearchM")
+                    ? navigation.navigate("CategoriesM")
                     : item.title === "Women"
-                    ? navigation.navigate("SearchW")
+                    ? navigation.navigate("CategoriesW")
                     : navigation.navigate("Search");
                 }}
               >
@@ -85,7 +83,7 @@ const Search = ({ navigation }: StackNavigationProps<Routes, "Search">) => {
         />
       </View>
     </View>
-  );}
+  );
 };
 
 export default Search;

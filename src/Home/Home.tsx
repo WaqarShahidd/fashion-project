@@ -3,9 +3,12 @@ import { Text, View, StyleSheet } from 'react-native';
 import  Tabs  from "./Screens/Tabs/tabs";
 import SearchM from './Screens/SearchComponents/SearchM';
 import SearchW from './Screens/SearchComponents/SearchW';
+import CategoriesW from './Screens/SearchComponents/CategoriesW';
+import CategoriesM from './Screens/SearchComponents/CategoriesM';
 import Search from './Screens/Tabs/Search';
 import { createStackNavigator } from "@react-navigation/stack";
 import { Routes } from "./../../components/navigation";
+import ShoppingModal from './Screens/SearchComponents/ShoppingModal';
 
 const AppStack = createStackNavigator<Routes>();
 const Home = () => {
@@ -15,6 +18,8 @@ const Home = () => {
       <AppStack.Screen name="Search" component={Search} />
       <AppStack.Screen name="SearchM" component={SearchM} />
       <AppStack.Screen name="SearchW" component={SearchW} />
+      <AppStack.Screen name="CategoriesW" component={CategoriesW} />
+      <AppStack.Screen name="CategoriesM" component={CategoriesM} />
     </AppStack.Navigator>
   );
 };

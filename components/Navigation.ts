@@ -19,4 +19,6 @@ export type Routes = {
   Search: undefined;
   SearchM: undefined;
   SearchW: undefined;
+  CategoriesW: undefined;
+  CategoriesM: undefined;
 };
