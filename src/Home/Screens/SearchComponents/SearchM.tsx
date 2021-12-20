@@ -4,8 +4,12 @@ import { FlatList, TouchableOpacity } from "react-native-gesture-handler";
 import { Feather as Icon } from "@expo/vector-icons";
 import { item } from "../../Components/ItemData";
 import { Button, Header } from "react-native-elements";
-import { Routes, StackNavigationProps } from "../../../../components/navigation";
-import SearchBar from './../../Components/SearchBar'
+import {
+  Routes,
+  StackNavigationProps,
+} from "../../../../components/navigation";
+import SearchBar from "./../../Components/SearchBar";
+import { MaterialIcons } from "@expo/vector-icons";
 import {
   Raleway_100Thin,
   Raleway_100Thin_Italic,
@@ -25,7 +29,7 @@ import {
   Raleway_800ExtraBold_Italic,
   Raleway_900Black,
   Raleway_900Black_Italic,
-  useFonts
+  useFonts,
 } from "@expo-google-fonts/raleway";
 import {
   PlayfairDisplay_400Regular,
@@ -44,7 +48,11 @@ import {
 import AppLoading from "expo-app-loading";
 
 const SearchM = ({ navigation }: StackNavigationProps<Routes, "SearchM">) => {
-  
+  const [fav, setFav] = React.useState("favorite");
+
+  const toggleFav = () => {
+    setFav(fav === "favorite" ? "favorite-outline" : "favorite");
+  };
   let [fontsLoaded] = useFonts({
     Raleway_500Medium,
     Raleway_700Bold,
@@ -55,66 +63,69 @@ const SearchM = ({ navigation }: StackNavigationProps<Routes, "SearchM">) => {
 
   if (!fontsLoaded) {
     return <AppLoading />;
-  }else {
-  return (
-    <View style={styles.container}>
-      <View style={{ justifyContent: "center" }}>
-        <Header
-          leftComponent={
-            <Icon
-              name="chevron-left"
-              size={20}
-              color="#000"
-              onPress={() => {
-                navigation.navigate("Search");
-              }}
-              style={{marginTop:5}}
-            />
-          }
-          centerComponent={{
-            text: "Men",
-            style: {
-              color: "#000",
-              fontSize: 18,
-              fontWeight: "bold",
-              fontFamily: "PlayfairDisplay_700Bold",
-            },
-          }}
-          containerStyle={{
-            backgroundColor: "#fff",
-            height: 70,
-            borderBottomColor: "#fff",
+  } else {
+    return (
+      <View style={styles.container}>
+        <View style={{ justifyContent: "center" }}>
+          <Header
+            leftComponent={
+              <Icon
+                name="chevron-left"
+                size={20}
+                color="#000"
+                onPress={() => {
+                  navigation.navigate("Search");
+                }}
+                style={{ marginTop: 5 }}
+              />
+            }
+            centerComponent={{
+              text: "Men",
+              style: {
+                color: "#000",
+                fontSize: 18,
+                fontWeight: "bold",
+                fontFamily: "PlayfairDisplay_700Bold",
+              },
+            }}
+            containerStyle={{
+              backgroundColor: "#fff",
+              height: 70,
+              borderBottomColor: "#fff",
+            }}
+          />
+          <SearchBar />
+        </View>
+        <FlatList
+          data={item}
+          numColumns={2}
+          showsVerticalScrollIndicator={false}
+          keyExtractor={(item) => item.id}
+          renderItem={({ item }) => {
+            return (
+              <View style={styles.listItem}>
+                <TouchableOpacity>
+                  <Image
+                    style={styles.image}
+                    resizeMode="cover"
+                    source={{ uri: item.image }}
+                  />
+                </TouchableOpacity>
+                <View style={styles.detailsContainer}>
+                  <Text style={styles.name}>{item.title}</Text>
+
+                  <TouchableOpacity onPress={toggleFav}>
+                    <MaterialIcons name={fav} size={22} color={"#000"} />
+                  </TouchableOpacity>
+                </View>
+                <Text style={styles.price}>{item.price}</Text>
+              </View>
+            );
           }}
         />
-        <SearchBar />
       </View>
-      <FlatList
-        data={item}
-        numColumns={2}
-        showsVerticalScrollIndicator={false}
-        keyExtractor={(item) => item.id}
-        renderItem={({ item }) => {
-          return (
-            <View style={styles.listItem}>
-              <TouchableOpacity>
-                <Image
-                  style={styles.image}
-                  resizeMode="cover"
-                  source={{ uri: item.image }}
-                />
-              </TouchableOpacity>
-              <View style={styles.detailsContainer}>
-                <Text style={styles.name}>{item.title}</Text>
-
-                <Icon name="heart" size={20} style={{ color: "#000" }} />
-              </View>
-              <Text style={styles.price}>{item.price}</Text>
-            </View>
-          );
-        }}
-      />
-    </View>
-  );}
+    );
+  }
 };
 
 export default SearchM;
@@ -147,7 +158,6 @@ const styles = StyleSheet.create({
     height: 150,
     margin: 5,
     borderRadius: 10,
-    
   },
   detailsContainer: {
     paddingHorizontal: 16,
