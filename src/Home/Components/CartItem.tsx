@@ -2,6 +2,8 @@ import * as React from "react";
 import { Text, View, StyleSheet } from "react-native";
 import { Image } from "react-native-elements";
 import Counter from "react-native-counters";
+import CounterInput from "react-native-counter-input";
+import NumericInput from "react-native-numeric-input";
 
 interface CartItemProps {
   itemname;
@@ -20,16 +22,23 @@ const CartItem = ({ itemname, itemprice, itemimage }) => {
       />
       <View style={styles.ItemContainer}>
         <View>
-          <Text style={styles.Item}>{itemname}</Text>
-          <Counter
-            start={1}
-            buttonStyle={{ borderColor: "black" }}
-            buttonTextStyle={{ color: "black" }}
-            countTextStyle={{ color: "black" }}
-          />
-        </View>
-        <View style={styles.priceContainer}>
+          <View style={styles.textContainer}>
+            <Text numberOfLines={1} ellipsizeMode="tail" style={styles.Item}>
+              {itemname}
+            </Text>
+          </View>
+
           <Text style={styles.price}>{itemprice}</Text>
+        </View>
+
+        <View style={styles.CounterContainer}>
+          <NumericInput
+            onChange={(value) => console.log(value)}
+            totalHeight={40}
+            totalWidth={100}
+            rounded
+            borderColor={"transparent"}
+          />
         </View>
       </View>
     </View>
@@ -40,40 +49,51 @@ export default CartItem;
 
 const styles = StyleSheet.create({
   container: {
+    margin: 15,
+    padding: 15,
     flexDirection: "row",
     // justifyContent: "center",
     // alignContent: "center",
-
+    backgroundColor: "#F5F5F5",
     paddingBottom: 20,
-    borderWidth: 1,
-    borderRightColor: "transparent",
-    borderLeftColor: "transparent",
-    borderTopColor: "transparent",
-    borderBottomColor: "gray",
+
+    borderRadius: 15,
   },
   logo: {
-    margin: 20,
-    marginTop: 40,
-
+    margin: 10,
     width: 66,
     height: 58,
   },
   price: {
-    color: "black",
-    marginTop: 33,
-    fontSize: 20,
+    color: "#616161",
+    marginTop: 5,
+    fontSize: 15,
   },
-  priceContainer: {
-    marginLeft: 70,
+  CounterContainer: {
+    marginLeft: 0,
+    marginTop: 20,
+    marginRight: 10,
+    position: "absolute",
+    right: 0,
   },
   Item: {
-    margin: 10,
-    color: "black",
-    marginLeft: -5,
+    color: "#3D3D3D",
+
+    marginTop: 7,
     fontSize: 20,
+    fontWeight: "bold",
   },
   ItemContainer: {
     flexDirection: "row",
-    marginTop: 22,
+
+    flex: 1,
+  },
+  counter: {
+    height: 5,
+    width: 6,
+  },
+  textContainer: {
+    width: 145,
+    overflow: "hidden",
   },
 });

@@ -6,30 +6,27 @@ interface CartTotalProps {}
 const CartTotal = (props: CartTotalProps) => {
   return (
     <View style={styles.container}>
-      <View>
+      <View
+        style={{
+          borderBottomColor: "gray",
+          borderBottomWidth: 1,
+          paddingBottom: 15,
+        }}
+      >
         <View style={styles.textContainer}>
-          <Text style={styles.Subtext}>Subtotal</Text>
-          <Text style={styles.Subprice}>Rs. 400.00</Text>
+          <Text style={styles.text}>Subtotal</Text>
+          <Text style={styles.price}>Rs. 400.00</Text>
         </View>
         <View style={styles.textContainer}>
-          <Text style={styles.Deliverytext}>Delivery fee</Text>
-          <Text style={styles.Deliveryprice}>Rs. 60.00</Text>
-        </View>
-        <View style={styles.textContainer}>
-          <Text style={styles.Totaltext}>Total (incl. VAT)</Text>
-          <Text style={styles.Totalprice}>Rs. 460.00</Text>
+          <Text style={styles.text}>Delivery fee</Text>
+          <Text style={styles.price}>Rs. 60.00</Text>
         </View>
       </View>
-      <Pressable
-        style={({ pressed }) => [
-          {
-            backgroundColor: pressed ? "#44585F" : "#2c393f",
-          },
-          styles.button,
-        ]}
-      >
-        <Text style={styles.buttonText}>Continue shopping</Text>
-      </Pressable>
+      <View style={styles.textContainer}>
+        <Text style={styles.Totaltext}>Total (incl. VAT)</Text>
+        <Text style={styles.Totalprice}>Rs. 460.00</Text>
+      </View>
+
       <Pressable
         style={({ pressed }) => [
           {
@@ -47,53 +44,54 @@ const CartTotal = (props: CartTotalProps) => {
 export default CartTotal;
 
 const styles = StyleSheet.create({
-  container: { marginLeft: 15, marginRight: 15 },
+  container: {
+    backgroundColor: "white",
+    padding: 25,
+
+    borderRadius: 30,
+    height: "40%",
+  },
   textContainer: {
     flexDirection: "row",
   },
-  Subtext: {
-    fontSize: 22,
-    margin: 0,
-    textAlign: "right",
+  text: {
+    fontSize: 18,
+    marginBottom: 4,
+    color: "#3D3D3D",
   },
-  Subprice: {
-    fontSize: 22,
-    margin: 0,
+  price: {
+    fontSize: 18,
+    marginBottom: 4,
     position: "absolute",
     right: 0,
+    color: "#3D3D3D",
   },
-  Deliverytext: {
-    fontSize: 15,
-    margin: 0,
-    textAlign: "right",
-  },
-  Deliveryprice: {
-    fontSize: 15,
-    margin: 0,
-    position: "absolute",
-    right: 0,
-  },
+
   Totaltext: {
     fontWeight: "bold",
-    fontSize: 25,
-    marginTop: 30,
+    fontSize: 22,
+    marginTop: 18,
     textAlign: "right",
+    color: "#3D3D3D",
   },
   Totalprice: {
     fontWeight: "bold",
-    fontSize: 25,
-    marginTop: 30,
+    fontSize: 22,
+    marginTop: 18,
     position: "absolute",
     right: 0,
+    color: "#3D3D3D",
   },
   button: {
     height: 50,
     width: "100%",
-    // backgroundColor: "#2c393f",
+    position: "absolute",
+
     marginTop: 20,
     justifyContent: "center",
     alignItems: "center",
-    bottom: 0,
+    bottom: "35%",
+    left: "7%",
     borderWidth: 1.5,
     borderColor: "#2c393f",
     borderRadius: 5,

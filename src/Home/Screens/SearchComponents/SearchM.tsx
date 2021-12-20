@@ -160,7 +160,7 @@ const Modal = ({ modalRef }) => {
             />
           </View>
           <Text style={styles.desc}>This is beautiful buy please</Text>
-          <View style={{ paddingTop: winHeight / 20 }}>
+          <View style={{ paddingTop: "4%" }}>
             <Pressable
               style={({ pressed }) => [
                 {
@@ -220,33 +220,37 @@ const SearchM = ({ navigation }: StackNavigationProps<Routes, "SearchM">) => {
     return (
       <View style={styles.container}>
         <View style={{ justifyContent: "center" }}>
-          <Header
-            leftComponent={
-              <Icon
-                name="chevron-left"
-                size={20}
-                color="#000"
-                onPress={() => {
-                  navigation.navigate("Search");
-                }}
-                style={{ marginTop: 5 }}
-              />
-            }
-            centerComponent={{
-              text: "Men",
-              style: {
-                color: "#000",
-                fontSize: 18,
-                fontWeight: "bold",
-                fontFamily: "PlayfairDisplay_700Bold",
-              },
-            }}
-            containerStyle={{
-              backgroundColor: "#fff",
+          <View
+            style={{
               height: winHeight * 0.1,
-              borderBottomColor: "#fff",
+              justifyContent: "center",
+              backgroundColor: "white",
+              flexDirection: "row",
+
+              alignItems: "center",
             }}
-          />
+          >
+            <Icon
+              name="chevron-left"
+              size={20}
+              color="#000"
+              onPress={() => {
+                navigation.navigate("Search");
+              }}
+              style={{ margin: 20, position: "absolute", left: 0 }}
+            />
+            <Text
+              style={{
+                fontSize: 26,
+
+                textAlign: "center",
+
+                fontFamily: "PlayfairDisplay_700Bold",
+              }}
+            >
+              Men
+            </Text>
+          </View>
           <SearchBar />
         </View>
         <FlatList

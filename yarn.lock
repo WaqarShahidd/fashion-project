@@ -1543,6 +1543,11 @@
   resolved "https://registry.yarnpkg.com/@firebase/webchannel-wrapper/-/webchannel-wrapper-0.4.1.tgz#600f2275ff54739ad5ac0102f1467b8963cd5f71"
   integrity sha512-0yPjzuzGMkW1GkrC8yWsiN7vt1OzkMIi9HgxRmKREZl2wnNPOKo/yScTjXf/O57HM8dltqxPF6jlNLFVtc2qdw==
 
+"@freakycoder/react-native-bounceable@>= 0.1.1":
+  version "0.2.5"
+  resolved "https://registry.yarnpkg.com/@freakycoder/react-native-bounceable/-/react-native-bounceable-0.2.5.tgz#ad61bdafbf68465e9c2145e99c09b500ae091f0e"
+  integrity sha512-J8WBOYxbm/um7SqXYneduZ08T5Kin9z+ixsS3wOLtpeNvKscuqmDEgsgefTYydeSIoI5dOfWmklnRRgu5i/8nA==
+
 "@grpc/grpc-js@^1.0.0":
   version "1.4.5"
   resolved "https://registry.yarnpkg.com/@grpc/grpc-js/-/grpc-js-1.4.5.tgz#0cd840b47180624eeedf066f2cdc422d052401f8"
@@ -1808,10 +1813,10 @@
     sudo-prompt "^9.0.0"
     wcwidth "^1.0.1"
 
-"@react-native-community/datetimepicker@3.5.2":
-  version "3.5.2"
-  resolved "https://registry.yarnpkg.com/@react-native-community/datetimepicker/-/datetimepicker-3.5.2.tgz#8e6feb30f2620e5abdf565d5fe74c0c04edcf6ae"
-  integrity sha512-TWRuAtr/DnrEcRewqvXMLea2oB+YF+SbtuYLHguALLxNJQLl/RFB7aTNZeF+OoH75zKFqtXECXV1/uxQUpA+sg==
+"@react-native-community/datetimepicker@^5.0.2":
+  version "5.0.2"
+  resolved "https://registry.yarnpkg.com/@react-native-community/datetimepicker/-/datetimepicker-5.0.2.tgz#a5608bc3245d78d589c9021c47fbd4b3f8d2bdab"
+  integrity sha512-/X94jwaAUJWwKzwCZDpbaNdad15rgiP3uocKfbGEQDxIcfHFAZPB8MI2C5OK8YTp6n3OGb96MGJm4nn54fkofQ==
   dependencies:
     invariant "^2.2.4"
 
@@ -5934,7 +5939,7 @@ prop-types@15.5.10:
     fbjs "^0.8.9"
     loose-envify "^1.3.1"
 
-prop-types@^15.5.10, prop-types@^15.6.0, prop-types@^15.6.2, prop-types@^15.7.2:
+prop-types@^15.5.10, prop-types@^15.6.0, prop-types@^15.6.1, prop-types@^15.6.2, prop-types@^15.7.2:
   version "15.7.2"
   resolved "https://registry.npmjs.org/prop-types/-/prop-types-15.7.2.tgz"
   integrity sha512-8QQikdH7//R2vurIJSutZ1smHYTcLpRWEOlHnzcWHmBYrOGUysKwSsrC89BCiFj3CbrfJ/nXFdJepOVrY1GCHQ==
@@ -6047,6 +6052,11 @@ react-native-codegen@^0.0.6:
     jscodeshift "^0.11.0"
     nullthrows "^1.1.1"
 
+react-native-counter-input@^0.1.9:
+  version "0.1.9"
+  resolved "https://registry.yarnpkg.com/react-native-counter-input/-/react-native-counter-input-0.1.9.tgz#d78779747f889324ef78696c0c1fe5a0e7b906d9"
+  integrity sha512-TKDveanNLXFXMici/6i7G8fvn0Pw+creXqOvw7JYYO3cyXXgC1ZOK0Gxn6URJuCLcEHQJjQIj5ugDe8jMcO3jg==
+
 react-native-counters@^1.2.0:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/react-native-counters/-/react-native-counters-1.2.0.tgz#1848125ff27774a1e6dc32ba8a5738c452a1eb47"
@@ -6138,6 +6148,14 @@ react-native-modalize@^2.0.12:
   resolved "https://registry.yarnpkg.com/react-native-modalize/-/react-native-modalize-2.0.12.tgz#0e48b2e7d496deca3d241414f233b29df34f4b30"
   integrity sha512-IKPBM4RXLNLaH1WFX8/yPHlbRei15TNcMMftQzi+juG0ibbsAPbEXkbt+KKs7O1dvmOF8sZwRH3SbWjFlcxtAw==
 
+react-native-numeric-input@^1.9.0:
+  version "1.9.0"
+  resolved "https://registry.yarnpkg.com/react-native-numeric-input/-/react-native-numeric-input-1.9.0.tgz#e57a0c3d226935abc0b205dec11e662f25926013"
+  integrity sha512-PEtji6X0duniB/PrCl4DgBFSmjrQQaMxfZqGqbUjh1UalNX4ITdrPyctZK5BFs2/AbJq05tj/OYBNEGTiDIbPw==
+  dependencies:
+    prop-types "^15.6.1"
+    react-native-pixel-perfect "^1.0.1"
+
 react-native-onboarding-swiper@^1.1.4:
   version "1.1.4"
   resolved "https://registry.npmjs.org/react-native-onboarding-swiper/-/react-native-onboarding-swiper-1.1.4.tgz"
@@ -6153,6 +6171,11 @@ react-native-paper@^4.11.1:
     "@callstack/react-theme-provider" "^3.0.7"
     color "^3.1.2"
     react-native-iphone-x-helper "^1.3.1"
+
+react-native-pixel-perfect@^1.0.1:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/react-native-pixel-perfect/-/react-native-pixel-perfect-1.0.2.tgz#8e6dc97e377caa4bd07f9e584ba438d53c0e25e8"
+  integrity sha512-0IvYCNkxuQbQC9q4tI+C3i6o38nbx916p7gBRBWuPxDhKBCuTkVV3VukcfW6vtjRlwQm6kwQcF9OtI+yUBt+YA==
 
 react-native-ratings@8.0.4:
   version "8.0.4"

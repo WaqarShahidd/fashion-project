@@ -7,15 +7,14 @@ import {
   StatusBar,
   Dimensions,
 } from "react-native";
-import { Header } from "react-native-elements";
-import Card from "../HomeComponents/Card";
+
 import Categories from "../HomeComponents/CollectionCircle";
 import { ScrollView } from "react-native-gesture-handler";
 import { useBottomTabBarHeight } from "@react-navigation/bottom-tabs";
 import Offer from "../HomeComponents/OfferCards";
 import Test from "../HomeComponents/Test";
 import AppLoading from "expo-app-loading";
-import { SafeAreaProvider } from "react-native-safe-area-context";
+
 import {
   PlayfairDisplay_700Bold,
   useFonts,
@@ -35,6 +34,7 @@ const HomeScreen = (props: HomeScreenProps) => {
   } else {
     return (
       <View style={styles.container}>
+        <StatusBar hidden />
         <View
           style={{
             flexDirection: "row",
