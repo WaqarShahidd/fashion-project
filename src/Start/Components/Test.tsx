@@ -1,15 +1,14 @@
-import * as React from 'react';
+import * as React from "react";
 import { Text, View, StyleSheet, Pressable, TextInput } from "react-native";
-import { Routes, StackNavigationProps } from "../../../../components/navigation";
+import { Routes, StackNavigationProps } from "../../../components/navigation";
 import { Feather as Icon } from "@expo/vector-icons";
+import Checkbox from "./Checkbox";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import { SocialIcon } from "react-native-elements";
-import { auth } from "../../../../firebase";
-import { useEffect } from 'react';
+import { auth } from "../../../firebase";
 
-interface WishlistProps {}
 
-const Wishlist = ({ navigation }: StackNavigationProps<Routes, "Wishlist">) => {
+const Test = ({ navigation }: StackNavigationProps<Routes, "Test">) => {
   const [email, setEmail] = React.useState("");
   const [pass, setPass] = React.useState("");
 
@@ -18,28 +17,21 @@ const Wishlist = ({ navigation }: StackNavigationProps<Routes, "Wishlist">) => {
   const handleLogin = () => {
     auth
       .signInWithEmailAndPassword(email, pass)
-      .then((userCredentials) => {
+      .then(userCredentials => {
         const user = userCredentials.user;
         console.log(user.email);
       })
-      .catch((error) => alert(error.message));
+      .catch(error => alert(error.message));
   };
   const handleSignup = () => {
     auth
       .createUserWithEmailAndPassword(email, pass)
-      .then((userCredentials) => {
+      .then(userCredentials => {
         const user = userCredentials.user;
         console.log(user.email);
       })
-      .catch((error) => alert(error.message));
+      .catch(error => alert(error.message))
   };
-  useEffect(() => {
-     auth.onAuthStateChanged((user) => {
-      if (user) {
-        navigation.navigate("Welcome");
-      }
-    });
-  }, []);
   return (
     <View
       style={{
@@ -89,7 +81,7 @@ const Wishlist = ({ navigation }: StackNavigationProps<Routes, "Wishlist">) => {
           marginTop: 35,
         }}
       >
-        <Pressable style={styles.button} onPress={handleLogin}>
+        <Pressable style={styles.button} onPress={handleLogin }>
           <Text style={styles.buttonText}>Login</Text>
         </Pressable>
       </View>
@@ -97,7 +89,7 @@ const Wishlist = ({ navigation }: StackNavigationProps<Routes, "Wishlist">) => {
   );
 };
 
-export default Wishlist;
+export default Test;
 
 const styles = StyleSheet.create({
   container: {
