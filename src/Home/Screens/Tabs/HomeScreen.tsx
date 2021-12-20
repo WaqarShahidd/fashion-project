@@ -1,5 +1,12 @@
 import * as React from "react";
-import { Text, View, StyleSheet, Platform, StatusBar } from "react-native";
+import {
+  Text,
+  View,
+  StyleSheet,
+  Platform,
+  StatusBar,
+  Dimensions,
+} from "react-native";
 import { Header } from "react-native-elements";
 import Card from "../HomeComponents/Card";
 import Categories from "../HomeComponents/CollectionCircle";
@@ -10,16 +17,17 @@ import Test from "../HomeComponents/Test";
 import AppLoading from "expo-app-loading";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import {
-  AbrilFatface_400Regular,
+  PlayfairDisplay_700Bold,
   useFonts,
-} from "@expo-google-fonts/abril-fatface";
+} from "@expo-google-fonts/playfair-display";
+const winHeight = Dimensions.get("window").height;
 
 interface HomeScreenProps {}
 
 const HomeScreen = (props: HomeScreenProps) => {
   const tabBarheight = useBottomTabBarHeight();
   let [fontsLoaded] = useFonts({
-    AbrilFatface_400Regular,
+    PlayfairDisplay_700Bold,
   });
 
   if (!fontsLoaded) {
@@ -31,7 +39,7 @@ const HomeScreen = (props: HomeScreenProps) => {
           style={{
             flexDirection: "row",
             alignItems: "center",
-            marginTop: 20,
+            marginTop: Platform.OS === "android" ? 0 : 20,
             marginBottom: 10,
           }}
         >
@@ -50,7 +58,7 @@ const HomeScreen = (props: HomeScreenProps) => {
                 width: 90,
                 textAlign: "center",
                 fontSize: 26,
-                fontFamily: "AbrilFatface_400Regular",
+                fontFamily: "PlayfairDisplay_700Bold",
               }}
             >
               MILAN
@@ -112,7 +120,7 @@ export default HomeScreen;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
+    paddingTop: Platform.OS === "android" ? 10 : 0,
   },
   textStyle: {
     flex: 1,

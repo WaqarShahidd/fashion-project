@@ -9,7 +9,6 @@ interface TextInputProps extends RNTextInputProps{
   validator: (input) => boolean;
 }
 
-const SIZE = 20;
 const Valid = true;
 const Invalid = false;
 const Current = null;
@@ -53,7 +52,6 @@ const TextInput = ({ icon,validator,  ...props }: TextInputProps) => {
           maxLength={50}
           onBlur={validate}
           {...{ onChangeText }}
-          {...props}
         />
       </View>
       {(state === Valid || state === Invalid) && (
@@ -76,8 +74,8 @@ const styles = StyleSheet.create({
   },
   icon: {
     borderBottomColor: "#000",
-    height: SIZE,
-    width: SIZE,
+    height: 20,
+    width: 20,
     borderRadius: 10,
   },
 });

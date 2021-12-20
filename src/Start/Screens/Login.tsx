@@ -1,12 +1,11 @@
 import * as React from "react";
-import { Text, View, StyleSheet, Pressable, Linking } from "react-native";
+import { Text, View, StyleSheet, Pressable, Linking,TextInput } from "react-native";
 import { Routes, StackNavigationProps } from "../../../components/navigation";
-import TextInput from "../Components/TextInput";
 import { Feather as Icon } from "@expo/vector-icons";
 import Checkbox from "../Components/Checkbox";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import { SocialIcon } from "react-native-elements";
-import { Picker } from "@react-native-picker/picker";
+import { auth } from "../../../firebase";
 
 const emailValidator = (email: string) =>
   /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(
@@ -15,147 +14,144 @@ const emailValidator = (email: string) =>
 const passwordValidator = (password: string) =>
   /^[A-Za-z]\w{5,11}$/.test(password);
 
-// const Separator = () =>  <View style = {styles.separator} />
 const Login = ({ navigation }: StackNavigationProps<Routes, "Login">) => {
-  const [pickerFocused, setPickerFocused] = React.useState(false);
+  const [email, setEmail] = React.useState("");
+  const [pass, setPass] = React.useState("");
+
+  const handleLogin = () => {
+    auth
+      .signInWithEmailAndPassword(email, pass)
+      .then((userCredentials) => {
+        navigation.navigate("Home")
+      })
+      .catch((error) => alert(error.message));
+  };
+  
 
   return (
-    <View style={{ flex: 1, backgroundColor: "#efece7" }}>
-      <View style={styles.container}>
-        <View style={styles.screen}>
-          <Icon
-            name="x"
-            size={30}
-            color="#000"
-            onPress={() => {
-              navigation.navigate("Welcome");
-            }}
-          />
-          <Text style={styles.heading}>Existing Customer</Text>
-        </View>
-        <View style={styles.form}>
-          <TextInput
-            icon="mail"
-            placeholder="Enter your email"
-            validator={emailValidator}
-            autoCompleteType="email"
-          />
+    <View style={styles.container}>
+      <View style={styles.screen}>
+        <Icon name="x" size={30} color="#000" onPress={() => {}} />
+        <Text style={styles.heading}>Existing Customer</Text>
+      </View>
 
-          <TextInput
-            icon="lock"
-            placeholder="Enter your password"
-            validator={passwordValidator}
-            autoCompleteType="password"
-            secureTextEntry={true}
-          />
+      <View style={styles.form}>
+        <View style={{ padding: 7 }}>
+          <Icon name="mail" size={14} />
         </View>
-        <View
-          style={{
-            flexDirection: "row",
-            justifyContent: "space-between",
-            // margin: 20,
+        <TextInput
+          placeholder="Enter your email"
+          value={email}
+          onChangeText={(text) => setEmail(text)}
+        />
+      </View>
+      <View style={styles.form}>
+        <View style={{ padding: 7 }}>
+          <Icon name="lock" size={14} />
+        </View>
+        <TextInput
+          placeholderTextColor="#000"
+          placeholder="Enter your password"
+          secureTextEntry={true}
+          value={pass}
+          onChangeText={(text) => setPass(text)}
+        />
+      </View>
+      <View
+        style={{
+          flexDirection: "row",
+          justifyContent: "space-between",
+          marginTop: 25,
+        }}
+      >
+        <View style={{ flexDirection: "row" }}>
+          <Checkbox />
+          <Text>Remember Me</Text>
+        </View>
+        <TouchableOpacity
+          onPress={() => {
+            navigation.navigate("ResetPassword");
           }}
         >
-          <View style={{ flexDirection: "row" }}>
-            <Checkbox />
-            <Text>Remember Me</Text>
-            <TouchableOpacity
-              style={{ backgroundColor: "transparent" }}
-              onPress={() => true}
-            ></TouchableOpacity>
-          </View>
-          <TouchableOpacity
-            onPress={() => {
-              navigation.navigate("ResetPassword");
+          <Text
+            style={{
+              color: "#6b6a68",
+              textDecorationLine: "underline",
+              fontWeight: "400",
+              position: "absolute",
+              right: 0,
             }}
           >
-            <Text
-              style={{
-                color: "#6b6a68",
-                textDecorationLine: "underline",
-                fontWeight: "400",
-              }}
-            >
-              Forgot Password?
-            </Text>
-          </TouchableOpacity>
-          
-        </View>
-        <View
-          style={{
-            width: "100%",
-            height: 50,
-            justifyContent: "center",
-            alignItems: "center",
-            alignContent: "center",
-            marginTop: 35,
-          }}
-        >
-          <Pressable
-            style={({ pressed }) => [
-              {
-                backgroundColor: pressed ? "#44585F" : "#2c393f",
-              },
-              styles.button,
-            ]}
-            onPress={() => {
-              alert("Login successful");
-              navigation.navigate("Home");
-            }}
-          >
-            <Text style={styles.buttonText}>Login</Text>
-          </Pressable>
-        </View>
-        <View
-          style={{
-            marginTop: 20,
-            flexDirection: "row",
-            justifyContent: "center",
-            alignItems: "center",
-          }}
-        >
-          <SocialIcon
-            type="twitter"
-            underlayColor="#DDDDDD"
-            onPress={() => Linking.openURL("https://twitter.com")}
-          />
-          <SocialIcon
-            type="facebook"
-            underlayColor="#DDDDDD"
-            onPress={() => Linking.openURL("https://www.facebook.com")}
-          />
-          <SocialIcon
-            type="google"
-            underlayColor="#DDDDDD"
-            onPress={() => Linking.openURL("https://myaccount.google.com/")}
-          />
-          <SocialIcon
-            light
-            type="apple"
-            onPress={() => Linking.openURL("https://www.icloud.com")}
-          />
-        </View>
-        <View
-          style={{
-            marginTop: 25,
-            justifyContent: "center",
-            alignContent: "center",
-            alignItems: "center",
-          }}
-        >
-          <Text style={{ fontWeight: "300" }}>
-            Don't have an account yet?
-            <Text> </Text>
-            <Text
-              style={{ textDecorationLine: "underline", fontWeight: "300" }}
-              onPress={() => {
-                navigation.navigate("SignUp");
-              }}
-            >
-              Sign Up
-            </Text>
+            Forgot Password?
           </Text>
-        </View>
+        </TouchableOpacity>
+      </View>
+      <View
+        style={{
+          width: "100%",
+          height: 50,
+          justifyContent: "center",
+          alignItems: "center",
+          alignContent: "center",
+          marginTop: 30,
+        }}
+      >
+        <Pressable
+          style={({ pressed }) => [
+            {
+              backgroundColor: pressed ? "#44585F" : "#2c393f",
+            },
+            styles.button,
+          ]}
+          onPress={handleLogin}
+        >
+          <Text style={styles.buttonText}>Login</Text>
+        </Pressable>
+      </View>
+      <View
+        style={{
+          marginTop: 20,
+          flexDirection: "row",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <SocialIcon
+          type="twitter"
+          underlayColor="#DDDDDD"
+          onPress={() => Linking.openURL("https://twitter.com")}
+        />
+        <SocialIcon
+          type="facebook"
+          underlayColor="#DDDDDD"
+          onPress={() => Linking.openURL("https://www.facebook.com")}
+        />
+        <SocialIcon
+          type="google"
+          underlayColor="#DDDDDD"
+          onPress={() => Linking.openURL("https://myaccount.google.com/")}
+        />
+      </View>
+      <View
+        style={{
+          marginTop: 25,
+          justifyContent: "center",
+          alignContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <Text style={{ fontWeight: "300" }}>
+          Don't have an account yet?
+          <Text> </Text>
+          <Text
+            style={{ textDecorationLine: "underline", fontWeight: "300" }}
+            onPress={() => {
+              navigation.navigate("SignUp");
+            }}
+          >
+            Sign Up
+          </Text>
+        </Text>
       </View>
     </View>
   );
@@ -165,40 +161,35 @@ export default Login;
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    // justifyContent: "flex-start",
-    margin: 20,
+    backgroundColor: "#efece7",
+    height: "100%",
+    width: "100%",
+    padding: 25,
   },
   screen: {
-    // margin: 20,
-    marginTop: 25,
+    marginTop: 10,
   },
   heading: {
     fontSize: 24,
     color: "#000",
     paddingTop: 25,
-    fontWeight: 'bold'
-    // padding: 20,
+    fontWeight: "bold",
   },
   form: {
-    // margin: 20,
-    marginTop: 20,
-    overflow: "hidden",
-    marginBottom: 35,
-  },
-  separator: {
-    marginVertical: 8,
-    borderBottomColor: "#737373",
-    borderBottomWidth: 2,
-    marginBottom: 5,
+    flexDirection: "row",
+    height: 58,
+    alignItems: "center",
+    borderWidth: 1,
+    borderBottomWidth: 3,
+    borderColor: "#efece7",
+    marginTop: 15,
+    borderBottomColor: "#000",
   },
   button: {
     height: 50,
     width: "100%",
-    // backgroundColor: "#2c393f",
     justifyContent: "center",
     alignItems: "center",
-    // bottom: 60,
     borderRadius: 5,
     borderWidth: 1.5,
     borderColor: "#2c393f",
@@ -216,6 +207,6 @@ const styles = StyleSheet.create({
     lineHeight: 21,
     fontWeight: "bold",
     letterSpacing: 0.25,
-     color: "#fff",
+    color: "#fff",
   },
 });

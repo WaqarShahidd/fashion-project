@@ -5,143 +5,138 @@ import {
   StyleSheet,
   Pressable,
   TextInput,
-  PickerIOSItem,
+  Dimensions,
 } from "react-native";
 import { Routes, StackNavigationProps } from "../../../components/navigation";
 import { Feather as Icon } from "@expo/vector-icons";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
+import { auth } from "../../../firebase";
 
-import WoodPickerr from "../Components/WoodPickerr";
+const winHeight = Dimensions.get("window").height;
 
 const SignUp = ({ navigation }: StackNavigationProps<Routes, "SignUp">) => {
-  const [selectedValue, setValue] = React.useState(0);
+  const [email, setEmail] = React.useState("");
+  const [pass, setPass] = React.useState("");
+
+  const handleSignup = () => {
+    auth
+      .createUserWithEmailAndPassword(email, pass)
+      .then((userCredentials) => {
+        navigation.navigate("Home");
+      })
+      .catch((error) => alert(error.message));
+  };
+  // React.useEffect(() => {
+  //   const unsub = auth.onAuthStateChanged((user) => {
+  //     if (user) {
+  //       navigation.navigate("Home");
+  //     }
+  //   });
+  //   return unsub;
+  // }, []);
   return (
     <View style={styles.container}>
-      <View style={{ margin: 20, flex: 1 }}>
-        <View style={styles.screen}>
-          <Icon
-            name="arrow-left"
-            size={30}
-            color="#000"
-            onPress={() => {
-              navigation.navigate("Welcome");
-            }}
-          />
-          <Text style={styles.heading}>New Customer</Text>
-        </View>
-        <KeyboardAwareScrollView contentContainerStyle={{ flexGrow: 1 }}>
-          <View style={styles.form}>
-            <TextInput
-              style={styles.textInp}
-              placeholder="First Name"
-              autoCompleteType="email"
-            />
-            <TextInput
-              style={styles.textInp}
-              placeholder="Last Name"
-              autoCompleteType="email"
-            />
-            <TextInput
-              style={styles.textInp}
-              placeholder="Email"
-              autoCompleteType="email"
-            />
-            <TextInput
-              style={styles.textInp}
-              placeholder="Password"
-              autoCompleteType="password"
-              secureTextEntry={true}
-            />
-            <TextInput
-              style={styles.textInp}
-              placeholder="Address"
-              autoCompleteType="email"
-            />
-            <View
-              style={{
-                flex: 1,
-                justifyContent: "space-evenly",
-                flexDirection: "row",
-                marginBottom: 25,
-              }}
-            >
-              <TextInput
-                style={[styles.textInpSec, { marginLeft: -28 }]}
-                placeholder="State"
-                autoCompleteType="email"
-              />
-              <TextInput
-                style={[styles.textInpSec, { marginRight: -28 }]}
-                placeholder="Post-Code"
-                autoCompleteType="email"
-              />
-            </View>
-            <View
-              style={{
-                width: "100%",
-                height: 50,
-                overflow: "hidden",
-                marginBottom: 15,
-                flexDirection: "column",
-
-                borderWidth: 1,
-                borderBottomWidth: 2,
-                borderBottomColor: "#000",
-                borderColor: "#efece7",
-
-                bottom: 0,
-              }}
-            >
-              <WoodPickerr />
-            </View>
-          </View>
-          <View
-            style={{
-              width: "100%",
-              height: 50,
-              justifyContent: "center",
-              alignItems: "center",
-              bottom: 0,
-            }}
-          >
-            <Pressable
-              style={({ pressed }) => [
-                {
-                  backgroundColor: pressed ? "#44585F" : "#2c393f",
-                },
-                styles.button,
-              ]}
-              onPress={() => {
-                alert("Account created");
-                navigation.navigate("Home");
-              }}
-            >
-              <Text style={styles.buttonText}>Create Account</Text>
-            </Pressable>
-          </View>
-          <View
-            style={{
-              marginTop: 25,
-              justifyContent: "center",
-              alignContent: "center",
-              alignItems: "center",
-            }}
-          >
-            <Text style={{ fontWeight: "300" }}>
-              Already have an account?
-              <Text> </Text>
-              <Text
-                style={{ textDecorationLine: "underline", fontWeight: "300" }}
-                onPress={() => {
-                  navigation.navigate("Login");
-                }}
-              >
-                Login
-              </Text>
-            </Text>
-          </View>
-        </KeyboardAwareScrollView>
+      <View style={styles.screen}>
+        <Icon
+          name="arrow-left"
+          size={30}
+          color="#000"
+          onPress={() => {
+            navigation.navigate("Welcome");
+          }}
+        />
+        <Text style={styles.heading}>New Customer</Text>
       </View>
+      <KeyboardAwareScrollView>
+        <View style={styles.form}>
+          <TextInput style={styles.textInp} placeholder="First Name" />
+          <TextInput style={styles.textInp} placeholder="Last Name" />
+          <TextInput
+            style={styles.textInp}
+            placeholder="Email"
+            autoCompleteType="email"
+            value={email}
+            onChangeText={(text) => setEmail(text)}
+          />
+          <TextInput
+            style={styles.textInp}
+            placeholder="Password"
+            autoCompleteType="password"
+            secureTextEntry={true}
+            value={pass}
+            onChangeText={(text) => setPass(text)}
+          />
+          <TextInput style={styles.textInp} placeholder="Address" />
+          <View
+            style={{
+              flex: 1,
+              justifyContent: "space-evenly",
+              flexDirection: "row",
+              marginBottom: 20,
+            }}
+          >
+            <TextInput
+              style={[styles.textInpSec, { marginLeft: -30 }]}
+              placeholder="State"
+            />
+            <TextInput
+              style={[styles.textInpSec, { marginRight: -30 }]}
+              placeholder="Post-Code"
+            />
+          </View>
+          <TextInput
+            style={[
+              styles.textInp,
+              {
+                marginBottom: 25,
+              },
+            ]}
+            placeholder="Country"
+          />
+        </View>
+        <View
+          style={{
+            width: "100%",
+            height: 50,
+            justifyContent: "center",
+            alignItems: "center",
+            bottom: 0,
+          }}
+        >
+          <Pressable
+            style={({ pressed }) => [
+              {
+                backgroundColor: pressed ? "#44585F" : "#2c393f",
+              },
+              styles.button,
+            ]}
+            onPress={handleSignup}
+          >
+            <Text style={styles.buttonText}>Create Account</Text>
+          </Pressable>
+        </View>
+        <View
+          style={{
+            marginTop: 25,
+            justifyContent: "center",
+            alignContent: "center",
+            alignItems: "center",
+          }}
+        >
+          <Text style={{ fontWeight: "300" }}>
+            Already have an account?
+            <Text> </Text>
+            <Text
+              style={{ textDecorationLine: "underline", fontWeight: "300" }}
+              onPress={() => {
+                navigation.navigate("Login");
+              }}
+            >
+              Login
+            </Text>
+          </Text>
+        </View>
+      </KeyboardAwareScrollView>
     </View>
   );
 };
@@ -152,16 +147,18 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#efece7",
-    ...StyleSheet.absoluteFillObject,
+    paddingTop: 20,
+    paddingLeft: 20,
+    paddingRight: 20,
   },
   screen: {
-    // margin: 20,
-    marginTop: 25,
+    marginTop: 10,
+    height: 75,
   },
   heading: {
     fontSize: 24,
     color: "#000",
-    paddingTop: 20,
+    paddingTop: 15,
     fontWeight: "bold",
     // padding: 20,
   },
@@ -193,7 +190,6 @@ const styles = StyleSheet.create({
   button: {
     height: 50,
     width: "100%",
-    // backgroundColor: "#2c393f",
     marginTop: 5,
     justifyContent: "center",
     alignItems: "center",
