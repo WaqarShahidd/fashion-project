@@ -8,7 +8,6 @@ import Login from "./src/Start/Screens/Login";
 import SignUp from "./src/Start/Screens/SignUp";
 import ResetPassword from "./src/Start/Screens/ResetPassword";
 import Home from "./src/Home/Home";
-import Wishlist from "./src/Home/Screens/Tabs/Wishlist";
 
 const Stack = createStackNavigator<Routes>();
 
