@@ -1,12 +1,19 @@
 import * as React from "react";
-import { Text, View, StyleSheet, Pressable, TextInput, Dimensions } from "react-native";
+import {
+  Text,
+  View,
+  StyleSheet,
+  Pressable,
+  TextInput,
+  Dimensions,
+} from "react-native";
 import { Routes, StackNavigationProps } from "../../../components/navigation";
 import { Feather as Icon } from "@expo/vector-icons";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 import { auth } from "../../../firebase";
 
 const winHeight = Dimensions.get("window").height;
-
+//asdasdads
 const SignUp = ({ navigation }: StackNavigationProps<Routes, "SignUp">) => {
   const [email, setEmail] = React.useState("");
   const [pass, setPass] = React.useState("");
@@ -19,14 +26,14 @@ const SignUp = ({ navigation }: StackNavigationProps<Routes, "SignUp">) => {
       })
       .catch((error) => alert(error.message));
   };
-// React.useEffect(() => {
-//   const unsub = auth.onAuthStateChanged((user) => {
-//     if (user) {
-//       navigation.navigate("Home");
-//     }
-//   });
-//   return unsub;
-// }, []);
+  // React.useEffect(() => {
+  //   const unsub = auth.onAuthStateChanged((user) => {
+  //     if (user) {
+  //       navigation.navigate("Home");
+  //     }
+  //   });
+  //   return unsub;
+  // }, []);
   return (
     <View style={styles.container}>
       <View style={styles.screen}>
@@ -141,17 +148,17 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#efece7",
     paddingTop: 20,
-    paddingLeft:20,
-    paddingRight:20
+    paddingLeft: 20,
+    paddingRight: 20,
   },
   screen: {
     marginTop: 10,
-    height:75,
+    height: 75,
   },
   heading: {
     fontSize: 24,
     color: "#000",
-    paddingTop:15,
+    paddingTop: 15,
     fontWeight: "bold",
     // padding: 20,
   },

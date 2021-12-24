@@ -1,10 +1,14 @@
-import * as React from 'react';
+import * as React from "react";
 import { Text, View, StyleSheet, Dimensions, Image } from "react-native";
 import { FlatList, TouchableOpacity } from "react-native-gesture-handler";
 import { catalog } from "./../../Components/catalogData";
-import { Routes, StackNavigationProps } from "../../../../components/navigation";
+import {
+  Routes,
+  StackNavigationProps,
+} from "../../../../components/navigation";
 import { useFonts, Questrial_400Regular } from "@expo-google-fonts/questrial";
-import AppLoading from 'expo-app-loading';import { Header } from "react-native-elements";
+import AppLoading from "expo-app-loading";
+import { Header } from "react-native-elements";
 import {
   PlayfairDisplay_400Regular,
   PlayfairDisplay_500Medium,
@@ -23,7 +27,6 @@ import {
 const winHeight = Dimensions.get("window").height;
 
 const Search = ({ navigation }: StackNavigationProps<Routes, "Search">) => {
-  
   // let [fontsLoaded] = useFonts({
   //   Questrial_400Regular,
   //   PlayfairDisplay_700Bold,
@@ -34,22 +37,28 @@ const Search = ({ navigation }: StackNavigationProps<Routes, "Search">) => {
   // }else {
   return (
     <View style={styles.container}>
-      <Header
-        centerComponent={{
-          text: "CATALOG",
-          style: {
-            color: "#000",
-            fontSize: 18,
-            fontWeight: "bold",
+      <View
+        style={{
+          height: winHeight * 0.1,
+          justifyContent: "center",
+          backgroundColor: "white",
+          flexDirection: "row",
+
+          alignItems: "center",
+        }}
+      >
+        <Text
+          style={{
+            fontSize: 26,
+
+            textAlign: "center",
+
             fontFamily: "PlayfairDisplay_700Bold",
-          },
-        }}
-        containerStyle={{
-          backgroundColor: "#fff",
-          justifyContent: "space-around",
-          height: winHeight* 0.1,
-        }}
-      />
+          }}
+        >
+          CATALOG
+        </Text>
+      </View>
 
       <View style={{ paddingTop: 15, flex: 1 }}>
         <FlatList
@@ -91,6 +100,7 @@ export default Search;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: "#ebebeb",
     //paddingBottom: 70,
   },
   name: {
@@ -113,14 +123,13 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.25,
     shadowRadius: 8.84,
     elevation: 7,
-    
   },
   image: {
     height: 170,
     marginBottom: 7.5,
     borderRadius: 0,
-        borderTopRightRadius:10,
-    borderTopLeftRadius:10
+    borderTopRightRadius: 10,
+    borderTopLeftRadius: 10,
   },
   detailsContainer: {
     paddingHorizontal: 16,

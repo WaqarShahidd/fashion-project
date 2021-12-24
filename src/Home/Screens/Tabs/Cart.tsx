@@ -1,14 +1,14 @@
-import * as React from 'react';
-import { Text, View, StyleSheet } from 'react-native';
-import Categories from '../SearchComponents/CategoriesM';
-import ShoppingModal from '../SearchComponents/ShoppingModal';
-
+import * as React from "react";
+import { Text, View, StyleSheet } from "react-native";
+import CartItmeList from "../../Components/CartItemList";
+import CartTotal from "../../Components/CartTotal";
 interface CartProps {}
 
 const Cart = (props: CartProps) => {
   return (
     <View style={styles.container}>
-      <Text>CART</Text>
+      <CartItmeList />
+      <CartTotal />
     </View>
   );
 };
@@ -18,8 +18,6 @@ export default Cart;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: "center",
-    alignContent: "center",
-    alignItems: "center",
+    backgroundColor: "#ebebeb",
   },
 });

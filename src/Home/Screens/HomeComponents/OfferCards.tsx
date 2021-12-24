@@ -21,74 +21,73 @@ const Offer = (props: OfferProps) => {
 
   if (!fontsLoaded) {
     return <AppLoading />;
-  }else {
-  return (
-    <View style={styles.container}>
-      <FlatList
-        data={offers}
-        keyExtractor={(item) => item.key}
-        renderItem={({ item }) => {
-          return (
-            <View style={styles.containerBtn}>
-              <TouchableOpacity onPress={() => {}}>
-                <View style={styles.btn}>
-                  <ImageBackground
-                    style={styles.image}
-                    resizeMode="cover"
-                    source={{ uri: item.image }}
-                  >
-                    <View
-                      style={{
-                        position: "absolute",
-                        right: 4,
-                        bottom: 0,
-                        justifyContent: "center",
-                        alignItems: "center",
-                        backgroundColor: "#fff",
-                        height: 35,
-                        width: "25%",
-                        borderRadius: 25,
-                      }}
+  } else {
+    return (
+      <View style={styles.container}>
+        <FlatList
+          data={offers}
+          keyExtractor={(item) => item.key}
+          renderItem={({ item }) => {
+            return (
+              <View style={styles.containerBtn}>
+                <TouchableOpacity onPress={() => {}}>
+                  <View style={styles.btn}>
+                    <ImageBackground
+                      style={styles.image}
+                      resizeMode="cover"
+                      source={{ uri: item.image }}
                     >
-                      <Text style={styles.textStyle}>Explore</Text>
-                    </View>
-                    <View
-                      style={{
-                        position: "absolute",
-                        left: 4,
-                        bottom: 0,
-                        justifyContent: "center",
-                        paddingLeft: 6,
-                        //alignItems: "center",
-                        //backgroundColor: "#fff",
-                        height: 35,
-                        width: "50%",
-                        borderRadius: 25,
-                        
-                      }}
-                    >
-                      <Text
+                      <View
                         style={{
-                          //fontWeight: "bold",
+                          position: "absolute",
+                          right: 4,
                           bottom: 0,
-                          fontSize: 18,
-                          color: "#000",
-                          fontFamily: "Questrial_400Regular",
+                          justifyContent: "center",
+                          alignItems: "center",
+                          backgroundColor: "#fff",
+                          height: 35,
+                          width: "25%",
+                          borderRadius: 25,
                         }}
                       >
-                        {item.title}
-                      </Text>
-                    </View>
-                  </ImageBackground>
-                </View>
-              </TouchableOpacity>
-            </View>
-          );
-        }}
-      />
-    </View>
-  );
-      }
+                        <Text style={styles.textStyle}>Explore</Text>
+                      </View>
+                      <View
+                        style={{
+                          position: "absolute",
+                          left: 4,
+                          bottom: 0,
+                          justifyContent: "center",
+                          paddingLeft: 6,
+                          //alignItems: "center",
+                          //backgroundColor: "#fff",
+                          height: 35,
+                          width: "50%",
+                          borderRadius: 25,
+                        }}
+                      >
+                        <Text
+                          style={{
+                            //fontWeight: "bold",
+                            bottom: 0,
+                            fontSize: 18,
+                            color: "#000",
+                            fontFamily: "Questrial_400Regular",
+                          }}
+                        >
+                          {item.title}
+                        </Text>
+                      </View>
+                    </ImageBackground>
+                  </View>
+                </TouchableOpacity>
+              </View>
+            );
+          }}
+        />
+      </View>
+    );
+  }
 };
 
 export default Offer;
@@ -100,7 +99,7 @@ const styles = StyleSheet.create({
   containerBtn: {
     marginLeft: "4%",
     marginRight: "4%",
-    marginTop: Platform.OS === "android" ? 65 : 0,
+
     marginBottom: Platform.OS === "android" ? 30 : 20,
     justifyContent: "center",
     //backgroundColor: "red",
@@ -123,7 +122,7 @@ const styles = StyleSheet.create({
   },
   image: {
     flex: 1,
-    borderRadius: 18,
+    borderRadius: 20,
     height: 130,
     width: "100%",
     marginTop: 0,

@@ -1,6 +1,10 @@
 import * as React from "react";
 import { Text, View, StyleSheet, Dimensions, Image } from "react-native";
-import { FlatList, TouchableOpacity, TouchableWithoutFeedback } from "react-native-gesture-handler";
+import {
+  FlatList,
+  TouchableOpacity,
+  TouchableWithoutFeedback,
+} from "react-native-gesture-handler";
 import { cat } from "../../Components/categories";
 import {
   Routes,
@@ -27,7 +31,6 @@ import { Feather as Icon, MaterialIcons } from "@expo/vector-icons";
 
 const winHeight = Dimensions.get("window").height;
 
-
 const CategoriesM = ({
   navigation,
 }: StackNavigationProps<Routes, "CategoriesM">) => {
@@ -41,33 +44,37 @@ const CategoriesM = ({
   } else {
     return (
       <View style={styles.container}>
-        <Header
-          leftComponent={
-            <Icon
-              name="chevron-left"
-              size={20}
-              color="#000"
-              onPress={() => {
-                navigation.navigate("Search");
-              }}
-              style={{ marginTop: 5 }}
-            />
-          }
-          centerComponent={{
-            text: "CATEGORIES",
-            style: {
-              color: "#000",
-              fontSize: 18,
-              fontWeight: "bold",
-              fontFamily: "PlayfairDisplay_700Bold",
-            },
-          }}
-          containerStyle={{
-            backgroundColor: "#fff",
-            justifyContent: "space-around",
+        <View
+          style={{
             height: winHeight * 0.1,
+            justifyContent: "center",
+            backgroundColor: "white",
+            flexDirection: "row",
+
+            alignItems: "center",
           }}
-        />
+        >
+          <Icon
+            name="chevron-left"
+            size={20}
+            color="#000"
+            onPress={() => {
+              navigation.navigate("Search");
+            }}
+            style={{ margin: 20, position: "absolute", left: 0 }}
+          />
+          <Text
+            style={{
+              fontSize: 26,
+
+              textAlign: "center",
+
+              fontFamily: "PlayfairDisplay_700Bold",
+            }}
+          >
+            CATEGORIES
+          </Text>
+        </View>
 
         <View style={{ paddingTop: 15, flex: 1 }}>
           <FlatList
@@ -169,9 +176,9 @@ const styles = StyleSheet.create({
   },
   cardImgWrapper: {
     flex: 1,
-    marginTop:1,
-    marginBottom:1,
-    marginRight:0.1
+    marginTop: 1,
+    marginBottom: 1,
+    marginRight: 0.1,
   },
   cardImg: {
     height: "100%",

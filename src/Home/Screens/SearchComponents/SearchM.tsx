@@ -10,51 +10,23 @@ import {
 import { FlatList, TouchableOpacity } from "react-native-gesture-handler";
 import { Feather as Icon, MaterialIcons } from "@expo/vector-icons";
 import { item } from "../../Components/ItemData";
-import { Button, Header } from "react-native-elements";
 import {
   Routes,
   StackNavigationProps,
 } from "../../../../components/navigation";
 import SearchBar from "./../../Components/SearchBar";
 import {
-  Raleway_100Thin,
-  Raleway_100Thin_Italic,
-  Raleway_200ExtraLight,
-  Raleway_200ExtraLight_Italic,
-  Raleway_300Light,
-  Raleway_300Light_Italic,
   Raleway_400Regular,
-  Raleway_400Regular_Italic,
   Raleway_500Medium,
-  Raleway_500Medium_Italic,
-  Raleway_600SemiBold,
-  Raleway_600SemiBold_Italic,
   Raleway_700Bold,
   Raleway_700Bold_Italic,
-  Raleway_800ExtraBold,
-  Raleway_800ExtraBold_Italic,
-  Raleway_900Black,
-  Raleway_900Black_Italic,
   useFonts,
 } from "@expo-google-fonts/raleway";
 import { Questrial_400Regular } from "@expo-google-fonts/questrial";
 import {
-  PlayfairDisplay_400Regular,
-  PlayfairDisplay_500Medium,
-  PlayfairDisplay_600SemiBold,
   PlayfairDisplay_700Bold,
-  PlayfairDisplay_800ExtraBold,
-  PlayfairDisplay_900Black,
-  PlayfairDisplay_400Regular_Italic,
-  PlayfairDisplay_500Medium_Italic,
-  PlayfairDisplay_600SemiBold_Italic,
-  PlayfairDisplay_700Bold_Italic,
-  PlayfairDisplay_800ExtraBold_Italic,
-  PlayfairDisplay_900Black_Italic,
 } from "@expo-google-fonts/playfair-display";
 import {
-  Amiko_400Regular,
-  Amiko_600SemiBold,
   Amiko_700Bold,
 } from "@expo-google-fonts/amiko";
 import AppLoading from "expo-app-loading";
@@ -161,7 +133,7 @@ const Modal = ({ modalRef }) => {
             />
           </View>
           <Text style={styles.desc}>This is beautiful buy please</Text>
-          <View style={{ paddingTop: winHeight / 20 }}>
+          <View style={{ paddingTop: "4%" }}>
             <Pressable
               style={({ pressed }) => [
                 {
@@ -197,7 +169,7 @@ const SearchM = ({ navigation }: StackNavigationProps<Routes, "SearchM">) => {
   React.useEffect(() => {
     entityRef.onSnapshot(
       (querySnapshot) => {
-        const newEntities = [];
+        const newEntities = [] as any;
         querySnapshot.forEach((doc) => {
           const entity = doc.data();
           entity.id = doc.id;
@@ -211,7 +183,7 @@ const SearchM = ({ navigation }: StackNavigationProps<Routes, "SearchM">) => {
     );
   }, []);
 
-  const modalRef = React.useRef(null);
+  const modalRef = React.useRef<any>();
 
   const onOpen = () => {
     const modal = modalRef.current;
@@ -243,33 +215,37 @@ const SearchM = ({ navigation }: StackNavigationProps<Routes, "SearchM">) => {
     return (
       <View style={styles.container}>
         <View style={{ justifyContent: "center" }}>
-          <Header
-            leftComponent={
-              <Icon
-                name="chevron-left"
-                size={20}
-                color="#000"
-                onPress={() => {
-                  navigation.navigate("Search");
-                }}
-                style={{ marginTop: 5 }}
-              />
-            }
-            centerComponent={{
-              text: "Men",
-              style: {
-                color: "#000",
-                fontSize: 18,
-                fontWeight: "bold",
-                fontFamily: "PlayfairDisplay_700Bold",
-              },
-            }}
-            containerStyle={{
-              backgroundColor: "#fff",
+          <View
+            style={{
               height: winHeight * 0.1,
-              borderBottomColor: "#fff",
+              justifyContent: "center",
+              backgroundColor: "white",
+              flexDirection: "row",
+
+              alignItems: "center",
             }}
-          />
+          >
+            <Icon
+              name="chevron-left"
+              size={20}
+              color="#000"
+              onPress={() => {
+                navigation.navigate("Search");
+              }}
+              style={{ margin: 20, position: "absolute", left: 0 }}
+            />
+            <Text
+              style={{
+                fontSize: 20,
+
+                textAlign: "center",
+
+                fontFamily: "PlayfairDisplay_700Bold",
+              }}
+            >
+              Men
+            </Text>
+          </View>
           <SearchBar />
         </View>
         {entities && (
@@ -278,7 +254,7 @@ const SearchM = ({ navigation }: StackNavigationProps<Routes, "SearchM">) => {
             numColumns={2}
             showsVerticalScrollIndicator={false}
             keyExtractor={(item) => item.id}
-            renderItem={({ item, index }) => {
+            renderItem={({ item }) => {
               return (
                 <View style={styles.listItem}>
                   <TouchableOpacity onPress={onOpen}>
@@ -290,7 +266,7 @@ const SearchM = ({ navigation }: StackNavigationProps<Routes, "SearchM">) => {
                   </TouchableOpacity>
 
                   <View style={styles.detailsContainer}>
-                    <Text style={styles.name}> {item.title}</Text>
+                    <Text style={styles.name}>{item.title}</Text>
 
                     <TouchableOpacity>
                       <MaterialIcons
@@ -300,7 +276,7 @@ const SearchM = ({ navigation }: StackNavigationProps<Routes, "SearchM">) => {
                       />
                     </TouchableOpacity>
                   </View>
-                  <Text style={styles.price}> {item.price}</Text>
+                  <Text style={styles.price}>{item.price}</Text>
                 </View>
               );
             }}
@@ -323,7 +299,6 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     fontSize: 16,
     color: "black",
-    //fontFamily: "Questrial_400Regular",
   },
   price: {
     fontWeight: "100",

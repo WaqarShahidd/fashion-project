@@ -1,45 +1,18 @@
-import * as React from 'react';
+import * as React from "react";
 import { Text, View, StyleSheet, Pressable, TextInput } from "react-native";
-import { Routes, StackNavigationProps } from "../../../../components/navigation";
+import {
+  Routes,
+  StackNavigationProps,
+} from "../../../../components/navigation";
 import { Feather as Icon } from "@expo/vector-icons";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import { SocialIcon } from "react-native-elements";
 import { auth } from "../../../../firebase";
-import { useEffect } from 'react';
+import { useEffect } from "react";
 
 interface WishlistProps {}
 
 const Wishlist = ({ navigation }: StackNavigationProps<Routes, "Wishlist">) => {
-  const [email, setEmail] = React.useState("");
-  const [pass, setPass] = React.useState("");
-
-  
-
-  const handleLogin = () => {
-    auth
-      .signInWithEmailAndPassword(email, pass)
-      .then((userCredentials) => {
-        const user = userCredentials.user;
-        console.log(user.email);
-      })
-      .catch((error) => alert(error.message));
-  };
-  const handleSignup = () => {
-    auth
-      .createUserWithEmailAndPassword(email, pass)
-      .then((userCredentials) => {
-        const user = userCredentials.user;
-        console.log(user.email);
-      })
-      .catch((error) => alert(error.message));
-  };
-  useEffect(() => {
-     auth.onAuthStateChanged((user) => {
-      if (user) {
-        navigation.navigate("Welcome");
-      }
-    });
-  }, []);
   return (
     <View
       style={{
@@ -48,52 +21,7 @@ const Wishlist = ({ navigation }: StackNavigationProps<Routes, "Wishlist">) => {
         width: "100%",
         padding: 25,
       }}
-    >
-      <View style={styles.screen}>
-        <Icon name="x" size={30} color="#000" onPress={() => {}} />
-        <Text style={styles.heading}>Existing Customer</Text>
-      </View>
-
-      <View style={styles.form}>
-        <View style={{ padding: 7 }}>
-          <Icon name="mail" size={14} />
-        </View>
-        <TextInput
-          placeholder="Enter your email"
-          //autoCompleteType="email"
-          // placeholderTextColor="#000"
-          //maxLength={50}
-          value={email}
-          onChangeText={(text) => setEmail(text)}
-        />
-      </View>
-      <View style={styles.form}>
-        <View style={{ padding: 7 }}>
-          <Icon name="lock" size={14} />
-        </View>
-        <TextInput
-          placeholderTextColor="#000"
-          placeholder="Enter your password"
-          secureTextEntry={true}
-          value={pass}
-          onChangeText={(text) => setPass(text)}
-        />
-      </View>
-      <View
-        style={{
-          width: "100%",
-          height: 50,
-          justifyContent: "center",
-          alignItems: "center",
-          alignContent: "center",
-          marginTop: 35,
-        }}
-      >
-        <Pressable style={styles.button} onPress={handleLogin}>
-          <Text style={styles.buttonText}>Login</Text>
-        </Pressable>
-      </View>
-    </View>
+    ></View>
   );
 };
 

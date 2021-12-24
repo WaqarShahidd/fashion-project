@@ -1,5 +1,12 @@
 import * as React from "react";
-import { Text, View, StyleSheet, Dimensions, Image, Pressable } from "react-native";
+import {
+  Text,
+  View,
+  StyleSheet,
+  Dimensions,
+  Image,
+  Pressable,
+} from "react-native";
 import { FlatList, TouchableOpacity } from "react-native-gesture-handler";
 import { Feather as Icon, MaterialIcons } from "@expo/vector-icons";
 import { item } from "../../Components/ItemData";
@@ -122,7 +129,7 @@ const Modal = ({ modalRef }) => {
             />
           </View>
           <Text style={styles.desc}>This is beautiful buy please</Text>
-          <View style={{ paddingTop: winHeight / 20 }}>
+          <View style={{ paddingTop: "4%" }}>
             <Pressable
               style={({ pressed }) => [
                 {
@@ -174,35 +181,37 @@ const SearchW = ({ navigation }: StackNavigationProps<Routes, "SearchW">) => {
   } else {
     return (
       <View style={styles.container}>
-        <Header
-          leftComponent={
-            <Icon
-              name="chevron-left"
-              size={20}
-              color="#000"
-              onPress={() => {
-                navigation.navigate("Search");
-              }}
-              style={{ marginTop: 5 }}
-            />
-          }
-          centerComponent={{
-            text: "Women",
-            style: {
-              color: "#000",
-              fontSize: 18,
-              paddingTop: 0,
-              fontWeight: "bold",
-              fontFamily: "PlayfairDisplay_700Bold",
-            },
-          }}
-          containerStyle={{
-            backgroundColor: "#fff",
-            justifyContent: "space-around",
+        <View
+          style={{
             height: winHeight * 0.1,
-            borderBottomColor: "#fff",
+            justifyContent: "center",
+            backgroundColor: "white",
+            flexDirection: "row",
+
+            alignItems: "center",
           }}
-        />
+        >
+          <Icon
+            name="chevron-left"
+            size={20}
+            color="#000"
+            onPress={() => {
+              navigation.navigate("Search");
+            }}
+            style={{ margin: 20, position: "absolute", left: 0 }}
+          />
+          <Text
+            style={{
+              fontSize: 26,
+
+              textAlign: "center",
+
+              fontFamily: "PlayfairDisplay_700Bold",
+            }}
+          >
+            CATEGORIES
+          </Text>
+        </View>
         <SearchBar />
         <FlatList
           data={item}

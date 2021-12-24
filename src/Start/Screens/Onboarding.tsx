@@ -7,11 +7,11 @@ import {
   Image,
   Dimensions,
   Text,
-   Pressable,
-   Platform,
-   TouchableOpacity,
+  Pressable,
+  Platform,
+  TouchableOpacity,
 } from "react-native";
-import { DATA } from '../Components/dataa';
+import { DATA } from "../Components/dataa";
 import { bgs } from "../Components/dataa";
 import { Routes, StackNavigationProps } from "../../../components/navigation";
 
@@ -70,8 +70,9 @@ const BackDrop = ({ scrollX }) => {
     />
   );
 };
-export default function Onboarding( {navigation}: StackNavigationProps<Routes, "Onboarding"> ) {
- 
+export default function Onboarding({
+  navigation,
+}: StackNavigationProps<Routes, "Onboarding">) {
   const scrollX = React.useRef(new Animated.Value(0)).current;
   return (
     <View style={styles.container}>
@@ -105,11 +106,10 @@ export default function Onboarding( {navigation}: StackNavigationProps<Routes, "
         }}
       />
       <Pressable
-       
         style={({ pressed }) => [
           {
             backgroundColor: pressed ? "#F3E9E2" : "#fff",
-             activeOpacity:0.7
+            activeOpacity: 0.7,
           },
           styles.button,
         ]}
@@ -117,9 +117,7 @@ export default function Onboarding( {navigation}: StackNavigationProps<Routes, "
           navigation.navigate("Welcome");
         }}
       >
-        
-          <Text style={styles.buttonText}>Let's get started</Text>
-        
+        <Text style={styles.buttonText}>Let's get started</Text>
       </Pressable>
       <Indicator scrollX={scrollX} />
     </View>
@@ -134,7 +132,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   listRender: {
-    width,    
+    width,
   },
   imgContainer: { flex: 0.7, paddingBottom: 70 },
   img: {

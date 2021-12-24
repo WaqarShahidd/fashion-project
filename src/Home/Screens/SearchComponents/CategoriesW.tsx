@@ -44,33 +44,37 @@ const CategoriesW = ({
   } else {
     return (
       <View style={styles.container}>
-        <Header
-          leftComponent={
-            <Icon
-              name="chevron-left"
-              size={20}
-              color="#000"
-              onPress={() => {
-                navigation.navigate("Search");
-              }}
-              style={{ marginTop: 5 }}
-            />
-          }
-          centerComponent={{
-            text: "CATEGORIES",
-            style: {
-              color: "#000",
-              fontSize: 18,
-              fontWeight: "bold",
-              fontFamily: "PlayfairDisplay_700Bold",
-            },
-          }}
-          containerStyle={{
-            backgroundColor: "#fff",
-            justifyContent: "space-around",
+        <View
+          style={{
             height: winHeight * 0.1,
+            justifyContent: "center",
+            backgroundColor: "white",
+            flexDirection: "row",
+
+            alignItems: "center",
           }}
-        />
+        >
+          <Icon
+            name="chevron-left"
+            size={20}
+            color="#000"
+            onPress={() => {
+              navigation.navigate("Search");
+            }}
+            style={{ margin: 20, position: "absolute", left: 0 }}
+          />
+          <Text
+            style={{
+              fontSize: 26,
+
+              textAlign: "center",
+
+              fontFamily: "PlayfairDisplay_700Bold",
+            }}
+          >
+            CATEGORIES
+          </Text>
+        </View>
 
         <View style={{ paddingTop: 15, flex: 1 }}>
           <FlatList
