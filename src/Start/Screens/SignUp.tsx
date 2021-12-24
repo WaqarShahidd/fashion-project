@@ -11,6 +11,8 @@ import { Routes, StackNavigationProps } from "../../../components/navigation";
 import { Feather as Icon } from "@expo/vector-icons";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 import { auth } from "../../../firebase";
+import WoodPickerr from "../Components/WoodPickerr";
+
 
 const winHeight = Dimensions.get("window").height;
 //asdasdads
@@ -26,14 +28,6 @@ const SignUp = ({ navigation }: StackNavigationProps<Routes, "SignUp">) => {
       })
       .catch((error) => alert(error.message));
   };
-  // React.useEffect(() => {
-  //   const unsub = auth.onAuthStateChanged((user) => {
-  //     if (user) {
-  //       navigation.navigate("Home");
-  //     }
-  //   });
-  //   return unsub;
-  // }, []);
   return (
     <View style={styles.container}>
       <View style={styles.screen}>
@@ -44,10 +38,11 @@ const SignUp = ({ navigation }: StackNavigationProps<Routes, "SignUp">) => {
           onPress={() => {
             navigation.navigate("Welcome");
           }}
+          style={{ marginLeft: -5 }}
         />
         <Text style={styles.heading}>New Customer</Text>
       </View>
-      <KeyboardAwareScrollView>
+      <KeyboardAwareScrollView >
         <View style={styles.form}>
           <TextInput style={styles.textInp} placeholder="First Name" />
           <TextInput style={styles.textInp} placeholder="Last Name" />
@@ -66,13 +61,14 @@ const SignUp = ({ navigation }: StackNavigationProps<Routes, "SignUp">) => {
             value={pass}
             onChangeText={(text) => setPass(text)}
           />
+
           <TextInput style={styles.textInp} placeholder="Address" />
           <View
             style={{
               flex: 1,
               justifyContent: "space-evenly",
               flexDirection: "row",
-              marginBottom: 20,
+              marginBottom: 25,
             }}
           >
             <TextInput
@@ -84,15 +80,20 @@ const SignUp = ({ navigation }: StackNavigationProps<Routes, "SignUp">) => {
               placeholder="Post-Code"
             />
           </View>
-          <TextInput
-            style={[
-              styles.textInp,
-              {
-                marginBottom: 25,
-              },
-            ]}
-            placeholder="Country"
-          />
+          <View
+            style={{
+              overflow: "hidden",
+              marginBottom: 25,
+              height: 50,
+              width: "100%",
+              borderWidth: 1,
+              borderBottomWidth: 2,
+              borderBottomColor: "#000",
+              borderColor: "#efece7",
+            }}
+          >
+            <WoodPickerr />
+          </View>
         </View>
         <View
           style={{
@@ -121,6 +122,7 @@ const SignUp = ({ navigation }: StackNavigationProps<Routes, "SignUp">) => {
             justifyContent: "center",
             alignContent: "center",
             alignItems: "center",
+            paddingBottom:50
           }}
         >
           <Text style={{ fontWeight: "300" }}>
@@ -150,10 +152,12 @@ const styles = StyleSheet.create({
     paddingTop: 20,
     paddingLeft: 20,
     paddingRight: 20,
+
   },
   screen: {
     marginTop: 10,
     height: 75,
+
   },
   heading: {
     fontSize: 24,

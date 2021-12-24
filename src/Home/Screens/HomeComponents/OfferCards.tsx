@@ -41,7 +41,7 @@ const Offer = (props: OfferProps) => {
                         style={{
                           position: "absolute",
                           right: 4,
-                          bottom: 0,
+                          bottom: 5,
                           justifyContent: "center",
                           alignItems: "center",
                           backgroundColor: "#fff",
@@ -52,15 +52,13 @@ const Offer = (props: OfferProps) => {
                       >
                         <Text style={styles.textStyle}>Explore</Text>
                       </View>
-                      <View
+                      {/* <View
                         style={{
                           position: "absolute",
                           left: 4,
                           bottom: 0,
                           justifyContent: "center",
                           paddingLeft: 6,
-                          //alignItems: "center",
-                          //backgroundColor: "#fff",
                           height: 35,
                           width: "50%",
                           borderRadius: 25,
@@ -77,7 +75,7 @@ const Offer = (props: OfferProps) => {
                         >
                           {item.title}
                         </Text>
-                      </View>
+                      </View> */}
                     </ImageBackground>
                   </View>
                 </TouchableOpacity>
@@ -97,16 +95,16 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   containerBtn: {
+    height: 130,
     marginLeft: "4%",
     marginRight: "4%",
-
     marginBottom: Platform.OS === "android" ? 30 : 20,
     justifyContent: "center",
-    //backgroundColor: "red",
     borderRadius: 8,
+    backgroundColor: "red",
   },
   btn: {
-    height: 175,
+    height: "100%",
     width: "100%",
     paddingRight: 0,
     paddingBottom: 5,
@@ -121,8 +119,6 @@ const styles = StyleSheet.create({
     backgroundColor: "#EBEBEB",
   },
   image: {
-    flex: 1,
-    borderRadius: 20,
     height: 130,
     width: "100%",
     marginTop: 0,

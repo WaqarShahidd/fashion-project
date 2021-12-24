@@ -8,7 +8,6 @@ import CategoriesM from './Screens/SearchComponents/CategoriesM';
 import Search from './Screens/Tabs/Search';
 import { createStackNavigator } from "@react-navigation/stack";
 import { Routes } from "./../../components/navigation";
-import ShoppingModal from './Screens/SearchComponents/ShoppingModal';
 
 const AppStack = createStackNavigator<Routes>();
 const Home = () => {

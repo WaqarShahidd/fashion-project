@@ -31,7 +31,7 @@ const CartItmeList = (props: CartItmeListProps) => {
         >
           <Text
             style={{
-              fontSize: 26,
+              fontSize: 20,
 
               textAlign: "center",
 
@@ -88,7 +88,7 @@ const styles = StyleSheet.create({
     fontFamily: "PlayfairDisplay_700Bold",
     fontWeight: "bold",
     paddingBottom: 10,
-    fontSize: 25,
+    fontSize: 20,
     textAlign: "center",
     marginTop: 10,
   },

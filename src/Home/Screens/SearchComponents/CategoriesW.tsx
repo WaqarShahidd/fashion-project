@@ -65,7 +65,7 @@ const CategoriesW = ({
           />
           <Text
             style={{
-              fontSize: 26,
+              fontSize: 20,
 
               textAlign: "center",
 

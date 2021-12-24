@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Text, View, StyleSheet, Pressable } from "react-native";
+import { Text, View, StyleSheet, Pressable, Platform } from "react-native";
 
 interface CartTotalProps {}
 
@@ -47,7 +47,6 @@ const styles = StyleSheet.create({
   container: {
     backgroundColor: "white",
     padding: 25,
-
     borderRadius: 30,
     height: "40%",
   },
@@ -55,12 +54,12 @@ const styles = StyleSheet.create({
     flexDirection: "row",
   },
   text: {
-    fontSize: 18,
+    fontSize: Platform.OS === "android" ? 18 : 14,
     marginBottom: 4,
     color: "#3D3D3D",
   },
   price: {
-    fontSize: 18,
+    fontSize: Platform.OS === "android" ? 18 : 14,
     marginBottom: 4,
     position: "absolute",
     right: 0,
@@ -69,14 +68,14 @@ const styles = StyleSheet.create({
 
   Totaltext: {
     fontWeight: "bold",
-    fontSize: 22,
+    fontSize: Platform.OS === "android" ? 22 : 16,
     marginTop: 18,
     textAlign: "right",
     color: "#3D3D3D",
   },
   Totalprice: {
     fontWeight: "bold",
-    fontSize: 22,
+    fontSize: Platform.OS === "android" ? 22 : 16,
     marginTop: 18,
     position: "absolute",
     right: 0,

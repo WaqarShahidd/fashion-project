@@ -22,8 +22,8 @@ const Login = ({ navigation }: StackNavigationProps<Routes, "Login">) => {
     auth
       .signInWithEmailAndPassword(email, pass)
       .then((userCredentials) => {
-        navigation.navigate("Home")
-      })
+        navigation.navigate("Home");
+      })            
       .catch((error) => alert(error.message));
   };
   
@@ -31,9 +31,9 @@ const Login = ({ navigation }: StackNavigationProps<Routes, "Login">) => {
   return (
     <View style={styles.container}>
       <View style={styles.screen}>
-        <Icon name="x" size={30} color="#000" onPress={() => {}} />
-        <Text style={styles.heading}>Existing Customer</Text>
+        <Icon name="x" size={30} color="#000" onPress={() => {navigation.navigate("Home");}} />
       </View>
+        <Text style={styles.heading}>Existing Customer</Text>
 
       <View style={styles.form}>
         <View style={{ padding: 7 }}>
@@ -68,7 +68,7 @@ const Login = ({ navigation }: StackNavigationProps<Routes, "Login">) => {
           <Checkbox />
           <Text>Remember Me</Text>
         </View>
-        <TouchableOpacity
+        <Pressable
           onPress={() => {
             navigation.navigate("ResetPassword");
           }}
@@ -84,7 +84,7 @@ const Login = ({ navigation }: StackNavigationProps<Routes, "Login">) => {
           >
             Forgot Password?
           </Text>
-        </TouchableOpacity>
+        </Pressable>
       </View>
       <View
         style={{
@@ -168,6 +168,7 @@ const styles = StyleSheet.create({
   },
   screen: {
     marginTop: 10,
+    marginLeft:-5
   },
   heading: {
     fontSize: 24,

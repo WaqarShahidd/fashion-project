@@ -31,9 +31,7 @@ import { Feather as Icon, MaterialIcons } from "@expo/vector-icons";
 
 const winHeight = Dimensions.get("window").height;
 
-const CategoriesM = ({
-  navigation,
-}: StackNavigationProps<Routes, "CategoriesM">) => {
+const Categories = () => {
   let [fontsLoaded] = useFonts({
     Questrial_400Regular,
     PlayfairDisplay_700Bold,
@@ -59,8 +57,7 @@ const CategoriesM = ({
             size={20}
             color="#000"
             onPress={() => {
-              navigation.navigate("Search");
-            }}
+                          }}
             style={{ margin: 20, position: "absolute", left: 0 }}
           />
           <Text
@@ -86,7 +83,7 @@ const CategoriesM = ({
                 <TouchableWithoutFeedback
                   style={styles.card}
                   onPress={() => {
-                    navigation.navigate("SearchM");
+                    
                   }}
                 >
                   <View style={styles.cardImgWrapper}>
@@ -114,7 +111,7 @@ const CategoriesM = ({
   }
 };
 
-export default CategoriesM;
+export default Categories;
 
 const styles = StyleSheet.create({
   container: {

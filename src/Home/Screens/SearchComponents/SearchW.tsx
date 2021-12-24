@@ -157,7 +157,7 @@ const Modal = ({ modalRef }) => {
 };
 
 const SearchW = ({ navigation }: StackNavigationProps<Routes, "SearchW">) => {
-  const modalRef = React.useRef(null);
+  const modalRef = React.useRef<any>();
 
   const onOpen = () => {
     const modal = modalRef.current;
@@ -202,14 +202,14 @@ const SearchW = ({ navigation }: StackNavigationProps<Routes, "SearchW">) => {
           />
           <Text
             style={{
-              fontSize: 26,
+              fontSize: 20,
 
               textAlign: "center",
 
               fontFamily: "PlayfairDisplay_700Bold",
             }}
           >
-            CATEGORIES
+            Women
           </Text>
         </View>
         <SearchBar />

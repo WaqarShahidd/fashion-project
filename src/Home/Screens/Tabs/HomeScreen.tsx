@@ -7,6 +7,7 @@ import {
   StatusBar,
   Dimensions,
 } from "react-native";
+import { FlatList, TouchableOpacity } from "react-native-gesture-handler";
 
 import Categories from "../HomeComponents/CollectionCircle";
 import { ScrollView } from "react-native-gesture-handler";
@@ -73,41 +74,31 @@ const HomeScreen = (props: HomeScreenProps) => {
             }}
           />
         </View>
-        {/* <Header
-        // leftComponent={{
-        //   icon: "person-outline",
-        //   color: "#fff",
-        // }}
-        centerComponent={{
-          text: "MILAN",
-          style: { color: "#fff", fontSize: 18 },
-        }}
-        // rightComponent={{
-        //   icon: "shopping-bag",
-        //   color: "#fff",
-        // }}
-        containerStyle={{
-          backgroundColor: "#c39476",
-          justifyContent: "space-around",
-        }}
-      /> */}
         <View style={{ paddingBottom: 120 }}>
-          <ScrollView
-            bounces={false}
+          <FlatList
             showsVerticalScrollIndicator={false}
+            bounces={false}
             style={{ paddingBottom: tabBarheight }}
-          >
-            <View style={{ marginTop: 20 }}>
-              <Categories />
-            </View>
-            <View style={{ marginTop: 20 }}>
-              <Test />
+            data={[]}
+            keyExtractor={() => ""}
+            renderItem={null}
+            ListHeaderComponent={() => (
+              <View style={{ marginTop: 20 }}>
+                <Categories />
+              </View>
+            )}
+            ListEmptyComponent={() => (
+              <View style={{ marginTop: 20 }}>
+                <Test />
+              </View>
+            )}
+            ListFooterComponent={() => (
               <View style={{ marginTop: 40 }}>
                 <Offer />
               </View>
-            </View>
-            <View style={{ bottom: 50 }}></View>
-          </ScrollView>
+            )}
+          />
+          
         </View>
         <View style={{ bottom: 0, flex: 0.2, backgroundColor: "#000" }} />
       </View>

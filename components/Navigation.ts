@@ -21,5 +21,4 @@ export type Routes = {
   SearchW: undefined;
   CategoriesW: undefined;
   CategoriesM: undefined;
-  Wishlist:undefined;
 };

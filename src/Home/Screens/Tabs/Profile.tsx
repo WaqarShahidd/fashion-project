@@ -1,12 +1,33 @@
-import * as React from 'react';
-import { Text, View, StyleSheet } from 'react-native';
+import * as React from "react";
+import { Text, View, StyleSheet, Dimensions } from "react-native";
 
-interface ProfileProps {}
+const winHeight = Dimensions.get("window").height;
 
-const Profile = (props: ProfileProps) => {
+const Profile = () => {
   return (
     <View style={styles.container}>
-      <Text>Profile</Text>
+      <View
+        style={{
+          height: winHeight * 0.1,
+          justifyContent: "center",
+          backgroundColor: "white",
+          flexDirection: "row",
+
+          alignItems: "center",
+        }}
+      >
+        <Text
+          style={{
+            fontSize: 20,
+
+            textAlign: "center",
+
+            fontFamily: "PlayfairDisplay_700Bold",
+          }}
+        >
+          Profile
+        </Text>
+      </View>
     </View>
   );
 };
@@ -16,8 +37,6 @@ export default Profile;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: "center",
-    alignContent: "center",
-    alignItems: "center",
+    backgroundColor: "#ebebeb",
   },
 });

@@ -9,7 +9,7 @@ export const offers = [
     key: "2",
     title: "Winter 21",
     image:
-      "https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/7dcaa960436865.5a4d145b56f17.jpg",
+      "https://elements-cover-images-0.imgix.net/c7ed3028-b181-4703-a46b-69b96aa53283?auto=compress%2Cformat&fit=max&w=710&s=69f0f6770a4b570018944fff4d7dab16",
   },
 
   {

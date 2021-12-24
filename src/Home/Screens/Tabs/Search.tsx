@@ -6,35 +6,40 @@ import {
   Routes,
   StackNavigationProps,
 } from "../../../../components/navigation";
-import { useFonts, Questrial_400Regular } from "@expo-google-fonts/questrial";
-import AppLoading from "expo-app-loading";
-import { Header } from "react-native-elements";
-import {
-  PlayfairDisplay_400Regular,
-  PlayfairDisplay_500Medium,
-  PlayfairDisplay_600SemiBold,
-  PlayfairDisplay_700Bold,
-  PlayfairDisplay_800ExtraBold,
-  PlayfairDisplay_900Black,
-  PlayfairDisplay_400Regular_Italic,
-  PlayfairDisplay_500Medium_Italic,
-  PlayfairDisplay_600SemiBold_Italic,
-  PlayfairDisplay_700Bold_Italic,
-  PlayfairDisplay_800ExtraBold_Italic,
-  PlayfairDisplay_900Black_Italic,
-} from "@expo-google-fonts/playfair-display";
+import firebase from "firebase";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+
 
 const winHeight = Dimensions.get("window").height;
 
 const Search = ({ navigation }: StackNavigationProps<Routes, "Search">) => {
-  // let [fontsLoaded] = useFonts({
-  //   Questrial_400Regular,
-  //   PlayfairDisplay_700Bold,
-  // });
 
-  // if (!fontsLoaded) {
-  //   return <AppLoading />;
-  // }else {
+const [entities, setEntities] = React.useState([]);
+
+const entityRef = firebase.firestore().collection("menCollection");
+
+
+const e = () => {firebase
+    .firestore()
+    .collection("collection")
+    .where("Men", "==", "Men");
+}
+React.useEffect(() => {
+  entityRef.onSnapshot(
+    (querySnapshot) => {
+      const newEntities = [] as any;
+      querySnapshot.forEach((doc) => {
+        const entity = doc.data();
+        entity.id = doc.id;
+        newEntities.push(entity);
+      });
+      setEntities(newEntities);
+    },
+    (error) => {
+      console.log(error);
+    }
+  );
+}, []);
   return (
     <View style={styles.container}>
       <View
@@ -49,7 +54,7 @@ const Search = ({ navigation }: StackNavigationProps<Routes, "Search">) => {
       >
         <Text
           style={{
-            fontSize: 26,
+            fontSize: 20,
 
             textAlign: "center",
 

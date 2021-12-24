@@ -1,30 +1,30 @@
 Arguments: 
-  C:\Program Files\nodejs\node.exe C:\Users\moham\AppData\Roaming\npm\node_modules\yarn\bin\yarn.js add @freakycoder/react-native-bounceable:
+  W:\NodeJS\node.exe C:\Users\waqar\AppData\Roaming\npm\node_modules\yarn\bin\yarn.js add react-native-community/datetimepicker@3.5.2
 
 PATH: 
-  C:\Python39\Scripts\;C:\Python39\;C:\Program Files (x86)\VMware\VMware Player\bin\;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\ProgramData\chocolatey\bin;C:\Program Files\Git\cmd;C:\Program Files\Java\jdk1.8.0_261\bin;C:\MinGW\bin\g++.exe;C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\170\Tools\Binn\;C:\Program Files (x86)\Microsoft SQL Server\150\Tools\Binn\;C:\Program Files\Microsoft SQL Server\150\Tools\Binn\;C:\Program Files\Microsoft SQL Server\150\DTS\Binn\;C:\Program Files (x86)\Microsoft SQL Server\150\DTS\Binn\;C:\Program Files\Azure Data Studio\bin;C:\Program Files\dotnet\;C:\Program Files (x86)\dotnet\;C:\Program Files\Microsoft SQL Server\130\Tools\Binn\;C:\Program Files\nodejs\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Users\moham\AppData\Local\Microsoft\WindowsApps;C:\Users\moham\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\moham\AppData\Local\Android\sdk\platform-tools;C:\MinGW\bin\g++.exe;;C:\Program Files\Azure Data Studio\bin;C:\Users\moham\.dotnet\tools;C:\Users\moham\AppData\Roaming\npm
+  C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files (x86)\ActiveState Komodo IDE 12\;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;W:\app\Waq\product\12.1.0\dbhome_1\bin;C:\Program Files\Common Files\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files\Azure Data Studio\bin;W:\NodeJS\;W:\Git\cmd;C:\Users\waqar\AppData\Local\Microsoft\WindowsApps;W:\Microsoft VS Code\bin;C:\Program Files\Azure Data Studio\bin;C:\Users\waqar\AppData\Roaming\npm
 
 Yarn version: 
   1.22.17
 
 Node version: 
-  14.17.3
+  16.13.0
 
 Platform: 
   win32 x64
 
 Trace: 
-  Error: https://registry.yarnpkg.com/@freakycoder%2freact-native-bounceable:: Not found
-      at Request.params.callback [as _callback] (C:\Users\moham\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:67029:18)
-      at Request.self.callback (C:\Users\moham\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:140883:22)
-      at Request.emit (events.js:375:28)
-      at Request.<anonymous> (C:\Users\moham\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:141855:10)
-      at Request.emit (events.js:375:28)
-      at IncomingMessage.<anonymous> (C:\Users\moham\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:141777:12)
-      at Object.onceWrapper (events.js:481:28)
-      at IncomingMessage.emit (events.js:387:35)
-      at endReadableNT (internal/streams/readable.js:1317:12)
-      at processTicksAndRejections (internal/process/task_queues.js:82:21)
+  Error: https://registry.yarnpkg.com/react-native-community%2fdatetimepicker: Request "https://registry.yarnpkg.com/react-native-community%2fdatetimepicker" returned a 405
+      at Request.params.callback [as _callback] (C:\Users\waqar\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:67038:18)
+      at Request.self.callback (C:\Users\waqar\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:140883:22)
+      at Request.emit (node:events:390:28)
+      at Request.<anonymous> (C:\Users\waqar\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:141855:10)
+      at Request.emit (node:events:390:28)
+      at IncomingMessage.<anonymous> (C:\Users\waqar\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:141777:12)
+      at Object.onceWrapper (node:events:509:28)
+      at IncomingMessage.emit (node:events:402:35)
+      at endReadableNT (node:internal/streams/readable:1343:12)
+      at processTicksAndRejections (node:internal/process/task_queues:83:21)
 
 npm manifest: 
   {
@@ -46,9 +46,10 @@ npm manifest:
       "@expo-google-fonts/questrial": "^0.2.0",
       "@expo-google-fonts/raleway": "^0.2.0",
       "@expo/vector-icons": "^12.0.5",
+      "@freakycoder/react-native-bounceable": ">= 0.1.1",
       "@invertase/react-native-apple-authentication": "^2.1.5",
       "@klarna/react-native-vector-drawable": "^0.3.0",
-      "@react-native-community/datetimepicker": "3.5.2",
+      "@react-native-community/datetimepicker": "^3.5.2",
       "@react-native-firebase/app": "^13.0.1",
       "@react-native-firebase/auth": "^13.0.1",
       "@react-native-picker/picker": "2.1.0",
@@ -80,6 +81,7 @@ npm manifest:
       "react-native-keyboard-aware-scrollview": "^2.1.0",
       "react-native-modal": "^13.0.0",
       "react-native-modalize": "^2.0.12",
+      "react-native-numeric-input": "^1.9.0",
       "react-native-onboarding-swiper": "^1.1.4",
       "react-native-paper": "^4.11.1",
       "react-native-reanimated": "~2.2.0",
@@ -1655,6 +1657,11 @@ Lockfile:
     resolved "https://registry.yarnpkg.com/@firebase/webchannel-wrapper/-/webchannel-wrapper-0.4.1.tgz#600f2275ff54739ad5ac0102f1467b8963cd5f71"
     integrity sha512-0yPjzuzGMkW1GkrC8yWsiN7vt1OzkMIi9HgxRmKREZl2wnNPOKo/yScTjXf/O57HM8dltqxPF6jlNLFVtc2qdw==
   
+  "@freakycoder/react-native-bounceable@>= 0.1.1":
+    version "0.2.5"
+    resolved "https://registry.yarnpkg.com/@freakycoder/react-native-bounceable/-/react-native-bounceable-0.2.5.tgz#ad61bdafbf68465e9c2145e99c09b500ae091f0e"
+    integrity sha512-J8WBOYxbm/um7SqXYneduZ08T5Kin9z+ixsS3wOLtpeNvKscuqmDEgsgefTYydeSIoI5dOfWmklnRRgu5i/8nA==
+  
   "@grpc/grpc-js@^1.0.0":
     version "1.4.5"
     resolved "https://registry.yarnpkg.com/@grpc/grpc-js/-/grpc-js-1.4.5.tgz#0cd840b47180624eeedf066f2cdc422d052401f8"
@@ -1920,10 +1927,10 @@ Lockfile:
       sudo-prompt "^9.0.0"
       wcwidth "^1.0.1"
   
-  "@react-native-community/datetimepicker@3.5.2":
-    version "3.5.2"
-    resolved "https://registry.yarnpkg.com/@react-native-community/datetimepicker/-/datetimepicker-3.5.2.tgz#8e6feb30f2620e5abdf565d5fe74c0c04edcf6ae"
-    integrity sha512-TWRuAtr/DnrEcRewqvXMLea2oB+YF+SbtuYLHguALLxNJQLl/RFB7aTNZeF+OoH75zKFqtXECXV1/uxQUpA+sg==
+  "@react-native-community/datetimepicker@^5.0.2":
+    version "5.0.2"
+    resolved "https://registry.yarnpkg.com/@react-native-community/datetimepicker/-/datetimepicker-5.0.2.tgz#a5608bc3245d78d589c9021c47fbd4b3f8d2bdab"
+    integrity sha512-/X94jwaAUJWwKzwCZDpbaNdad15rgiP3uocKfbGEQDxIcfHFAZPB8MI2C5OK8YTp6n3OGb96MGJm4nn54fkofQ==
     dependencies:
       invariant "^2.2.4"
   
@@ -6046,7 +6053,7 @@ Lockfile:
       fbjs "^0.8.9"
       loose-envify "^1.3.1"
   
-  prop-types@^15.5.10, prop-types@^15.6.0, prop-types@^15.6.2, prop-types@^15.7.2:
+  prop-types@^15.5.10, prop-types@^15.6.0, prop-types@^15.6.1, prop-types@^15.6.2, prop-types@^15.7.2:
     version "15.7.2"
     resolved "https://registry.npmjs.org/prop-types/-/prop-types-15.7.2.tgz"
     integrity sha512-8QQikdH7//R2vurIJSutZ1smHYTcLpRWEOlHnzcWHmBYrOGUysKwSsrC89BCiFj3CbrfJ/nXFdJepOVrY1GCHQ==
@@ -6159,6 +6166,11 @@ Lockfile:
       jscodeshift "^0.11.0"
       nullthrows "^1.1.1"
   
+  react-native-counter-input@^0.1.9:
+    version "0.1.9"
+    resolved "https://registry.yarnpkg.com/react-native-counter-input/-/react-native-counter-input-0.1.9.tgz#d78779747f889324ef78696c0c1fe5a0e7b906d9"
+    integrity sha512-TKDveanNLXFXMici/6i7G8fvn0Pw+creXqOvw7JYYO3cyXXgC1ZOK0Gxn6URJuCLcEHQJjQIj5ugDe8jMcO3jg==
+  
   react-native-counters@^1.2.0:
     version "1.2.0"
     resolved "https://registry.yarnpkg.com/react-native-counters/-/react-native-counters-1.2.0.tgz#1848125ff27774a1e6dc32ba8a5738c452a1eb47"
@@ -6250,6 +6262,14 @@ Lockfile:
     resolved "https://registry.yarnpkg.com/react-native-modalize/-/react-native-modalize-2.0.12.tgz#0e48b2e7d496deca3d241414f233b29df34f4b30"
     integrity sha512-IKPBM4RXLNLaH1WFX8/yPHlbRei15TNcMMftQzi+juG0ibbsAPbEXkbt+KKs7O1dvmOF8sZwRH3SbWjFlcxtAw==
   
+  react-native-numeric-input@^1.9.0:
+    version "1.9.0"
+    resolved "https://registry.yarnpkg.com/react-native-numeric-input/-/react-native-numeric-input-1.9.0.tgz#e57a0c3d226935abc0b205dec11e662f25926013"
+    integrity sha512-PEtji6X0duniB/PrCl4DgBFSmjrQQaMxfZqGqbUjh1UalNX4ITdrPyctZK5BFs2/AbJq05tj/OYBNEGTiDIbPw==
+    dependencies:
+      prop-types "^15.6.1"
+      react-native-pixel-perfect "^1.0.1"
+  
   react-native-onboarding-swiper@^1.1.4:
     version "1.1.4"
     resolved "https://registry.npmjs.org/react-native-onboarding-swiper/-/react-native-onboarding-swiper-1.1.4.tgz"
@@ -6265,6 +6285,11 @@ Lockfile:
       "@callstack/react-theme-provider" "^3.0.7"
       color "^3.1.2"
       react-native-iphone-x-helper "^1.3.1"
+  
+  react-native-pixel-perfect@^1.0.1:
+    version "1.0.2"
+    resolved "https://registry.yarnpkg.com/react-native-pixel-perfect/-/react-native-pixel-perfect-1.0.2.tgz#8e6dc97e377caa4bd07f9e584ba438d53c0e25e8"
+    integrity sha512-0IvYCNkxuQbQC9q4tI+C3i6o38nbx916p7gBRBWuPxDhKBCuTkVV3VukcfW6vtjRlwQm6kwQcF9OtI+yUBt+YA==
   
   react-native-ratings@8.0.4:
     version "8.0.4"

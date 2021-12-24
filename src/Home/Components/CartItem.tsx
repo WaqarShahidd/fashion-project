@@ -1,34 +1,27 @@
 import * as React from "react";
-import { Text, View, StyleSheet } from "react-native";
+import { Text, View, StyleSheet, Platform } from "react-native";
 import { Image } from "react-native-elements";
-import Counter from "react-native-counters";
-import CounterInput from "react-native-counter-input";
 import NumericInput from "react-native-numeric-input";
 
-interface CartItemProps {
-  itemname;
-  itemprice;
-  itemimage;
-}
 
-const CartItem = ({ itemname, itemprice, itemimage }) => {
+const CartItem = (props) => {
   return (
     <View style={styles.container}>
       <Image
         style={styles.logo}
         source={{
-          uri: itemimage,
+          uri: props.itemimage,
         }}
       />
       <View style={styles.ItemContainer}>
         <View>
           <View style={styles.textContainer}>
             <Text numberOfLines={1} ellipsizeMode="tail" style={styles.Item}>
-              {itemname}
+              {props.itemname}
             </Text>
           </View>
 
-          <Text style={styles.price}>{itemprice}</Text>
+          <Text style={styles.price}>{props.itemprice}</Text>
         </View>
 
         <View style={styles.CounterContainer}>
@@ -52,11 +45,8 @@ const styles = StyleSheet.create({
     margin: 15,
     padding: 15,
     flexDirection: "row",
-    // justifyContent: "center",
-    // alignContent: "center",
     backgroundColor: "#F5F5F5",
     paddingBottom: 20,
-
     borderRadius: 15,
   },
   logo: {
@@ -80,12 +70,11 @@ const styles = StyleSheet.create({
     color: "#3D3D3D",
 
     marginTop: 7,
-    fontSize: 20,
+    fontSize: Platform.OS === "android" ? 20 : 16,
     fontWeight: "bold",
   },
   ItemContainer: {
     flexDirection: "row",
-
     flex: 1,
   },
   counter: {
@@ -93,7 +82,7 @@ const styles = StyleSheet.create({
     width: 6,
   },
   textContainer: {
-    width: 145,
+    width: Platform.OS === "android" ? 145 : 100,
     overflow: "hidden",
   },
 });

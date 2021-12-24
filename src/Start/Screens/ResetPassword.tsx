@@ -24,6 +24,7 @@ const ResetPassword = ({
             onPress={() => {
               navigation.navigate("Welcome");
             }}
+            style={{ marginLeft: -5 }}
           />
           <Text style={styles.heading}>Forgot Password?</Text>
           <Text style={{ paddingTop: 15, fontWeight: "100" }}>
