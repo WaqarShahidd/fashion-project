@@ -10,14 +10,14 @@ import firebase from "firebase";
 
 const winHeight = Dimensions.get("window").height;
 
-const Search = ({ navigation }: StackNavigationProps<Routes, "Search">) => {
+const Catalog = ({
+  navigation,
+  route,
+}: StackNavigationProps<Routes, "Catalog">) => {
   const [entities, setEntities] = React.useState([]);
 
   const entityRef = firebase.firestore().collection("menCollection");
 
-  const e = () => {
-    firebase.firestore().collection("collection").where("Men", "==", "Men");
-  };
   React.useEffect(() => {
     entityRef.onSnapshot(
       (querySnapshot) => {
@@ -94,7 +94,7 @@ const Search = ({ navigation }: StackNavigationProps<Routes, "Search">) => {
   );
 };
 
-export default Search;
+export default Catalog;
 
 const styles = StyleSheet.create({
   container: {

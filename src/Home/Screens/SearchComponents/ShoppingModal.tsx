@@ -14,10 +14,9 @@ import {
   StackNavigationProps,
 } from "../../../../components/navigation";
 
-interface ShoppingModalProps {}
 const winHeight = Dimensions.get("window").height;
 const ShoppingModal = () => {
-  const modalRef = React.useRef(null);
+  const modalRef = React.useRef<any>();
 
   const onOpen = () => {
     const modal = modalRef.current;
@@ -34,9 +33,7 @@ const ShoppingModal = () => {
 
   return (
     <>
-      <TouchableOpacity
-        onPress={onOpen}
-      >
+      <TouchableOpacity onPress={onOpen}>
         <Text>Open the modal</Text>
       </TouchableOpacity>
       <Modalize
@@ -160,6 +157,6 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     letterSpacing: 0.25,
     color: "#fff",
-    fontFamily:""
+    fontFamily: "",
   },
 });

@@ -56,8 +56,7 @@ const Categories = () => {
             name="chevron-left"
             size={20}
             color="#000"
-            onPress={() => {
-                          }}
+            onPress={() => {}}
             style={{ margin: 20, position: "absolute", left: 0 }}
           />
           <Text
@@ -82,9 +81,7 @@ const Categories = () => {
               return (
                 <TouchableWithoutFeedback
                   style={styles.card}
-                  onPress={() => {
-                    
-                  }}
+                  onPress={() => {}}
                 >
                   <View style={styles.cardImgWrapper}>
                     <Image

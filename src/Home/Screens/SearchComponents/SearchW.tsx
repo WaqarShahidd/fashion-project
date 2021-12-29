@@ -156,7 +156,7 @@ const Modal = ({ modalRef }) => {
   }
 };
 
-const SearchW = ({ navigation }: StackNavigationProps<Routes, "SearchW">) => {
+const SearchW = ({ navigation }: StackNavigationProps<Routes, "Catalog">) => {
   const modalRef = React.useRef<any>();
 
   const onOpen = () => {

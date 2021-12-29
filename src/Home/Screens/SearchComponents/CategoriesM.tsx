@@ -28,16 +28,36 @@ import {
   PlayfairDisplay_900Black_Italic,
 } from "@expo-google-fonts/playfair-display";
 import { Feather as Icon, MaterialIcons } from "@expo/vector-icons";
+import firebase from "firebase";
 
 const winHeight = Dimensions.get("window").height;
 
 const CategoriesM = ({
   navigation,
+  route,
 }: StackNavigationProps<Routes, "CategoriesM">) => {
+  const [choice, setChoice] = React.useState("");
+
   let [fontsLoaded] = useFonts({
     Questrial_400Regular,
     PlayfairDisplay_700Bold,
   });
+
+  const change = (item) => {
+    if (item.key == "1") {
+      navigation.navigate("ShoppingGrid", "Shirt");
+    } else if (item.key == "2") {
+      navigation.navigate("ShoppingGrid", "Shoe");
+    } else if (item.key == "3") {
+      navigation.navigate("ShoppingGrid", "Bags");
+    } else if (item.key == "4") {
+      navigation.navigate("ShoppingGrid", "Fragrance");
+    } else if (item.key == "5") {
+      navigation.navigate("ShoppingGrid", "Watch");
+    } else if (item.key == "6") {
+      navigation.navigate("ShoppingGrid", "Jacket");
+    }
+  };
 
   if (!fontsLoaded) {
     return <AppLoading />;
@@ -83,10 +103,10 @@ const CategoriesM = ({
             keyExtractor={(item) => item.id}
             renderItem={({ item }) => {
               return (
-                <TouchableWithoutFeedback
+                <TouchableOpacity
                   style={styles.card}
                   onPress={() => {
-                    navigation.navigate("SearchM");
+                    change(item);
                   }}
                 >
                   <View style={styles.cardImgWrapper}>
@@ -104,7 +124,7 @@ const CategoriesM = ({
                       color={"#000"}
                     />
                   </View>
-                </TouchableWithoutFeedback>
+                </TouchableOpacity>
               );
             }}
           />

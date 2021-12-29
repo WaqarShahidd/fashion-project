@@ -1,11 +1,13 @@
-import { ParamListBase } from "@react-navigation/routers"
-import { StackNavigationProp } from "@react-navigation/stack"
-import { RouteProp } from "@react-navigation/core"
+import { ParamListBase } from "@react-navigation/routers";
+import { StackNavigationProp } from "@react-navigation/stack";
+import { RouteProp } from "@react-navigation/core";
 
-export interface StackNavigationProps<ParamList extends ParamListBase, RouteName extends keyof ParamList = string>
-{
-    navigation: StackNavigationProp<ParamList, RouteName>;
-    route: RouteProp<ParamList, RouteName>
+export interface StackNavigationProps<
+  ParamList extends ParamListBase,
+  RouteName extends keyof ParamList = string
+> {
+  navigation: StackNavigationProp<ParamList, RouteName>;
+  route: RouteProp<ParamList, RouteName>;
 }
 
 export type Routes = {
@@ -17,8 +19,8 @@ export type Routes = {
   Home: undefined;
   Tabs: undefined;
   Search: undefined;
-  SearchM: undefined;
-  SearchW: undefined;
+  ShoppingGrid: any;
+  Catalog: any;
   CategoriesW: undefined;
   CategoriesM: undefined;
 };

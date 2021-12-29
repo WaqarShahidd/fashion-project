@@ -3,7 +3,6 @@ import { Text, View, StyleSheet, Platform } from "react-native";
 import { Image } from "react-native-elements";
 import NumericInput from "react-native-numeric-input";
 
-
 const CartItem = (props) => {
   return (
     <View style={styles.container}>
@@ -68,7 +67,6 @@ const styles = StyleSheet.create({
   },
   Item: {
     color: "#3D3D3D",
-
     marginTop: 7,
     fontSize: Platform.OS === "android" ? 20 : 16,
     fontWeight: "bold",

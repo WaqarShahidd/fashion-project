@@ -6,6 +6,8 @@ import {
   Dimensions,
   Image,
   Pressable,
+  Button,
+  Platform,
 } from "react-native";
 import { FlatList, TouchableOpacity } from "react-native-gesture-handler";
 import { Feather as Icon, MaterialIcons } from "@expo/vector-icons";
@@ -14,7 +16,7 @@ import {
   Routes,
   StackNavigationProps,
 } from "../../../../components/navigation";
-import SearchBar from "./../../Components/SearchBar";
+import SearchBar from "../../Components/SearchBar";
 import {
   Raleway_400Regular,
   Raleway_500Medium,
@@ -23,15 +25,10 @@ import {
   useFonts,
 } from "@expo-google-fonts/raleway";
 import { Questrial_400Regular } from "@expo-google-fonts/questrial";
-import {
-  PlayfairDisplay_700Bold,
-} from "@expo-google-fonts/playfair-display";
-import {
-  Amiko_700Bold,
-} from "@expo-google-fonts/amiko";
+import { PlayfairDisplay_700Bold } from "@expo-google-fonts/playfair-display";
+import { Amiko_700Bold } from "@expo-google-fonts/amiko";
 import AppLoading from "expo-app-loading";
 import { Modalize } from "react-native-modalize";
-import { auth } from "./../../../../firebase";
 import firebase from "firebase";
 
 const winHeight = Dimensions.get("window").height;
@@ -160,11 +157,17 @@ const Modal = ({ modalRef }) => {
   }
 };
 
-const SearchM = ({ navigation }: StackNavigationProps<Routes, "SearchM">) => {
-
+const ShoppingGrid = ({
+  navigation,
+  route,
+}: StackNavigationProps<Routes, "ShoppingGrid">) => {
   const [entities, setEntities] = React.useState([]);
 
-  const entityRef = firebase.firestore().collection("menCollection");
+  const entityRef = firebase
+    .firestore()
+    .collection("collection")
+    .doc("MenCollection")
+    .collection(`${route.params}`);
 
   React.useEffect(() => {
     entityRef.onSnapshot(
@@ -192,6 +195,8 @@ const SearchM = ({ navigation }: StackNavigationProps<Routes, "SearchM">) => {
       modal.open();
     }
   };
+
+  const onChange = (item) => {};
 
   const [fav, setFav] = React.useState("favorite");
 
@@ -266,17 +271,26 @@ const SearchM = ({ navigation }: StackNavigationProps<Routes, "SearchM">) => {
                   </TouchableOpacity>
 
                   <View style={styles.detailsContainer}>
-                    <Text style={styles.name}>{item.title}</Text>
-
-                    <TouchableOpacity>
-                      <MaterialIcons
-                        name={"favorite-outline"}
-                        size={22}
-                        color={"#000"}
-                      />
-                    </TouchableOpacity>
+                    <View style={styles.textContainer}>
+                      <Text
+                        numberOfLines={1}
+                        ellipsizeMode="tail"
+                        style={styles.name}
+                      >
+                        {item.title}
+                      </Text>
+                      <Text style={styles.price}>{item.price}</Text>
+                    </View>
+                    <View style={styles.right}>
+                      <TouchableOpacity onPress={() => onChange(item)}>
+                        <MaterialIcons
+                          name={"favorite-outline"}
+                          size={22}
+                          color={"#000"}
+                        />
+                      </TouchableOpacity>
+                    </View>
                   </View>
-                  <Text style={styles.price}>{item.price}</Text>
                 </View>
               );
             }}
@@ -288,7 +302,7 @@ const SearchM = ({ navigation }: StackNavigationProps<Routes, "SearchM">) => {
   }
 };
 
-export default SearchM;
+export default ShoppingGrid;
 
 const styles = StyleSheet.create({
   container: {
@@ -297,15 +311,14 @@ const styles = StyleSheet.create({
   },
   name: {
     fontWeight: "bold",
-    fontSize: 16,
+    fontSize: 14,
     color: "black",
   },
   price: {
     fontWeight: "100",
     fontSize: 16,
     color: "black",
-    paddingHorizontal: 16,
-    paddingVertical: 0,
+    paddingVertical: 5,
   },
   listItem: {
     height: 220,
@@ -320,6 +333,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
   },
   detailsContainer: {
+    flex: 1,
     paddingHorizontal: 16,
     paddingVertical: 5,
     flexDirection: "row",
@@ -361,5 +375,16 @@ const styles = StyleSheet.create({
     letterSpacing: 0.25,
     color: "#fff",
     fontFamily: "Questrial_400Regular",
+  },
+  textContainer: {
+    width: Platform.OS === "android" ? 145 : 100,
+    overflow: "hidden",
+  },
+  right: {
+    marginLeft: 0,
+    marginTop: 20,
+    marginRight: 10,
+    position: "absolute",
+    right: 0,
   },
 });
