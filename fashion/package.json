@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "react-native-safe-area-context": "^3.3.2",
+    "react-native-swiper": "^1.6.0-rc.3"
+  }
+}
