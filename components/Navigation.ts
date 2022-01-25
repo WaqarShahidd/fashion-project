@@ -23,4 +23,5 @@ export type Routes = {
   Catalog: any;
   CategoriesW: undefined;
   CategoriesM: undefined;
+  SearchW: any;
 };

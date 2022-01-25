@@ -37,6 +37,14 @@ const Categories = () => {
     PlayfairDisplay_700Bold,
   });
 
+  const [categoryData, setCategoryData] = React.useState([]);
+
+  React.useEffect(() => {
+    fetch("https://fashionstore.technologiasolutions.com/api/Categories")
+      .then((response) => response.json())
+      .then((json) => setCategoryData(json))
+      .catch((error) => console.error(error));
+  }, []);
   if (!fontsLoaded) {
     return <AppLoading />;
   } else {
@@ -74,7 +82,7 @@ const Categories = () => {
 
         <View style={{ paddingTop: 15, flex: 1 }}>
           <FlatList
-            data={cat}
+            data={categoryData}
             showsVerticalScrollIndicator={false}
             keyExtractor={(item) => item.id}
             renderItem={({ item }) => {

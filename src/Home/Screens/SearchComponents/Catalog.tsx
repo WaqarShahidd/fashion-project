@@ -15,6 +15,14 @@ const Catalog = ({
   route,
 }: StackNavigationProps<Routes, "Catalog">) => {
   const [entities, setEntities] = React.useState([]);
+  const [catalogData, setCatalogData] = React.useState([]);
+
+  React.useEffect(() => {
+    fetch("https://fashionstore.technologiasolutions.com/api/Catalogs")
+      .then((response) => response.json())
+      .then((json) => setCatalogData(json))
+      .catch((error) => console.error(error));
+  }, []);
 
   const entityRef = firebase.firestore().collection("menCollection");
 
@@ -61,7 +69,7 @@ const Catalog = ({
 
       <View style={{ paddingTop: 15, flex: 1 }}>
         <FlatList
-          data={catalog}
+          data={catalogData}
           numColumns={2}
           showsVerticalScrollIndicator={false}
           keyExtractor={(item) => item.id}

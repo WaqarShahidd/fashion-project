@@ -7,6 +7,7 @@ import CategoriesM from "./Screens/SearchComponents/CategoriesM";
 import Search from "./Screens/Tabs/Search";
 import { createStackNavigator } from "@react-navigation/stack";
 import { Routes } from "./../../components/navigation";
+import SearchW from "../Home/Screens/SearchComponents/SearchW";
 
 const AppStack = createStackNavigator<Routes>();
 const Home = () => {
@@ -18,6 +19,7 @@ const Home = () => {
       <AppStack.Screen name="CategoriesW" component={CategoriesW} />
       <AppStack.Screen name="CategoriesM" component={CategoriesM} />
       <AppStack.Screen name="Catalog" component={Catalog} />
+      <AppStack.Screen name="SearchW" component={SearchW} />
     </AppStack.Navigator>
   );
 };

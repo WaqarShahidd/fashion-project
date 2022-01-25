@@ -161,29 +161,13 @@ const ShoppingGrid = ({
   navigation,
   route,
 }: StackNavigationProps<Routes, "ShoppingGrid">) => {
-  const [entities, setEntities] = React.useState([]);
-
-  const entityRef = firebase
-    .firestore()
-    .collection("collection")
-    .doc("MenCollection")
-    .collection(`${route.params}`);
+  const [data, setData] = React.useState([]);
 
   React.useEffect(() => {
-    entityRef.onSnapshot(
-      (querySnapshot) => {
-        const newEntities = [] as any;
-        querySnapshot.forEach((doc) => {
-          const entity = doc.data();
-          entity.id = doc.id;
-          newEntities.push(entity);
-        });
-        setEntities(newEntities);
-      },
-      (error) => {
-        console.log(error);
-      }
-    );
+    fetch("https://fashionstore.technologiasolutions.com/api/items")
+      .then((response) => response.json())
+      .then((json) => setData(json))
+      .catch((error) => console.error(error));
   }, []);
 
   const modalRef = React.useRef<any>();
@@ -219,6 +203,12 @@ const ShoppingGrid = ({
   } else {
     return (
       <View style={styles.container}>
+        <Button
+          title={"okok"}
+          onPress={() => {
+            console.log(data);
+          }}
+        />
         <View style={{ justifyContent: "center" }}>
           <View
             style={{
@@ -253,9 +243,9 @@ const ShoppingGrid = ({
           </View>
           <SearchBar />
         </View>
-        {entities && (
+        {data && (
           <FlatList
-            data={entities}
+            data={data}
             numColumns={2}
             showsVerticalScrollIndicator={false}
             keyExtractor={(item) => item.id}
