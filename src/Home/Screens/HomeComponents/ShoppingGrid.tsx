@@ -2,41 +2,48 @@ import * as React from "react";
 import { Text, View, StyleSheet, Platform } from "react-native";
 import { FlatList, TouchableOpacity } from "react-native-gesture-handler";
 
-interface GridItemProps {}
+// const categories = [
+//   {
+//     id: 11,
+//     title: "Winter",
+//     color: "#FFE8E9",
+//   },
+//   {
+//     id: 12,
+//     title: "What's New",
+//     color: "#E4C1F9",
+//   },
+//   {
+//     id: 13,
+//     title: "Top Wear",
+//     color: "#D3F8E2",
+//   },
+//   {
+//     id: 14,
+//     title: "Footwear",
+//     color: "#EDE7B1",
+//   },
+//   {
+//     id: 15,
+//     title: "Active Wear",
+//     color: "#A9DEF9",
+//   },
+// ];
 
-const categories = [
-  {
-    id: 11,
-    title: "Winter",
-    color: "#FFE8E9",
-  },
-  {
-    id: 12,
-    title: "What's New",
-    color: "#E4C1F9",
-  },
-  {
-    id: 13,
-    title: "Top Wear",
-    color: "#D3F8E2",
-  },
-  {
-    id: 14,
-    title: "Footwear",
-    color: "#EDE7B1",
-  },
-  {
-    id: 15,
-    title: "Active Wear",
-    color: "#A9DEF9",
-  },
-];
+const GridItem = () => {
+  const [data, setData] = React.useState([]);
 
-const GridItem = (props: GridItemProps) => {
+  React.useEffect(() => {
+    fetch("https://fashionstore.technologiasolutions.com/api/items")
+      .then((response) => response.json())
+      .then((json) => setData(json))
+      .catch((error) => console.error(error));
+  }, []);
+
   return (
     <View style={styles.container}>
       <FlatList
-        data={categories}
+        data={data}
         keyExtractor={(item) => item.key}
         numColumns={2}
         renderItem={({ item }) => {
@@ -48,7 +55,7 @@ const GridItem = (props: GridItemProps) => {
                     StyleSheet.absoluteFill,
                     { backgroundColor: item.color, borderRadius: 6 },
                   ]}
-                ></View>
+                />
                 <Text>{item.title}</Text>
               </TouchableOpacity>
             </View>

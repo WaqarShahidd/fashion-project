@@ -1,24 +1,22 @@
-import * as React from 'react';
-import { Text, View, StyleSheet, Image } from 'react-native';
+import * as React from "react";
+import { Text, View, StyleSheet, Image } from "react-native";
 import Swiper from "react-native-swiper";
 import { data } from "../../Components/cardData";
-import Testing from './../../Components/Testing';
+import SliderComponent from "../../Components/SliderComponent";
 
-interface TestProps {}
-
-const Test = (props: TestProps) => {
+const Slider = () => {
   return (
     <View style={styles.sliderContainer}>
-      <Swiper autoplay horizontal={false} height={200} activeDotColor="#c39476">
+      <Swiper autoplay horizontal={false} height={200} activeDotColor="#000">
         {data.map((testing) => (
-          <Testing key={testing.key} testing={testing} />
+          <SliderComponent key={testing.key} testing={testing} />
         ))}
       </Swiper>
     </View>
   );
 };
 
-export default Test;
+export default Slider;
 
 const styles = StyleSheet.create({
   container: {

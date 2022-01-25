@@ -2,31 +2,12 @@ import * as React from "react";
 import { Text, View, StyleSheet, Dimensions, Image } from "react-native";
 import {
   FlatList,
-  TouchableOpacity,
   TouchableWithoutFeedback,
 } from "react-native-gesture-handler";
 import { cat } from "../../Components/categories";
-import {
-  Routes,
-  StackNavigationProps,
-} from "../../../../components/navigation";
 import { useFonts, Questrial_400Regular } from "@expo-google-fonts/questrial";
 import AppLoading from "expo-app-loading";
-import { Header } from "react-native-elements";
-import {
-  PlayfairDisplay_400Regular,
-  PlayfairDisplay_500Medium,
-  PlayfairDisplay_600SemiBold,
-  PlayfairDisplay_700Bold,
-  PlayfairDisplay_800ExtraBold,
-  PlayfairDisplay_900Black,
-  PlayfairDisplay_400Regular_Italic,
-  PlayfairDisplay_500Medium_Italic,
-  PlayfairDisplay_600SemiBold_Italic,
-  PlayfairDisplay_700Bold_Italic,
-  PlayfairDisplay_800ExtraBold_Italic,
-  PlayfairDisplay_900Black_Italic,
-} from "@expo-google-fonts/playfair-display";
+import { PlayfairDisplay_700Bold } from "@expo-google-fonts/playfair-display";
 import { Feather as Icon, MaterialIcons } from "@expo/vector-icons";
 
 const winHeight = Dimensions.get("window").height;

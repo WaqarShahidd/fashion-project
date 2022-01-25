@@ -1,10 +1,9 @@
 import * as React from "react";
-import { Text, View, StyleSheet } from "react-native";
+import { View, StyleSheet } from "react-native";
 import CartItmeList from "../../Components/CartItemList";
 import CartTotal from "../../Components/CartTotal";
-interface CartProps {}
 
-const Cart = (props: CartProps) => {
+const Cart = () => {
   return (
     <View style={styles.container}>
       <CartItmeList />

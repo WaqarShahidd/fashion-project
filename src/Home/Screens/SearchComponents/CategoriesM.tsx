@@ -1,32 +1,11 @@
 import * as React from "react";
 import { Text, View, StyleSheet, Dimensions, Image } from "react-native";
-import {
-  FlatList,
-  TouchableOpacity,
-  TouchableWithoutFeedback,
-} from "react-native-gesture-handler";
+import { FlatList, TouchableOpacity } from "react-native-gesture-handler";
 import { cat } from "../../Components/categories";
 import {
   Routes,
   StackNavigationProps,
 } from "../../../../components/navigation";
-import { useFonts, Questrial_400Regular } from "@expo-google-fonts/questrial";
-import AppLoading from "expo-app-loading";
-import { Header } from "react-native-elements";
-import {
-  PlayfairDisplay_400Regular,
-  PlayfairDisplay_500Medium,
-  PlayfairDisplay_600SemiBold,
-  PlayfairDisplay_700Bold,
-  PlayfairDisplay_800ExtraBold,
-  PlayfairDisplay_900Black,
-  PlayfairDisplay_400Regular_Italic,
-  PlayfairDisplay_500Medium_Italic,
-  PlayfairDisplay_600SemiBold_Italic,
-  PlayfairDisplay_700Bold_Italic,
-  PlayfairDisplay_800ExtraBold_Italic,
-  PlayfairDisplay_900Black_Italic,
-} from "@expo-google-fonts/playfair-display";
 import { Feather as Icon, MaterialIcons } from "@expo/vector-icons";
 import firebase from "firebase";
 
@@ -36,102 +15,91 @@ const CategoriesM = ({
   navigation,
   route,
 }: StackNavigationProps<Routes, "CategoriesM">) => {
-  const [choice, setChoice] = React.useState("");
+  const [categoryData, setCategoryData] = React.useState([]);
 
-  let [fontsLoaded] = useFonts({
-    Questrial_400Regular,
-    PlayfairDisplay_700Bold,
-  });
+  React.useEffect(() => {
+    fetch("https://fashionstore.technologiasolutions.com/api/Categories")
+      .then((response) => response.json())
+      .then((json) => setCategoryData(json))
+      .catch((error) => console.error(error));
+  }, []);
 
   const change = (item) => {
-    if (item.key == "1") {
-      navigation.navigate("ShoppingGrid", "Shirt");
-    } else if (item.key == "2") {
-      navigation.navigate("ShoppingGrid", "Shoe");
-    } else if (item.key == "3") {
-      navigation.navigate("ShoppingGrid", "Bags");
-    } else if (item.key == "4") {
-      navigation.navigate("ShoppingGrid", "Fragrance");
-    } else if (item.key == "5") {
-      navigation.navigate("ShoppingGrid", "Watch");
-    } else if (item.key == "6") {
-      navigation.navigate("ShoppingGrid", "Jacket");
-    }
+    navigation.navigate("Grid", {
+      name: item.categoryId,
+    });
   };
 
-  if (!fontsLoaded) {
-    return <AppLoading />;
-  } else {
-    return (
-      <View style={styles.container}>
-        <View
-          style={{
-            height: winHeight * 0.1,
-            justifyContent: "center",
-            backgroundColor: "white",
-            flexDirection: "row",
+  return (
+    <View style={styles.container}>
+      <View
+        style={{
+          height: winHeight * 0.1,
+          justifyContent: "center",
+          backgroundColor: "white",
+          flexDirection: "row",
 
-            alignItems: "center",
+          alignItems: "center",
+        }}
+      >
+        <Icon
+          name="chevron-left"
+          size={20}
+          color="#000"
+          onPress={() => {
+            navigation.navigate("Search");
           }}
+          style={{ margin: 20, position: "absolute", left: 0 }}
+        />
+        <Text
+          style={{
+            fontSize: 20,
+
+            textAlign: "center",
+
+            fontFamily: "PlayfairDisplay_700Bold",
+          }}
+          onPress={() => console.log(route.params?.name)}
         >
-          <Icon
-            name="chevron-left"
-            size={20}
-            color="#000"
-            onPress={() => {
-              navigation.navigate("Search");
-            }}
-            style={{ margin: 20, position: "absolute", left: 0 }}
-          />
-          <Text
-            style={{
-              fontSize: 20,
-
-              textAlign: "center",
-
-              fontFamily: "PlayfairDisplay_700Bold",
-            }}
-          >
-            CATEGORIES
-          </Text>
-        </View>
-
-        <View style={{ paddingTop: 15, flex: 1 }}>
-          <FlatList
-            data={cat}
-            showsVerticalScrollIndicator={false}
-            keyExtractor={(item) => item.id}
-            renderItem={({ item }) => {
-              return (
-                <TouchableOpacity
-                  style={styles.card}
-                  onPress={() => {
-                    change(item);
-                  }}
-                >
-                  <View style={styles.cardImgWrapper}>
-                    <Image
-                      style={styles.cardImg}
-                      resizeMode="contain"
-                      source={{ uri: item.image }}
-                    />
-                  </View>
-                  <View style={styles.cardInfo}>
-                    <Text style={styles.cardTitle}>{item.title}</Text>
-                    <MaterialIcons
-                      name={"chevron-right"}
-                      size={22}
-                      color={"#000"}
-                    />
-                  </View>
-                </TouchableOpacity>
-              );
-            }}
-          />
-        </View>
+          CATEGORIES
+        </Text>
       </View>
-    );
-  }
+
+      <View style={{ paddingTop: 15, flex: 1 }}>
+        <FlatList
+          data={categoryData}
+          showsVerticalScrollIndicator={false}
+          keyExtractor={(item) => item.id}
+          renderItem={({ item }) => {
+            return (
+              <TouchableOpacity
+                style={styles.card}
+                onPress={() => {
+                  change(item);
+                }}
+              >
+                <View style={styles.cardImgWrapper}>
+                  <Image
+                    style={styles.cardImg}
+                    resizeMode="contain"
+                    source={{ uri: item.image }}
+                  />
+                </View>
+                <View style={styles.cardInfo}>
+                  <Text style={styles.cardTitle}>{item.name}</Text>
+                  <MaterialIcons
+                    name={"chevron-right"}
+                    size={22}
+                    color={"#000"}
+                  />
+                </View>
+              </TouchableOpacity>
+            );
+          }}
+        />
+      </View>
+    </View>
+  );
 };
 
 export default CategoriesM;

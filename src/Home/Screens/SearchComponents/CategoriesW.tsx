@@ -10,108 +10,99 @@ import {
   Routes,
   StackNavigationProps,
 } from "../../../../components/navigation";
-import { useFonts, Questrial_400Regular } from "@expo-google-fonts/questrial";
-import AppLoading from "expo-app-loading";
-import { Header } from "react-native-elements";
-import {
-  PlayfairDisplay_400Regular,
-  PlayfairDisplay_500Medium,
-  PlayfairDisplay_600SemiBold,
-  PlayfairDisplay_700Bold,
-  PlayfairDisplay_800ExtraBold,
-  PlayfairDisplay_900Black,
-  PlayfairDisplay_400Regular_Italic,
-  PlayfairDisplay_500Medium_Italic,
-  PlayfairDisplay_600SemiBold_Italic,
-  PlayfairDisplay_700Bold_Italic,
-  PlayfairDisplay_800ExtraBold_Italic,
-  PlayfairDisplay_900Black_Italic,
-} from "@expo-google-fonts/playfair-display";
 import { Feather as Icon, MaterialIcons } from "@expo/vector-icons";
 
 const winHeight = Dimensions.get("window").height;
 
 const CategoriesW = ({
   navigation,
+  route,
 }: StackNavigationProps<Routes, "CategoriesW">) => {
-  let [fontsLoaded] = useFonts({
-    Questrial_400Regular,
-    PlayfairDisplay_700Bold,
-  });
+  const [categoryData, setCategoryData] = React.useState([]);
 
-  if (!fontsLoaded) {
-    return <AppLoading />;
-  } else {
-    return (
-      <View style={styles.container}>
-        <View
-          style={{
-            height: winHeight * 0.1,
-            justifyContent: "center",
-            backgroundColor: "white",
-            flexDirection: "row",
+  React.useEffect(() => {
+    fetch("https://fashionstore.technologiasolutions.com/api/Categories")
+      .then((response) => response.json())
+      .then((json) => setCategoryData(json))
+      .catch((error) => console.error(error));
+  }, []);
 
-            alignItems: "center",
+  const change = (item) => {
+    navigation.navigate("Grid", {
+      name: item.categoryId,
+      i: route.params?.id,
+    });
+  };
+  return (
+    <View style={styles.container}>
+      <View
+        style={{
+          height: winHeight * 0.1,
+          justifyContent: "center",
+          backgroundColor: "white",
+          flexDirection: "row",
+
+          alignItems: "center",
+        }}
+      >
+        <Icon
+          name="chevron-left"
+          size={20}
+          color="#000"
+          onPress={() => {
+            navigation.navigate("Grid");
           }}
+          style={{ margin: 20, position: "absolute", left: 0 }}
+        />
+        <Text
+          style={{
+            fontSize: 20,
+
+            textAlign: "center",
+
+            fontFamily: "PlayfairDisplay_700Bold",
+          }}
+          onPress={() => console.log(route.params?.name)}
         >
-          <Icon
-            name="chevron-left"
-            size={20}
-            color="#000"
-            onPress={() => {
-              navigation.navigate("Search");
-            }}
-            style={{ margin: 20, position: "absolute", left: 0 }}
-          />
-          <Text
-            style={{
-              fontSize: 20,
-
-              textAlign: "center",
-
-              fontFamily: "PlayfairDisplay_700Bold",
-            }}
-          >
-            CATEGORIES
-          </Text>
-        </View>
-
-        <View style={{ paddingTop: 15, flex: 1 }}>
-          <FlatList
-            data={cat}
-            showsVerticalScrollIndicator={false}
-            keyExtractor={(item) => item.id}
-            renderItem={({ item }) => {
-              return (
-                <TouchableWithoutFeedback
-                  style={styles.card}
-                  onPress={() => {
-                    navigation.navigate("SearchW");
-                  }}
-                >
-                  <View style={styles.cardImgWrapper}>
-                    <Image
-                      style={styles.cardImg}
-                      resizeMode="contain"
-                      source={{ uri: item.image }}
-                    />
-                  </View>
-                  <View style={styles.cardInfo}>
-                    <Text style={styles.cardTitle}>{item.title}</Text>
-                    <MaterialIcons
-                      name={"chevron-right"}
-                      size={22}
-                      color={"#000"}
-                    />
-                  </View>
-                </TouchableWithoutFeedback>
-              );
-            }}
-          />
-        </View>
+          CATEGORIES
+        </Text>
       </View>
-    );
-  }
+
+      <View style={{ paddingTop: 15, flex: 1 }}>
+        <FlatList
+          data={categoryData}
+          showsVerticalScrollIndicator={false}
+          keyExtractor={(item) => item.id}
+          renderItem={({ item }) => {
+            return (
+              <TouchableWithoutFeedback
+                style={styles.card}
+                onPress={() => {
+                  change(item);
+                }}
+              >
+                <View style={styles.cardImgWrapper}>
+                  <Image
+                    style={styles.cardImg}
+                    resizeMode="contain"
+                    source={{ uri: item.image }}
+                  />
+                </View>
+                <View style={styles.cardInfo}>
+                  <Text style={styles.cardTitle}>{item.name}</Text>
+                  <MaterialIcons
+                    name={"chevron-right"}
+                    size={22}
+                    color={"#000"}
+                  />
+                </View>
+              </TouchableWithoutFeedback>
+            );
+          }}
+        />
+      </View>
+    </View>
+  );
 };
 
 export default CategoriesW;

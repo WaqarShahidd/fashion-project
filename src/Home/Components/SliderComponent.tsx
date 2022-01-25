@@ -1,15 +1,7 @@
-import * as React from 'react';
+import * as React from "react";
 import { Text, View, StyleSheet, Image } from "react-native";
 
-interface TestingProps {
-  testing: {
-    key: string;
-    title: string;
-    image: string;    
-  };
-}
-
-const Testing = ({ testing: { image } }) => {
+const SliderComponent = ({ testing: { image } }) => {
   return (
     <View style={styles.slide}>
       <Image
@@ -23,7 +15,7 @@ const Testing = ({ testing: { image } }) => {
   );
 };
 
-export default Testing;
+export default SliderComponent;
 
 const styles = StyleSheet.create({
   container: {},

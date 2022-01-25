@@ -4,7 +4,6 @@ import {
   View,
   StyleSheet,
   Platform,
-  Image,
   ImageBackground,
 } from "react-native";
 import { FlatList, TouchableOpacity } from "react-native-gesture-handler";
@@ -12,9 +11,7 @@ import { offers } from "../../Components/offersData";
 import { useFonts, Questrial_400Regular } from "@expo-google-fonts/questrial";
 import AppLoading from "expo-app-loading";
 
-interface OfferProps {}
-
-const Offer = (props: OfferProps) => {
+const Offer = () => {
   let [fontsLoaded] = useFonts({
     Questrial_400Regular,
   });

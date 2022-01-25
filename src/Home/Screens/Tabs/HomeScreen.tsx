@@ -7,24 +7,20 @@ import {
   StatusBar,
   Dimensions,
 } from "react-native";
-import { FlatList, TouchableOpacity } from "react-native-gesture-handler";
-
+import { FlatList } from "react-native-gesture-handler";
 import Categories from "../HomeComponents/CollectionCircle";
-import { ScrollView } from "react-native-gesture-handler";
 import { useBottomTabBarHeight } from "@react-navigation/bottom-tabs";
 import Offer from "../HomeComponents/OfferCards";
-import Test from "../HomeComponents/Test";
+import Slider from "../HomeComponents/Slider";
 import AppLoading from "expo-app-loading";
-
 import {
   PlayfairDisplay_700Bold,
   useFonts,
 } from "@expo-google-fonts/playfair-display";
+
 const winHeight = Dimensions.get("window").height;
 
-interface HomeScreenProps {}
-
-const HomeScreen = (props: HomeScreenProps) => {
+const HomeScreen = () => {
   const tabBarheight = useBottomTabBarHeight();
   let [fontsLoaded] = useFonts({
     PlayfairDisplay_700Bold,
@@ -89,7 +85,7 @@ const HomeScreen = (props: HomeScreenProps) => {
             )}
             ListEmptyComponent={() => (
               <View style={{ marginTop: 20 }}>
-                <Test />
+                <Slider />
               </View>
             )}
             ListFooterComponent={() => (
@@ -98,7 +94,6 @@ const HomeScreen = (props: HomeScreenProps) => {
               </View>
             )}
           />
-          
         </View>
         <View style={{ bottom: 0, flex: 0.2, backgroundColor: "#000" }} />
       </View>

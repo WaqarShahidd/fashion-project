@@ -3,7 +3,6 @@ import { Text, View, StyleSheet, Image } from "react-native";
 import Swiper from "react-native-deck-swiper";
 import { data } from "../../Components/cardData";
 
-
 const Cards = ({ card }) => (
   <View style={styles.card}>
     <Image source={{ uri: card.image }} style={styles.cardImage} />

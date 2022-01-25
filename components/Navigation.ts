@@ -21,6 +21,8 @@ export type Routes = {
   Search: undefined;
   ShoppingGrid: any;
   Catalog: any;
-  CategoriesW: undefined;
-  CategoriesM: undefined;
+  CategoriesW: any;
+  CategoriesM: any;
+  Grid: any;
+  i: any;
 };

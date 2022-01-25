@@ -67,25 +67,26 @@ const Search = ({ navigation }: StackNavigationProps<Routes, "Search">) => {
           keyExtractor={(item) => item.id}
           renderItem={({ item }) => {
             return (
-              <TouchableOpacity
-                style={styles.listItem}
-                onPress={() => {
-                  item.title === "Men"
-                    ? navigation.navigate("CategoriesM")
-                    : item.title === "Women"
-                    ? navigation.navigate("CategoriesW")
-                    : navigation.navigate("Search");
-                }}
-              >
-                <Image
-                  style={styles.image}
-                  resizeMode="cover"
-                  source={{ uri: item.image }}
-                />
+              <View style={styles.listItem}>
+                <TouchableOpacity
+                  onPress={() => {
+                    item.title === "Men"
+                      ? navigation.navigate("CategoriesM")
+                      : item.title === "Women"
+                      ? navigation.navigate("CategoriesW")
+                      : navigation.navigate("Search");
+                  }}
+                >
+                  <Image
+                    style={styles.image}
+                    resizeMode="cover"
+                    source={{ uri: item.image }}
+                  />
+                </TouchableOpacity>
                 <View style={styles.detailsContainer}>
                   <Text style={styles.name}>{item.title}</Text>
                 </View>
-              </TouchableOpacity>
+              </View>
             );
           }}
         />

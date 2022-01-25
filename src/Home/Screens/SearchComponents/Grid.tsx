@@ -10,30 +10,20 @@ import {
 import { FlatList, TouchableOpacity } from "react-native-gesture-handler";
 import { Feather as Icon, MaterialIcons } from "@expo/vector-icons";
 import { item } from "../../Components/ItemData";
-import { Header } from "react-native-elements";
 import {
   Routes,
   StackNavigationProps,
 } from "../../../../components/navigation";
-import SearchBar from "./../../Components/SearchBar";
+import SearchBar from "../../Components/SearchBar";
 import {
-  PlayfairDisplay_400Regular,
-  PlayfairDisplay_500Medium,
-  PlayfairDisplay_600SemiBold,
   PlayfairDisplay_700Bold,
-  PlayfairDisplay_800ExtraBold,
-  PlayfairDisplay_900Black,
-  PlayfairDisplay_400Regular_Italic,
-  PlayfairDisplay_500Medium_Italic,
-  PlayfairDisplay_600SemiBold_Italic,
-  PlayfairDisplay_700Bold_Italic,
-  PlayfairDisplay_800ExtraBold_Italic,
-  PlayfairDisplay_900Black_Italic,
   useFonts,
 } from "@expo-google-fonts/playfair-display";
 import AppLoading from "expo-app-loading";
 import { Questrial_400Regular } from "@expo-google-fonts/questrial";
 import { Modalize } from "react-native-modalize";
+import { RouteProp } from "@react-navigation/native";
+import { Button } from "react-native-elements/dist/buttons/Button";
 
 const winHeight = Dimensions.get("window").height;
 
@@ -156,7 +146,18 @@ const Modal = ({ modalRef }) => {
   }
 };
 
-const SearchW = ({ navigation }: StackNavigationProps<Routes, "Catalog">) => {
+const Grid = ({ navigation, route }: StackNavigationProps<Routes, "Grid">) => {
+  const [data, setData] = React.useState([]);
+
+  React.useEffect(() => {
+    fetch(
+      `https://fashionstore.technologiasolutions.com/api/Items/Class?catalog=1&caegory=${route.params?.name}`
+    )
+      .then((response) => response.json())
+      .then((json) => setData(json))
+      .catch((error) => console.error(error));
+  }, []);
+
   const modalRef = React.useRef<any>();
 
   const onOpen = () => {
@@ -172,86 +173,83 @@ const SearchW = ({ navigation }: StackNavigationProps<Routes, "Catalog">) => {
     setFav(fav === "favorite" ? "favorite-outline" : "favorite");
   };
 
-  let [fontsLoaded] = useFonts({
-    PlayfairDisplay_700Bold,
-  });
+  return (
+    <View style={styles.container}>
+      <View
+        style={{
+          height: winHeight * 0.1,
+          justifyContent: "center",
+          backgroundColor: "white",
+          flexDirection: "row",
 
-  if (!fontsLoaded) {
-    return <AppLoading />;
-  } else {
-    return (
-      <View style={styles.container}>
-        <View
+          alignItems: "center",
+        }}
+      >
+        <Icon
+          name="chevron-left"
+          size={20}
+          color="#000"
+          onPress={() => {
+            navigation.navigate("Search");
+          }}
+          style={{ margin: 20, position: "absolute", left: 0 }}
+        />
+        <Text
           style={{
-            height: winHeight * 0.1,
-            justifyContent: "center",
-            backgroundColor: "white",
-            flexDirection: "row",
+            fontSize: 20,
 
-            alignItems: "center",
+            textAlign: "center",
+
+            fontFamily: "PlayfairDisplay_700Bold",
           }}
         >
-          <Icon
-            name="chevron-left"
-            size={20}
-            color="#000"
-            onPress={() => {
-              navigation.navigate("Search");
-            }}
-            style={{ margin: 20, position: "absolute", left: 0 }}
-          />
-          <Text
-            style={{
-              fontSize: 20,
+          SHOP
+        </Text>
+      </View>
+      <SearchBar />
+      <FlatList
+        data={data}
+        numColumns={2}
+        showsVerticalScrollIndicator={false}
+        keyExtractor={(item) => item.id}
+        renderItem={({ item }) => {
+          return (
+            <View style={styles.listItem}>
+              <TouchableOpacity onPress={onOpen}>
+                <Image
+                  style={styles.image}
+                  resizeMode="cover"
+                  source={{ uri: item.image }}
+                />
+              </TouchableOpacity>
 
-              textAlign: "center",
-
-              fontFamily: "PlayfairDisplay_700Bold",
-            }}
-          >
-            Women
-          </Text>
-        </View>
-        <SearchBar />
-        <FlatList
-          data={item}
-          numColumns={2}
-          showsVerticalScrollIndicator={false}
-          keyExtractor={(item) => item.id}
-          renderItem={({ item }) => {
-            return (
-              <View style={styles.listItem}>
-                <TouchableOpacity onPress={onOpen}>
-                  <Image
-                    style={styles.image}
-                    resizeMode="cover"
-                    source={{ uri: item.image }}
+              <View style={styles.detailsContainer}>
+                <Text
+                  numberOfLines={1}
+                  ellipsizeMode="tail"
+                  style={styles.name}
+                >
+                  {item.name}
+                </Text>
+                <TouchableOpacity onPress={toggleFav}>
+                  <MaterialIcons
+                    name={fav === "favorite" ? "favorite-outline" : "favorite"}
+                    size={22}
+                    color={"#000"}
                   />
                 </TouchableOpacity>
-                <View style={styles.detailsContainer}>
-                  <Text style={styles.name}>{item.title}</Text>
-                  <TouchableOpacity onPress={toggleFav}>
-                    <MaterialIcons
-                      name={
-                        fav === "favorite" ? "favorite-outline" : "favorite"
-                      }
-                      size={22}
-                      color={"#000"}
-                    />
-                  </TouchableOpacity>
-                </View>
-                <Text style={styles.price}>{item.price}</Text>
               </View>
-            );
-          }}
-        />
-        <Modal modalRef={modalRef} />
-      </View>
-    );
-  }
+              <Text style={styles.price}>{item.price}</Text>
+            </View>
+          );
+        }}
+      />
+      <Modal modalRef={modalRef} />
+    </View>
+  );
 };
 
-export default SearchW;
+export default Grid;
 
 const styles = StyleSheet.create({
   container: {
@@ -262,6 +260,7 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     fontSize: 16,
     color: "black",
+    width: 96,
   },
   price: {
     fontWeight: "100",

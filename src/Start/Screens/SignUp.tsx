@@ -15,7 +15,7 @@ import WoodPickerr from "../Components/WoodPickerr";
 
 
 const winHeight = Dimensions.get("window").height;
-//asdasdads
+
 const SignUp = ({ navigation }: StackNavigationProps<Routes, "SignUp">) => {
   const [email, setEmail] = React.useState("");
   const [pass, setPass] = React.useState("");
