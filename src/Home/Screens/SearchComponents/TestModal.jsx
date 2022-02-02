@@ -68,17 +68,6 @@ const TestModal = ({ modalRef, data }) => {
               />
             </Pressable>
           </View>
-          {/* <TouchableOpacity
-            style={{
-              right: 0,
-              marginRight: 25,
-              marginTop: 10,
-              marginBottom: 50,
-              position: "absolute",
-            }}
-          >
-            <MaterialIcons name={"share"} size={22} color={"#000"} />
-          </TouchableOpacity> */}
 
           <Text
             style={{
@@ -117,7 +106,6 @@ const TestModal = ({ modalRef, data }) => {
             ]}
             onPress={() => {
               addProduct(data);
-              alert("Added to cart");
             }}
           >
             <Icon
@@ -126,7 +114,7 @@ const TestModal = ({ modalRef, data }) => {
               color="#fff"
               style={{ marginRight: 10 }}
             />
-            <Text style={styles.buttonText}>Add to cart</Text>
+            <Text style={styles.buttonText}>Add to cartdada</Text>
           </Pressable>
         </View>
       </View>
