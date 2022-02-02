@@ -13,6 +13,15 @@ import { Feather as Icon, MaterialIcons } from "@expo/vector-icons";
 const winHeight = Dimensions.get("window").height;
 
 const Categories = () => {
+  const [catagoriesData, setCatagoriesData] = React.useState([]);
+
+  React.useEffect(() => {
+    fetch("https://fashionstore.technologiasolutions.com/api/categories")
+      .then((response) => response.json())
+      .then((json) => setCatagoriesData(json))
+      .catch((error) => console.error(error));
+  }, []);
+
   let [fontsLoaded] = useFonts({
     Questrial_400Regular,
     PlayfairDisplay_700Bold,

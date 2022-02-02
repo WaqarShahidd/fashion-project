@@ -9,46 +9,32 @@ import {
 } from "react-native";
 import { FlatList, TouchableOpacity } from "react-native-gesture-handler";
 import { Feather as Icon, MaterialIcons } from "@expo/vector-icons";
-import { item } from "../../Components/ItemData";
 import {
   Routes,
   StackNavigationProps,
 } from "../../../../components/navigation";
 import SearchBar from "../../Components/SearchBar";
-import {
-  PlayfairDisplay_700Bold,
-  useFonts,
-} from "@expo-google-fonts/playfair-display";
-import AppLoading from "expo-app-loading";
-import { Questrial_400Regular } from "@expo-google-fonts/questrial";
+import TestModal from "./TestModal";
 import { Modalize } from "react-native-modalize";
-import { RouteProp } from "@react-navigation/native";
-import { Button } from "react-native-elements/dist/buttons/Button";
 
 const winHeight = Dimensions.get("window").height;
 
-const Modal = ({ modalRef }) => {
+const Modal = ({ modalRef, data }) => {
   const [fav, setFav] = React.useState("favorite");
 
   const toggleFav = () => {
     setFav(fav === "favorite" ? "favorite-outline" : "favorite");
   };
-  let [fontsLoaded] = useFonts({
-    PlayfairDisplay_700Bold,
-    Questrial_400Regular,
-  });
 
-  if (!fontsLoaded) {
-    return <AppLoading />;
-  } else {
-    return (
-      <Modalize
-        ref={modalRef}
-        scrollViewProps={{ showsVerticalScrollIndicator: false }}
-        snapPoint={300}
-        HeaderComponent={<View style={{ height: 15 }} />}
-        withHandle={false}
-      >
+  return (
+    <Modalize
+      ref={modalRef}
+      scrollViewProps={{ showsVerticalScrollIndicator: false }}
+      snapPoint={300}
+      HeaderComponent={<View style={{ height: 15 }} />}
+      withHandle={false}
+    >
+      {data.map((item) => (
         <View style={{ height: winHeight, backgroundColor: "#fff" }}>
           <View style={{ backgroundColor: "#fff" }}>
             <View
@@ -70,7 +56,7 @@ const Modal = ({ modalRef }) => {
                   fontFamily: "Questrial_400Regular",
                 }}
               >
-                Denim Jacket
+                {item.name}
               </Text>
 
               <Pressable onPress={toggleFav}>
@@ -102,7 +88,7 @@ const Modal = ({ modalRef }) => {
                 marginTop: -10,
               }}
             >
-              450$
+              {item.price}$
             </Text>
             <View
               style={{
@@ -141,17 +127,19 @@ const Modal = ({ modalRef }) => {
             </Pressable>
           </View>
         </View>
-      </Modalize>
-    );
-  }
+      ))}
+    </Modalize>
+  );
 };
 
 const Grid = ({ navigation, route }: StackNavigationProps<Routes, "Grid">) => {
+  const [activeKey, setActiveKey] = React.useState("0");
+
   const [data, setData] = React.useState([]);
 
   React.useEffect(() => {
     fetch(
-      `https://fashionstore.technologiasolutions.com/api/Items/Class?catalog=1&caegory=${route.params?.name}`
+      `https://fashionstore.technologiasolutions.com/api/Items/Class?catalog=${route.params?.id}&caegory=${route.params?.name}`
     )
       .then((response) => response.json())
       .then((json) => setData(json))
@@ -167,10 +155,22 @@ const Grid = ({ navigation, route }: StackNavigationProps<Routes, "Grid">) => {
       modal.open();
     }
   };
-  const [fav, setFav] = React.useState("favorite");
 
-  const toggleFav = () => {
-    setFav(fav === "favorite" ? "favorite-outline" : "favorite");
+  const Favorite = () => {
+    const [fav, setFav] = React.useState("favorite");
+
+    const toggleFav = () => {
+      setFav(fav === "favorite" ? "favorite-outline" : "favorite");
+    };
+    return (
+      <Pressable onPress={toggleFav}>
+        <MaterialIcons
+          name={fav === "favorite" ? "favorite-outline" : "favorite"}
+          size={22}
+          color={"#000"}
+        />
+      </Pressable>
+    );
   };
 
   return (
@@ -215,7 +215,13 @@ const Grid = ({ navigation, route }: StackNavigationProps<Routes, "Grid">) => {
         renderItem={({ item }) => {
           return (
             <View style={styles.listItem}>
-              <TouchableOpacity onPress={onOpen}>
+              <TouchableOpacity
+                onPress={() => {
+                  onOpen;
+                  setActiveKey(item.id);
+                  console.log(activeKey);
+                }}
+              >
                 <Image
                   style={styles.image}
                   resizeMode="cover"
@@ -231,20 +237,15 @@ const Grid = ({ navigation, route }: StackNavigationProps<Routes, "Grid">) => {
                 >
                   {item.name}
                 </Text>
-                <TouchableOpacity onPress={toggleFav}>
-                  <MaterialIcons
-                    name={fav === "favorite" ? "favorite-outline" : "favorite"}
-                    size={22}
-                    color={"#000"}
-                  />
-                </TouchableOpacity>
+
+                <Favorite />
               </View>
-              <Text style={styles.price}>{item.price}</Text>
+              <Text style={styles.price}>${item.price}</Text>
             </View>
           );
         }}
       />
-      <Modal modalRef={modalRef} />
+      <Modal modalRef={modalRef} data={data} />
     </View>
   );
 };

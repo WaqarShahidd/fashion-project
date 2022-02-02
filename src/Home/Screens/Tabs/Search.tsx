@@ -1,7 +1,7 @@
 import * as React from "react";
 import { Text, View, StyleSheet, Dimensions, Image } from "react-native";
 import { FlatList, TouchableOpacity } from "react-native-gesture-handler";
-import { catalog } from "./../../Components/catalogData";
+// import { catalog } from "./../../Components/catalogData";
 import {
   Routes,
   StackNavigationProps,
@@ -11,28 +11,13 @@ import firebase from "firebase";
 const winHeight = Dimensions.get("window").height;
 
 const Search = ({ navigation }: StackNavigationProps<Routes, "Search">) => {
-  const [entities, setEntities] = React.useState([]);
+  const [catalogData, setCatalogData] = React.useState([]);
 
-  const entityRef = firebase.firestore().collection("menCollection");
-
-  const e = () => {
-    firebase.firestore().collection("collection").where("Men", "==", "Men");
-  };
   React.useEffect(() => {
-    entityRef.onSnapshot(
-      (querySnapshot) => {
-        const newEntities = [] as any;
-        querySnapshot.forEach((doc) => {
-          const entity = doc.data();
-          entity.id = doc.id;
-          newEntities.push(entity);
-        });
-        setEntities(newEntities);
-      },
-      (error) => {
-        console.log(error);
-      }
-    );
+    fetch("https://fashionstore.technologiasolutions.com/api/Catalogs")
+      .then((response) => response.json())
+      .then((json) => setCatalogData(json))
+      .catch((error) => console.error(error));
   }, []);
   return (
     <View style={styles.container}>
@@ -61,7 +46,7 @@ const Search = ({ navigation }: StackNavigationProps<Routes, "Search">) => {
 
       <View style={{ paddingTop: 15, flex: 1 }}>
         <FlatList
-          data={catalog}
+          data={catalogData}
           numColumns={2}
           showsVerticalScrollIndicator={false}
           keyExtractor={(item) => item.id}
@@ -70,10 +55,14 @@ const Search = ({ navigation }: StackNavigationProps<Routes, "Search">) => {
               <View style={styles.listItem}>
                 <TouchableOpacity
                   onPress={() => {
-                    item.title === "Men"
-                      ? navigation.navigate("CategoriesM")
-                      : item.title === "Women"
-                      ? navigation.navigate("CategoriesW")
+                    item.catalogId === 1
+                      ? navigation.navigate("CategoriesM", {
+                          id: item.catalogId,
+                        })
+                      : item.catalogId === 2
+                      ? navigation.navigate("CategoriesW", {
+                          id: item.catalogId,
+                        })
                       : navigation.navigate("Search");
                   }}
                 >
@@ -84,7 +73,7 @@ const Search = ({ navigation }: StackNavigationProps<Routes, "Search">) => {
                   />
                 </TouchableOpacity>
                 <View style={styles.detailsContainer}>
-                  <Text style={styles.name}>{item.title}</Text>
+                  <Text style={styles.name}>{item.name}</Text>
                 </View>
               </View>
             );

@@ -27,6 +27,7 @@ const CategoriesM = ({
   const change = (item) => {
     navigation.navigate("Grid", {
       name: item.categoryId,
+      id: route.params?.id,
     });
   };
 
@@ -59,7 +60,7 @@ const CategoriesM = ({
 
             fontFamily: "PlayfairDisplay_700Bold",
           }}
-          onPress={() => console.log(route.params?.name)}
+          onPress={() => console.log(route.params?.id)}
         >
           CATEGORIES
         </Text>

@@ -30,7 +30,7 @@ const CategoriesW = ({
   const change = (item) => {
     navigation.navigate("Grid", {
       name: item.categoryId,
-      i: route.params?.id,
+      id: route.params?.id,
     });
   };
   return (
@@ -62,7 +62,6 @@ const CategoriesW = ({
 
             fontFamily: "PlayfairDisplay_700Bold",
           }}
-          onPress={() => console.log(route.params?.name)}
         >
           CATEGORIES
         </Text>
