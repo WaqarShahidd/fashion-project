@@ -1,7 +1,7 @@
 import * as React from "react";
 import { Text, View, StyleSheet, Dimensions, Image } from "react-native";
 import { FlatList, TouchableOpacity } from "react-native-gesture-handler";
-import { catalog } from "./../../Components/catalogData";
+// import { catalog } from "./../../Components/catalogData";
 import firebase from "firebase";
 import {
   Routes,
